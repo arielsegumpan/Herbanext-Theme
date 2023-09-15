@@ -15,6 +15,9 @@ $story_carousel_imgs = $story['story_carousel'];
 $services = get_field('services');
 $services_icons = $services['service_cards'];
 $products = get_field('products');
+$galleries = get_field('gallery');
+$newsupdates = get_field('news_and_updates');
+
 ?>
 
 
@@ -171,17 +174,7 @@ $products = get_field('products');
                             <a href="<?php echo esc_url($products['product_page_link']) ?>" class="btn btn-success px-4 py-3"><i class="bi bi-shop me-2"></i><?php esc_html_e('Products') ?></a>
                         </div>
                         <div class="row row-cols-2 row-gap-4">
-
-
-                            <div class="col">
-                                <a href="product_single.html" class="text-decoration-none position-relative">
-                                    <div class="products_tag position-absolute">
-                                        <span class="badge text-bg-green rounded-3 px-3 py-1">New</span>
-                                    </div>
-                                    <img src="assets/imgs/flat-lay-herbal-therapy-products_23-2149339723.jpg" alt="" class="rounded-5">
-                                </a>
-                            </div>
-                            
+                           <?php echo do_shortcode( '[herbanext_recent_product]' ) ?>
                         </div>
                     </div>
                 </div>
@@ -189,35 +182,32 @@ $products = get_field('products');
         </section>
         <?php endif?>
         <!-- gallery -->
-        <section id="gallery">
-            <div class="container-fluid">
-                <div class="row gap-0">
-                    <div class="col p-0">
-                        <img src="assets/imgs/herbanext_group_photo.jpg" alt="" >
-                    </div>
-                    <div class="col p-0">
-                        <img src="assets/imgs/2b1c03_c261fe0c9b0f414c8e45a0ee1d80dbee~mv2.webp" alt="">
-                    </div>
-                    <div class="col p-0">
-                        <img src="assets/imgs/pioneer.jpg" alt="">
-                    </div>
-                    <div class="col p-0">
-                        <img src="assets/imgs/herbanext-DOST-BIST-2.jpg" alt="">
-                    </div>
-                    <div class="col p-0">
-                        <img src="assets/imgs/rd.jpg" alt="">
+
+        <?php if($galleries) : ?>
+            <section id="gallery">
+                <div class="container-fluid">
+                    <div class="row gap-0">
+                        <?php foreach ($galleries as $gallery):?>
+                        <div class="col p-0">
+                            <img src="<?php echo esc_url($gallery['gallery_image']['url']) ?>" alt="<?php echo esc_attr( $gallery['gallery_image']['alt']) ?>" >
+                        </div>
+                       <?php endforeach ?>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        <?php endif ?>
+
         <!-- news and updates -->
+        <?php if($newsupdates) :?>
         <section id="newsupdates" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
                     <div class="col-12 col-md-8 mx-auto text-center mb-5">
                         <div class="features_title text-white">
-                            <h1 class="museo fs-1 fw-bold text-white mb-5">News and Updates</h1>
-                            <p class="lh-lg">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim officia iure reiciendis, facilis accusantium illum iste. Necessitatibus nostrum esse hic!</p>
+                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e_($newsupdates['title']) ?></h1>
+                            <p class="lh-lg">
+                                <?php echo _e( $newsupdates['content'], 'herbanext' ) ?>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -294,6 +284,8 @@ $products = get_field('products');
                 </div>
             </div>
         </section>
+        <?php endif?>
+
         <!-- partner with us -->
         <section id="partner" style="background-image: url('assets/imgs/herbanext-main.jpg');" class="object-fit-cover img-fluid">
             <div class="bg-white"></div>

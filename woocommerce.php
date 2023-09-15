@@ -4,12 +4,14 @@
  * Template Name: Herbanext Catalog
  * @package herbanext
  */
-get_header('shop')
- ;?>
+get_header('shop');
+
+$shop = get_field('shop');
+?>
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_product" class="w-100 position-relative">
-            <img src="assets/imgs/essential-oil-peppermint-bottle-with-fresh-green-peppermint.jpg" alt="" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <img src="<?php echo esc_url($shop['shop_background_image']['url']) ?>" alt="<?php echo esc_attr($shop['shop_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                     <h1 class="display-2 museo fw-bold text-primary">

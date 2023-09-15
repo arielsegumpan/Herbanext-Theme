@@ -74,5 +74,5 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         $rating_html .= '</div>';
         return $rating_html; 
     }
-
+ 
  }

@@ -19,9 +19,11 @@ get_header();
                     </h1>
                 <?php endif
             ?>
-             <h6 class="mt-4">
-                 Home / Blog
-             </h6>
+                <h6 class="mt-4">
+                    <nav aria-label="breadcrumb">
+                        <?php custom_breadcrumbs() ?>
+                    </nav>
+                </h6>
          </div>
      </div>
  </section>  

@@ -10,14 +10,10 @@ $cont_sec_1 = get_acf_field('content_section_1');
 $cont_imgs = $cont_sec_1 ? $cont_sec_1['content_image'] : [];
 $cont_sec_2 = get_acf_field('content_section_2');
 $cont_sec_3 = get_acf_field('content_section_3');
-
 $cont_sec_4 = get_acf_field('content_section_4');
-
 $cont_sec_5 = get_acf_field('content_section_5');
 $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
 ?>
-
-
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
@@ -31,8 +27,10 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
                         </h1>
                     <?php endif
                 ?>
-                    <h6 class="mt-2 mt-md-4">
-                        Home / Toll Manufacturing
+                    <h6 class="mt-4">
+                        <nav aria-label="breadcrumb">
+                            <?php custom_breadcrumbs() ?>
+                        </nav>
                     </h6>
                 </div>
             </div>

@@ -7,12 +7,10 @@ get_header();
 
 $contact_jumbotron = get_acf_field('contact_jumbotron_image');
 $contact_map    = get_acf_field('body_map');
-
 ?>
 
 <main>
     <!-- jumbotron -->
-    
     <section id="jumbotron_product" class="w-100 position-relative">
         <?php if( $contact_jumbotron):?>
              <img src="<?php echo esc_url($contact_jumbotron['url']) ?>" alt="<?php echo esc_url($contact_jumbotron['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
@@ -34,8 +32,6 @@ $contact_map    = get_acf_field('body_map');
             </div>
         </div>
     </section>
-    
-
     <?php if($contact_map):?>
     <section id="contact">
         <div class="container">
@@ -51,6 +47,4 @@ $contact_map    = get_acf_field('body_map');
     </section>
     <?php endif ?>
 </main>
-
-
 <?php get_footer()?>

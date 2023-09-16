@@ -36,7 +36,7 @@ if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
     }
 }
 
-// Create shortcode displaying on the front page
+// Create shortcode getting recent products displaying on the front page
 add_shortcode('herbanext_recent_product', 'herbanext_recent_products');
 function herbanext_recent_products() {
     $args = array(

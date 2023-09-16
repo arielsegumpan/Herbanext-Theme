@@ -32,7 +32,7 @@ if(!empty($header_menus) && is_array($header_menus)){?>
                     }else{?>
                         <li class="nav-item dropdown me-3">
                             <a class="nav-link dropdown-toggle" href="<?php echo esc_url($menu_item->url);?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo esc_html($menu_item->title);?><i class="bi bi-chevron-down"></i>
+                                <?php echo esc_html($menu_item->title);?><i class="bi bi-chevron-down ms-2"></i>
                             </a>
                             <ul class="dropdown-menu ">
                                 <?php 

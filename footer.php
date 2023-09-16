@@ -20,6 +20,7 @@
                 </div>
                 <div class="col-12 col-md-3 mb-5 mb-md-0">
                     <h4 class="fw-bold avenir text-white pe-md-5 mb-4 text-center">Quicklinks</h5>
+                    <?php get_template_part('template-parts/header/nav');?>
                     <ul class="nav flex-column text-center text-md-start mx-auto ps-lg-5 ms-lg-5 text-black fw-bold">
                         <li class="nav-item mb-4">
                           <a class="text-black fw-bold fs-6 active" aria-current="page" href="services.html">Services</a>

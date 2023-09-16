@@ -18,7 +18,7 @@
     <!-- end of preloader -->
     <!-- nav -->
     <header class="fixed-top">
-        <nav class="navbar navbar-expand-lg bg-body-transparent">
+        <nav class="navbar navbar-expand-lg bg-body-transparent py-3">
             <div class="container">
 
             <?php
@@ -73,23 +73,9 @@
                             </div>
                         </div>
                         <?php
-                            if ( ! is_user_logged_in() ) { // Display WordPress login form:
-                                $args = array(
-                                    'redirect' => admin_url(), 
-                                    'form_id' => 'loginform-custom',
-                                    'label_username' => __( 'Username custom text' ),
-                                    'label_password' => __( 'Password custom text' ),
-                                    'label_remember' => __( 'Remember Me custom text' ),
-                                    'label_log_in' => __( 'Log In custom text' ),
-                                    'remember' => true
-                                );
-                                wp_login_form( $args );
-                            } else { // If logged in:
-                                wp_loginout( home_url() ); // Display "Log Out" link.
-                                echo " | ";
-                                wp_register('', ''); // Display "Site Admin" link.
-                            }
-                            ?>
+                             wp_login_form();
+                        ?>
+
 
                         
                     </div>

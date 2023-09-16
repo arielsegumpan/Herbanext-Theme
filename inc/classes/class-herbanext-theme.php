@@ -30,7 +30,6 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_filter( 'woocommerce_is_purchasable', '__return_false' );
         add_action('woocommerce_product_meta_start',[$this,'herbanext_custom_btn_single']);
         add_filter('woocommerce_sale_flash', [$this,'remove_woocommerce_sale_flash'], 10, 3);
-        
     }
 
     
@@ -106,5 +105,5 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         }
         return $html;
     }
-    
+  
  }

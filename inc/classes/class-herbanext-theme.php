@@ -106,4 +106,5 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         }
         return $html;
     }
+    
  }

@@ -25,27 +25,7 @@ $featured_image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_ima
                     <?php esc_html( the_title() )?>
                 </h1>
                 <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                    </a>
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum</span>
-                    </a>
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                    </a>
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem</span>
-                    </a>
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum</span>
-                    </a>
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                    </a>
-                    <a href="#!" class="text-decoration-none  mb-2">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                    </a>
+                <?php echo do_shortcode('[post_categories]') ?>
                 </div>
             </div>
         </div>

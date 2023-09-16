@@ -6,17 +6,17 @@
 */
 get_header();
 
-// ACF FIELDS
-is_protected_endpoint($jumbotron = get_field( "jumbotron"));
-$features = get_field("features");
-$feat_repeaters = $features['feature_cards'];
-$story = get_field("story");
-$story_carousel_imgs = $story['story_carousel'];
-$services = get_field('services');
-$services_icons = $services['service_cards'];
-$products = get_field('products');
-$galleries = get_field('gallery');
-$newsupdates = get_field('news_and_updates');
+// Call ACF FIELDS function
+$jumbotron = get_acf_field('jumbotron');
+$features = get_acf_field('features');
+$feat_repeaters = $features ? $features['feature_cards'] : [];
+$story = get_acf_field('story');
+$story_carousel_imgs = $story ? $story['story_carousel'] : [];
+$services = get_acf_field('services');
+$services_icons = $services ? $services['service_cards'] : [];
+$products = get_acf_field('products');
+$galleries = get_acf_field('gallery');
+$newsupdates = get_acf_field('news_and_updates');
 
 ?>
 

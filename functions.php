@@ -16,6 +16,12 @@ function herbanext_get_theme_instance(){
 herbanext_get_theme_instance();
 
 
+// encapsulate acf fields
+function get_acf_field($field_name) {
+    return function_exists('get_field') ? get_field($field_name) : null;
+}
+
+// add custom image tag in product catalog
 if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
     function woocommerce_template_loop_product_thumbnail() {
         if ( ! class_exists( 'WooCommerce' ) ) {
@@ -30,8 +36,6 @@ if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
         echo '<img class="rounded-3" src="' . esc_url( $image ) . '" alt="' . esc_attr( $title ) . '">';
     }
 }
-
-
 
 // create shortcode displaying sa front page
 add_shortcode('herbanext_recent_product','herbanext_recent_products');
@@ -75,3 +79,36 @@ function herbanext_recent_products() {
     wp_reset_postdata();
     return ob_get_clean();
 }
+
+// Get Categories
+function post_categories_shortcode() {
+    global $post;
+
+    // Check if we have a valid post
+    if (!isset($post) || empty($post->ID)) {
+        return 'No post found.';
+    }
+
+    // Delete the transient to force a cache reset
+    delete_transient('post_categories_output_' . $post->ID);
+
+    // Get the post's categories
+    $categories = get_the_category($post->ID);
+
+    if (!empty($categories)) {
+        foreach ($categories as $category) {
+            $output = '<a href="' . get_category_link($category->term_id) . '" class="text-decoration-none  mb-2">
+            <span class="badge text-bg-green rounded-2 text-small px-3 me-2">
+            ' . $category->name . '</span></a>';
+        }
+    } else {
+        $output = 'No categories found for this post.';
+    }
+
+    // Cache the output for an hour (3600 seconds) with a unique key for each post
+    // set_transient('post_categories_output_' . $post->ID, $output, 3600);
+
+    return $output;
+}
+add_shortcode('post_categories', 'post_categories_shortcode');
+

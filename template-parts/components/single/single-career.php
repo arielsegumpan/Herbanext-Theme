@@ -14,9 +14,13 @@ $get_career_form = get_acf_field('career_field');
             <img src="assets/imgs/close-up-medicine-pills-table.jpg" alt="" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-                    <h1 class="display-2 museo fw-bold text-primary">
-                       Blog Posts
-                    </h1>
+                <?php
+                    if(is_single() && !is_front_page()):?>
+                        <h1 class="display-2 museo fw-bold text-success">
+                            <?php single_post_title() ?>
+                        </h1>
+                    <?php endif
+                ?>
                     <h6 class="mt-4">
                         <nav aria-label="breadcrumb">
                             <?php custom_breadcrumbs() ?>
@@ -54,130 +58,23 @@ $get_career_form = get_acf_field('career_field');
                             <h4 class="fw-bold lora">Search</h4>
                             <input type="text" class="form-control px-3 py-2" placeholder="Search here...">
                         </div>
+                        <?php if(get_post_type() === 'careers') :?>
                         <div id="blog_recent" class="mb-5">
                             <h4 class="fw-bold lora">Recent Post</h4>
                             <ul class="list-group list-group-flush mt-4">
-                                <li class="list-group-item bg-transparent mb-4 pt-0 px-0 pb-4">
-                                    <a href="#!" class="text-decoration-none">
-                                        <div class="d-flex flex-row align-items-center gap-3">
-                                            <div class="position-relative">
-                                                <span class="bg-success position-absolute z-1 text-white rouned-5">
-                                                    1
-                                                </span>
-                                                <img src="assets/imgs/bottle-organic-oil-with-capsules-table.jpg" alt="" class="rounded-4 object-fit-cover">
-                                            </div>
-                                            <div>
-                                                <h6 class="lora fw-bold text-start">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item bg-transparent mb-4 pt-0 px-0 pb-4">
-                                    <a href="#!" class="text-decoration-none">
-                                        <div class="d-flex flex-row align-items-center gap-3">
-                                            <div class="position-relative">
-                                                <span class="bg-success position-absolute z-1 text-white rouned-5">
-                                                    2
-                                                </span>
-                                                <img src="assets/imgs/bottle-organic-oil-with-capsules-table.jpg" alt="" class="rounded-4 object-fit-cover">
-                                            </div>
-                                            <div>
-                                                <h6 class="lora fw-bold text-start">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item bg-transparent mb-4 pt-0 px-0 pb-4">
-                                    <a href="#!" class="text-decoration-none">
-                                        <div class="d-flex flex-row align-items-center gap-3">
-                                            <div class="position-relative">
-                                                <span class="bg-success position-absolute z-1 text-white rouned-5">
-                                                    3
-                                                </span>
-                                                <img src="assets/imgs/bottle-organic-oil-with-capsules-table.jpg" alt="" class="rounded-4 object-fit-cover">
-                                            </div>
-                                            <div>
-                                                <h6 class="lora fw-bold text-start">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item bg-transparent mb-4 pt-0 px-0 pb-4">
-                                    <a href="#!" class="text-decoration-none">
-                                        <div class="d-flex flex-row align-items-center gap-3">
-                                            <div class="position-relative">
-                                                <span class="bg-success position-absolute z-1 text-white rouned-5">
-                                                    4
-                                                </span>
-                                                <img src="assets/imgs/bottle-organic-oil-with-capsules-table.jpg" alt="" class="rounded-4 object-fit-cover">
-                                            </div>
-                                            <div>
-                                                <h6 class="lora fw-bold text-start">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="list-group-item bg-transparent mb-4 pt-0 px-0 pb-4">
-                                    <a href="#!" class="text-decoration-none">
-                                        <div class="d-flex flex-row align-items-center gap-3">
-                                            <div class="position-relative">
-                                                <span class="bg-success position-absolute z-1 text-white rouned-5">
-                                                    5
-                                                </span>
-                                                <img src="assets/imgs/bottle-organic-oil-with-capsules-table.jpg" alt="" class="rounded-4 object-fit-cover">
-                                            </div>
-                                            <div>
-                                                <h6 class="lora fw-bold text-start">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                <?php get_template_part('template-parts/sidebars/recent-careers') ?>
                             </ul>
                         </div>
+                        <?php endif ?>
                         <div id="blog_categories" class="mb-5">
                             <h4 class="fw-bold lora">Categories</h4>
                             <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                                </a>
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum</span>
-                                </a>
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                                </a>
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem</span>
-                                </a>
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum</span>
-                                </a>
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                                </a>
-                                <a href="#!" class="text-decoration-none  mb-2">
-                                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">Lorem, ipsum dolor</span>
-                                </a>
+                            <?php echo do_shortcode('[post_categories]') ?>
                             </div>
                         </div>
                         <div id="blog_archive" class="mb-5">
                             <h4 class="fw-bold lora">Archive</h4>
-                            <select class="form-select py-2 mt-4 mb-4" aria-label="Select category">
-                                <option selected disabled>Select category</option>
-                                <option value="Category 1">Category 1</option>
-                                <option value="Category 2">Category 2</option>
-                                <option value="Category 3">Category 3</option>
-                            </select>
+                           <?php get_template_part('template-parts/components/archive/archives') ?>
                        </div>
                     </div>
                 </div>

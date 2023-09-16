@@ -1,17 +1,15 @@
 <?php
 /**
- * 
+ * Template Name: Publications
  * @package herbanext
  */
 get_header();
-
-$blogpost = get_acf_field('jumbotron_background_image');
 ?>
 
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_product" class="w-100 position-relative">
- <img src="<?php echo esc_url($blogpost['url']) ?>" alt="<?php echo esc_attr($blogpost['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+     <img src="assets/imgs/close-up-medicine-pills-table.jpg" alt="" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
             <?php
@@ -33,17 +31,11 @@ $blogpost = get_acf_field('jumbotron_background_image');
      <div class="container">
          <div class="row row-gap-5">
              <?php 
-                $args = array(
-                    'post_type'     => 'post',
-                    'post_status'   => 'publish',
-                    'posts_per_page' => 10,
-                );
-                $getCareer = new WP_Query($args);
                 if(have_posts()): while(have_posts()): the_post()?>
                      <?php get_template_part('template-parts/content/content')?>
                 <?php endwhile; else:?>
                     <?php get_template_part('template-parts/content/content-empty')?>
-            <?php endif;wp_reset_postdata();?>
+            <?php endif;?>
          </div>
      </div>
  </section>

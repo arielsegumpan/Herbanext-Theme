@@ -4,6 +4,7 @@
  * @package herbanext
  */
 
+use HERBANEXT_THEME\Inc\HERBANEXT_CPT;
 use HERBANEXT_THEME\Inc\HERBANEXT_THEME;
 
 !defined('HERBANEXT_DIR_PATH') ? define('HERBANEXT_DIR_PATH',untrailingslashit( get_template_directory() )) : '';
@@ -13,8 +14,9 @@ require_once HERBANEXT_DIR_PATH . '/inc/helpers/autoloader.php';
 function herbanext_get_theme_instance(){
     HERBANEXT_THEME::get_instance();
 }
-
 herbanext_get_theme_instance();
+
+
 // Encapsulate ACF fields
 function get_acf_field($field_name) {
     return function_exists('get_field') ? get_field($field_name) : null;
@@ -132,5 +134,5 @@ function custom_breadcrumbs() {
         $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
     }
 
-    echo '<ol class="breadcrumb">' . $breadcrumbs . '</ol>';
+    echo '<ol class="breadcrumb justify-content-center">' . $breadcrumbs . '</ol>';
 }

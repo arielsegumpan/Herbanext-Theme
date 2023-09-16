@@ -17,9 +17,10 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         // Load all class
         Menus::get_instance();
         Assets::get_instance();
+        HerbanextCPT::get_instance();
         $this->setup_hooks();
     }
-
+    // set up hooks
     protected function setup_hooks(){
         add_action('after_setup_theme', [$this,'setup_theme']);
         add_filter( 'woocommerce_product_get_rating_html', [$this, 'filter_woocommerce_product_get_rating_html'], 10, 3 ); 
@@ -71,8 +72,6 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_theme_support( 'wc-product-gallery-zoom' );
         add_theme_support( 'wc-product-gallery-lightbox' );
         add_theme_support( 'wc-product-gallery-slider' );
-        // global $content_width;
-        // !isset($content_width) ? $content_width = 1320 : '';
     }
 
     //ratings

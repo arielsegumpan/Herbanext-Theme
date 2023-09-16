@@ -4,7 +4,7 @@
  * @package herbanext
  */
 namespace HERBANEXT_THEME\Inc;
- use HERBANEXT_THEME\Inc\Traits\Singleton;
+use HERBANEXT_THEME\Inc\Traits\Singleton;
 
 
  class Assets{
@@ -23,10 +23,13 @@ namespace HERBANEXT_THEME\Inc;
         wp_register_style('style',get_stylesheet_uri(),[],filemtime(HERBANEXT_DIR_PATH.'/style.css'), 'all');
         wp_register_style('owl_carousel_css','//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css', array(), false, 'all');
         wp_register_style('icons','//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css', array(), false, 'all');
+        wp_register_style('woo_style',HERBANEXT_DIR_URI.'/assets/css/woo-style.css', array(), false, 'all');
+
 
         wp_enqueue_style('style');
         wp_enqueue_style('owl_carousel_css');
         wp_enqueue_style('icons');
+        wp_enqueue_style('woo_style');
     }
 
 

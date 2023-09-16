@@ -6,6 +6,6 @@
 ?>
  <section>
     <header class="page-header">
-        <h1 class="page-title"><?php esc_html_e( 'Nothing found', 'herbanext' ) ?></h1>
+        <h1 class="page-title"><?php esc_html_e( 'No career has been posted.', 'herbanext' ) ?></h1>
     </header>
  </section>

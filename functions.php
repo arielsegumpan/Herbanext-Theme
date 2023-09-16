@@ -101,7 +101,7 @@ function post_categories_shortcode() {
                 ' . $category->name . '</span></a>';
         }
     } else {
-        $output = 'No categories found for this post.';
+        $output = '';
     }
 
     return $output;
@@ -134,5 +134,5 @@ function custom_breadcrumbs() {
         $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
     }
 
-    echo '<ol class="breadcrumb justify-content-center">' . $breadcrumbs . '</ol>';
+    echo '<ol class="breadcrumb ">' . $breadcrumbs . '</ol>';
 }

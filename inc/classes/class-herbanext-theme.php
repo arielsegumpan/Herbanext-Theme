@@ -18,6 +18,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         Menus::get_instance();
         Assets::get_instance();
         HerbanextCPT::get_instance();
+        Careercat::get_instance();
         $this->setup_hooks();
     }
     // set up hooks

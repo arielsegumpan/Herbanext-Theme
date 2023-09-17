@@ -1,20 +1,39 @@
-<?php
-/**
- * Functions template
- * @package herbanext
- */
+// function post_categories_shortcode() {
+//     global $post;
 
-use HERBANEXT_THEME\Inc\HERBANEXT_CPT;
-use HERBANEXT_THEME\Inc\HERBANEXT_THEME;
+//     // Check if we have a valid post
+//     if (!isset($post) || empty($post->ID)) {
+//         return 'No post found.';
+//     }
 
-!defined('HERBANEXT_DIR_PATH') ? define('HERBANEXT_DIR_PATH',untrailingslashit( get_template_directory() )) : '';
-!defined('HERBANEXT_DIR_URI') ? define('HERBANEXT_DIR_URI',untrailingslashit( get_template_directory_uri() )) : '';
-require_once HERBANEXT_DIR_PATH . '/inc/helpers/autoloader.php';
+//     // Get the post's categories
+//     $categories = get_the_category();
+//     $output = '';
 
-function herbanext_get_theme_instance(){
-    HERBANEXT_THEME::get_instance();
-}
-herbanext_get_theme_instance();
+//     if (!empty($categories)) {
+//         foreach ($categories as $category) {
+//             $output .= '<a href="' . get_category_link($category->term_id) . '" class="text-decoration-none mb-2">
+//                 <span class="badge text-bg-green rounded-2 text-small px-3 me-2">
+//                 ' . $category->name . '</span></a>';
+//         }
+//     } else {
+//         $output = '';
+//     }
+
+//     return $output;
+// }
+
+
+
+
+
+
+
+=========================================================
+===========================================================
+
+
+
 
 
 // Encapsulate ACF fields
@@ -59,7 +78,7 @@ function herbanext_recent_products() {
             <div class="col">
                 <a href="<?php esc_url(the_permalink()) ?>" class="text-decoration-none position-relative">
                     <div class="products_tag position-absolute">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><?php echo esc_html__('New') ?></span>
+                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><?php echo esc_html_e('New') ?></span>
                     </div>
                     <?php
                     if (has_post_thumbnail()) {
@@ -81,6 +100,7 @@ function herbanext_recent_products() {
     return ob_get_clean();
 }
 
+// Get Categories
 // Get Categories by Post Type
 function post_categories_by_post_type_shortcode($atts) {
     global $post;
@@ -117,8 +137,9 @@ function post_categories_by_post_type_shortcode($atts) {
 
     return $output;
 }
-
-// Get All Parent Categories
+add_shortcode('post_categories', 'post_categories_by_post_type_shortcode');
+// Get parent categories
+// Get All Parent Categories and Create Shortcode
 function get_all_parent_categories() {
     // Define arguments for the get_categories function
     $args = array(
@@ -181,3 +202,4 @@ function custom_breadcrumbs() {
 
     echo '<ol class="breadcrumb ">' . $breadcrumbs . '</ol>';
 }
+

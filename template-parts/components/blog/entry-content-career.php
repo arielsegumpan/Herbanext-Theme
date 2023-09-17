@@ -31,8 +31,8 @@ $career_position = get_acf_field('career_field');
                 <?php endif ?>
                 <?php if($career_position) :?>
                     <div class="d-flex flex-row justify-content-between mt-3">
-                        <div>
-                            <i class="bi bi-briefcase me-2"></i> <?php echo esc_html_e($career_position['postion']) ?>
+                        <div class="text-secondary">
+                            <i class="bi bi-briefcase me-2"></i><?php echo esc_html_e($career_position['postion']) ?>
                         </div>
                         <div>
                             <a href="<?php echo esc_url($career_position['file_upload']['url']) ?>" class="btn btn-success btn-sm rounded-3 px-3 "><i class="bi bi-download me-2"></i><?php echo esc_html_e('Download') ?></a>

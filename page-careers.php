@@ -5,14 +5,14 @@
  */
 get_header();
 
-$cpt_post = get_acf_field('jumbotron_background_image');
+$cpt_post = get_acf_field('post_background_image');
 ?>
 
 
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_product" class="w-100 position-relative">
-     <img src="<?php echo esc_url($cpt_post['url']) ?>" alt="<?php echo esc_attr($cpt_post['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+     <img src="<?php echo esc_url($cpt_post['image']['url']) ?>" alt="<?php echo esc_attr($cpt_post['image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
             <?php

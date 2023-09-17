@@ -2,5 +2,64 @@
 /**
  * @package herbanext
  */
-get_template_part('template-parts/components/single/single-career')
+get_header();
+
+$cpt_post = get_acf_field('post_background_image');
+
 ?>
+
+<main>
+    <!-- jumbotron -->
+    <section id="jumbotron_product" class="w-100 position-relative">
+    <img src="<?php echo esc_url($cpt_post['image']['url']) ?>" alt="<?php echo esc_attr($cpt_post['image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+        <div class="container position-absolute">
+            <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
+                <?php if (is_single() && !is_front_page()) : ?>
+                    <h1 class="display-2 museo fw-bold text-success"><?php single_post_title(); ?></h1>
+                <?php endif; ?>
+                <h6 class="mt-4">
+                    <nav aria-label="breadcrumb">
+                        <?php custom_breadcrumbs(); ?>
+                    </nav>
+                </h6>
+            </div>
+        </div>
+    </section>
+    <section id="blog">
+        <div class="container">
+            <div class="row row-gap-5">
+                <div class="col-12 col-lg-9">
+                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                            <?php get_template_part('template-parts/components/single/single-career'); ?>
+                        <?php endwhile; endif; ?>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div id="blog_search" class="mb-5">
+                        <h4 class="fw-bold museo "><?php echo esc_html__('Search'); ?></h4>
+                        <input type="text" class="form-control px-3 py-2" placeholder="Search here...">
+                    </div>
+                    <?php if (get_post_type() === 'careers') : ?>
+                        <div id="blog_recent" class="mb-5">
+                            <h4 class="fw-bold museo "><?php echo esc_html__('Recent Post'); ?></h4>
+                            <ul class="list-group list-group-flush mt-4">
+                                <?php get_template_part('template-parts/sidebars/recent-careers'); ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                    <div id="blog_categories" class="mb-5">
+                        <h4 class="fw-bold museo "><?php echo esc_html__('Categories'); ?></h4>
+                        <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
+                            <?php echo do_shortcode('[parent_categories]'); ?>
+                        </div>
+                    </div>
+                    <div id="blog_archive" class="mb-5">
+                        <h4 class="fw-bold museo "><?php echo esc_html__('Archive'); ?></h4>
+                        <?php get_template_part('template-parts/components/archive/archives'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<?php get_footer(); ?>

@@ -73,7 +73,7 @@ if (post_password_required()) {
     );
 
     $args = array(
-        'title_reply' => __('<span class="fw-bold fs-1 museo"><i class="bi bi-chat-quote me-3"></i>Share Your Thoughts</span>', 'herbanext'),
+        'title_reply' => __('<span class="fw-bold fs-1 museo mt-5"><i class="bi bi-chat-quote me-3"></i>Share Your Thoughts</span>', 'herbanext'),
         'class_submit' => 'btn btn-success px-5 py-3 mt-4',
         'label_submit' => __('Post Comment', 'herbanext'),
         'comment_field' => '<textarea id="comment" class="form-control px-3 py-3 mb-4 mt-5" name="comment" rows="4" placeholder="' . __('Your comment...', 'herbanext') . '" required></textarea>',

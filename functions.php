@@ -15,6 +15,14 @@ function herbanext_get_theme_instance(){
 }
 herbanext_get_theme_instance();
 
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
+function new_woocommerce_page_title( $page_title ) {
+	if ( $page_title == 'Shop' ) {
+		return '<span class="fw-bold fs-2">Prodcut Catalog</span>';
+	}
+}
+
 
 // Encapsulate ACF fields
 function get_acf_field($field_name) {
@@ -179,3 +187,18 @@ function custom_breadcrumbs() {
 
     echo '<ol class="breadcrumb ">' . $breadcrumbs . '</ol>';
 }
+// Remove Shop title
+add_action('init','remove_loop_title');
+function remove_loop_title(){
+    remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
+}
+function custom_add_button_to_product_loop() {
+    echo '
+        <div id="product_btn" class="vstack gap-3 col-md-5 mx-auto w-100 mt-4 px-4">
+            <a href="' . esc_url(get_permalink()) . '" class="btn btn-outline-success py-3 fs-6"><i class="bi bi-eye me-2"></i>View</a>
+            <a href="' . esc_url(site_url( '/contact' )) . '" type="button" class="btn btn-success py-3 fs-6"><i class="bi bi-info-circle me-2"></i>Inquiry</a>
+        </div>
+    ';
+}
+
+add_action('woocommerce_after_shop_loop_item', 'custom_add_button_to_product_loop', 5);

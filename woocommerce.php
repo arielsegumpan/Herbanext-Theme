@@ -60,14 +60,6 @@ $shop = get_field('herbanext_shop', $shop_page_id);
 
             <div class="lists">
                 <div class="container">
-                    <div class="row">
-                        <div class="col mb-5">
-                            <h3 class="fw-bold">
-                                Product Catalog
-                            </h3>
-                            <p>Showing 1–9 of 10 results</p>
-                        </div>
-                    </div>
                    <div class="row ">
                    <?php woocommerce_content(); ?>
                    </div>

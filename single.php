@@ -36,13 +36,15 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
         <div class="container">
             <div class="row row-gap-5">
                 <div class="col-12 col-lg-9">
-
+                    <!-- share buttons -->
                     <?php echo do_shortcode( '[social_share_buttons]' ) ?>
-
-
+                    <!-- content -->
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                             <?php get_template_part('template-parts/components/single/single'); ?>
                     <?php endwhile; endif; ?>
+                    <!-- share buttons -->
+                    <?php echo do_shortcode( '[social_share_buttons]' ) ?>
+                    <!-- comment form -->
                     <?php if (comments_open() || get_comments_number()):?>
                         <?php comments_template(); ?>
                     <?php endif?>

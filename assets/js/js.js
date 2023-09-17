@@ -2,7 +2,8 @@ $(document).ready(function () {
 
     $('div#respond small a#cancel-comment-reply-link').addClass('btn btn-outline-success ms-3');
     $('h3#reply-title a.comment-reply-link').addClass('text-decoration-none');
-    $('h3#reply-title').addClass('museo')
+    $('h3#reply-title').addClass('museo');
+    $('nav.woocommerce-pagination ul.page-numbers').addClass('fs-4');
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
     icons.forEach (icon => {  

@@ -36,14 +36,16 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
         <div class="container">
             <div class="row row-gap-5">
                 <div class="col-12 col-lg-9">
-
+                    <!-- share button -->
                     <?php echo do_shortcode( '[social_share_buttons]' ) ?>
-
-
+                    <!-- content -->
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                             <?php get_template_part('template-parts/components/single/single-career'); ?>
                     <?php endwhile; endif; ?>
-                    
+                     <!-- comment form -->
+                     <?php if (comments_open() || get_comments_number()):?>
+                        <?php comments_template(); ?>
+                    <?php endif?>
                 </div>
                 <div class="col-12 col-lg-3">
                     <div id="blog_search" class="mb-5">

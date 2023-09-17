@@ -5,14 +5,14 @@
  */
 get_header();
 
-$nu_get_image = get_acf_field('post_jumbotron_image');
-?>
+$image_id = get_post_thumbnail_id(get_the_ID());
+$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 
+?>
 <main>
  <!-- jumbotron -->
- <section id="jumbotron_product" class="w-100 position-relative">
-    
-    <img src="<?php echo $nu_get_image['news_and_updates_image']['url']?>" alt="" class="object-fit-cover w-100 position-absolute top-0 left-0">
+ <section id="jumbotron_about" class="w-100 position-relative">
+    <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
             <?php

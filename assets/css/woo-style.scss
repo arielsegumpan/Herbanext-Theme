@@ -5,12 +5,16 @@ $dark-gray: #6C6C6C;
 $trans: .3s ease;
 $black: #1a1a1a;
 $border-color:#47a76e;
+$warning: #ffc107;
 ul.pagination.justify-content-center li.page-item span a {
     text-decoration: none!important;
     color: white!important;
 }
 // Comments
 #comments{
+    ol li.comment{
+        margin-top: 3rem;
+    }
     ol li img.avatar.avatar-64.photo {
         border-radius: 15px;
     }
@@ -58,6 +62,25 @@ ul.pagination.justify-content-center li.page-item span a {
                         color: $dark-gray;
                        }
                     }
+                }
+            }
+        }
+    }
+}
+
+// woo styles
+section#product_lists{
+    .lists{
+        ul.products{
+            li.product{
+                padding-bottom: 1.5rem;
+                --bs-bg-opacity: 1;
+                background-color: rgba(var(--bs-gray-rgb), var(--bs-bg-opacity)) !important;
+                .star-rating::before{
+                    color:$warning!important;
+                }
+                .star-rating span::before{
+                    color:$warning!important;
                 }
             }
         }

@@ -34,6 +34,8 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_filter( 'woocommerce_is_purchasable', '__return_false' );
         add_action('woocommerce_product_meta_start',[$this,'herbanext_custom_btn_single']);
         add_filter('woocommerce_sale_flash', [$this,'remove_woocommerce_sale_flash'], 10, 3);
+       
+        add_action('woocommerce_shop_loop_item_title', [$this,'abChangeProductsTitle'], 10 );
     }
 
     
@@ -41,6 +43,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_theme_support('title_tag');
         add_theme_support('post-thumbnails');
         add_theme_support('customize-selective-refresh-widgets');
+        add_theme_support('widgets');
         add_theme_support('automatic-feed-links');
         add_theme_support( 'custom-logo', [
             'header-text' => ['site-title', 'site-description'],
@@ -79,7 +82,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
 
     //ratings
     function filter_woocommerce_product_get_rating_html( $rating_html, $rating, $count ) { 
-        $rating_html  = '<div class="star-rating">';
+        $rating_html  = '<div class="star-rating mx-auto fs-5">';
         $rating_html .= wc_get_star_rating_html( $rating, $count );
         $rating_html .= '</div>';
         return $rating_html; 
@@ -107,5 +110,9 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         }
         return $html;
     }
-  
+    // custom shop title
+    function abChangeProductsTitle() {
+        echo '<h5 class="woocommerce-loop-product_title museo text-center fw-bold"><a class="text-decoration-none text-success" href="'.get_the_permalink().'">' . get_the_title() . '</a></h5>';
+    
+    }
  }

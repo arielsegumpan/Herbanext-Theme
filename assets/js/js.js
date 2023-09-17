@@ -4,6 +4,22 @@ $(document).ready(function () {
     $('h3#reply-title a.comment-reply-link').addClass('text-decoration-none');
     $('h3#reply-title').addClass('museo');
     $('nav.woocommerce-pagination ul.page-numbers').addClass('fs-4');
+
+    // Add Bootstrap classes to elements in WooCommerce comments
+    $('.woocommerce-Reviews #comments .comment').addClass('media');
+    $('.woocommerce-Reviews .comment .comment-body').addClass('media-body');
+    $('.woocommerce-Reviews .comment img.avatar').addClass('media-left');
+    $('.woocommerce-Reviews .comment .comment-author').addClass('media-heading');
+    $('.woocommerce-Reviews .comment .comment-meta').addClass('small');
+
+    // Add Bootstrap classes to the "Submit" button in the comment form
+    $('.comment-form #submit').addClass('btn btn-primary');
+
+    // Add Bootstrap classes to the comment pagination links (if present)
+    $('.woocommerce-pagination .prev').addClass('page-item');
+    $('.woocommerce-pagination .next').addClass('page-item');
+    $('.woocommerce-pagination .prev a').addClass('page-link');
+    $('.woocommerce-pagination .next a').addClass('page-link');
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
     icons.forEach (icon => {  

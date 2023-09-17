@@ -20,6 +20,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         HerbanextCPT::get_instance();
         Careercat::get_instance();
         Shortcodes::get_instance();
+        HerbanextCPT::get_instance();
         $this->setup_hooks();
     }
     // set up hooks

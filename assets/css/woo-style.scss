@@ -1,4 +1,65 @@
+$white:#ffffff;
+$green: #0A7742;
+$gray: #DBDBDB;
+$dark-gray: #6C6C6C;
+$trans: .3s ease;
+$black: #1a1a1a;
+$border-color:#47a76e;
 ul.pagination.justify-content-center li.page-item span a {
     text-decoration: none!important;
     color: white!important;
+}
+// Comments
+#comments{
+    ol li img.avatar.avatar-64.photo {
+        border-radius: 15px;
+    }
+    ol li article footer .comment-author.vcard b.fn{
+        margin-left: 1rem;
+    }
+    ol.comment-list{
+        li.comment{
+            .comment-body{
+                footer.comment-meta{
+                    .comment-metadata{
+                        margin: 1rem 0;
+                        a{
+                            text-decoration: none!important;
+                            color: $green!important;
+                        }
+                    }
+
+                }
+                .reply{
+                    margin-top: 2rem;
+                    a{
+                        border-radius: 12px;
+                        background-color: $green;
+                        color: $white;
+                        font-size: .9rem;
+                        padding: 0.375rem 1.5rem!important;
+                        text-decoration: none;
+                        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    }
+                    a:hover{
+                        background-color:#096538;
+                    }
+                }
+                .comment-content{
+                    color: $dark-gray;
+                }
+            }
+            ol.children{
+                list-style: none;
+                .comment{
+                    article.comment-body{
+                        margin-top: 3rem;
+                       .comment-content{
+                        color: $dark-gray;
+                       }
+                    }
+                }
+            }
+        }
+    }
 }

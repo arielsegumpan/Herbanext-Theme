@@ -1,16 +1,18 @@
 <?php
 /**
- *
+ *Template Name: Blog
  * @package herbanext
  */
 get_header();
 
+$nu_get_image = get_acf_field('post_jumbotron_image');
 ?>
 
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_product" class="w-100 position-relative">
-    <img src="" alt="" class="object-fit-cover w-100 position-absolute top-0 left-0">
+    
+    <img src="<?php echo $nu_get_image['news_and_updates_image']['url']?>" alt="" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
             <?php
@@ -44,7 +46,7 @@ get_header();
                     <?php get_template_part('template-parts/content/content-empty')?>
             <?php endif;wp_reset_postdata();?>
          </div>
-        <?php if(get_next_posts_link()) :?>
+        <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
          <div class="row">
             <div class="container text-center">
                 <nav aria-label="Page navigation" class="mt-5 pt-4">

@@ -36,26 +36,26 @@ namespace HERBANEXT_THEME\Inc;
 
         // Build the HTML for social share buttons
         $output = '
-            <h6 class="fw-bold text-primary ps-0"><i class="bi bi-share me-2"></i>Share this post</h6>
+            <h6 class="fw-bold text-success ps-0"><i class="bi bi-share me-2"></i>Share this post</h6>
             <ul class="d-flex flex-row mt-2 gap-3 list-unstyled">
                 <li>
                     <a class="share-twitter" href="https://twitter.com/intent/tweet?text=' . $title . '&amp;url=' . $url . '&amp;via=hoptravelph" target="_blank">
-                        <i class="bi bi-twitter text-primary fs-3"></i>
+                        <i class="bi bi-twitter text-success fs-3"></i>
                     </a>
                 </li>
                 <li>
                     <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '" target="_blank">
-                        <i class="bi bi-facebook text-primary fs-3"></i>
+                        <i class="bi bi-facebook text-success fs-3"></i>
                     </a>
                 </li>
                 <li>
                     <a class="share-pinterest" href="http://pinterest.com/pin/create/button/?url=' . $url . '&amp;media=' . $media . '&amp;description=' . $title . '" target="_blank">
-                        <i class="bi bi-pinterest text-primary fs-3"></i>
+                        <i class="bi bi-pinterest text-success fs-3"></i>
                     </a>
                 </li>
                 <li class="d-flex flex-row">
                     <a class="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=' . $url . '&amp;description=' . $title . '" target="_blank">
-                        <i class="bi bi-linkedin text-primary fs-3"></i>
+                        <i class="bi bi-linkedin text-success fs-3"></i>
                     </a>
                 </li>
             </ul>

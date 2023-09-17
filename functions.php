@@ -59,7 +59,7 @@ function herbanext_recent_products() {
             <div class="col">
                 <a href="<?php esc_url(the_permalink()) ?>" class="text-decoration-none position-relative">
                     <div class="products_tag position-absolute">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><?php echo esc_html__('New') ?></span>
+                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><?php echo esc_html_e('New') ?></span>
                     </div>
                     <?php
                     if (has_post_thumbnail()) {
@@ -81,6 +81,7 @@ function herbanext_recent_products() {
     return ob_get_clean();
 }
 
+// Get Categories
 // Get Categories by Post Type
 function post_categories_by_post_type_shortcode($atts) {
     global $post;
@@ -117,8 +118,9 @@ function post_categories_by_post_type_shortcode($atts) {
 
     return $output;
 }
+add_shortcode('post_categories', 'post_categories_by_post_type_shortcode');
 
-// Get All Parent Categories
+// Get All Parent Categories and Create Shortcode
 function get_all_parent_categories() {
     // Define arguments for the get_categories function
     $args = array(
@@ -146,8 +148,6 @@ function get_all_parent_categories() {
     // Return the sanitized output
     return $output;
 }
-
-// Create a shortcode to display parent categories
 function parent_categories_shortcode() {
     return get_all_parent_categories();
 }
@@ -155,22 +155,22 @@ add_shortcode('parent_categories', 'parent_categories_shortcode');
 
 // Breadcrumbs
 function custom_breadcrumbs() {
-    $breadcrumbs = '<li class="breadcrumb-item"><a href="' . home_url() . '">Home</a></li>';
+    $breadcrumbs = '<li class="breadcrumb-item"><a class="text-decoration-none" href="' . home_url() . '">Home</a></li>';
     $current_page = get_queried_object();
 
     if (is_single()) {
         $category = get_the_category($current_page->ID);
         if (!empty($category)) {
-            $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . get_category_link($category[0]->term_id) . '">' . $category[0]->name . '</a></li>';
+            $breadcrumbs .= '<li class="breadcrumb-item "><a class="text-decoration-none" href="' . get_category_link($category[0]->term_id) . '">' . $category[0]->name . '</a></li>';
         }
-        $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . get_permalink($current_page->ID) . '">' . get_the_title() . '</a></li>';
+        $breadcrumbs .= '<li class="breadcrumb-item "><a class="text-decoration-none" href="' . get_permalink($current_page->ID) . '">' . get_the_title() . '</a></li>';
     } elseif (is_page() && $current_page->post_parent) {
         $ancestors = get_post_ancestors($current_page->ID);
         $ancestors = array_reverse($ancestors);
         foreach ($ancestors as $ancestor) {
-            $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
+            $breadcrumbs .= '<li class="breadcrumb-item"><a class="text-decoration-none" href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
         }
-        $breadcrumbs .= '<li class="breadcrumb-item"><a href="' . get_permalink($current_page->ID) . '">' . get_the_title($current_page->ID) . '</a></li>';
+        $breadcrumbs .= '<li class="breadcrumb-item"><a class="text-decoration-none" href="' . get_permalink($current_page->ID) . '">' . get_the_title($current_page->ID) . '</a></li>';
     } elseif (is_category()) {
         $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . single_cat_title('', false) . '</li>';
     } elseif (is_tag()) {
@@ -181,3 +181,4 @@ function custom_breadcrumbs() {
 
     echo '<ol class="breadcrumb ">' . $breadcrumbs . '</ol>';
 }
+

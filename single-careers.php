@@ -4,34 +4,46 @@
  */
 get_header();
 
-$cpt_post = get_acf_field('post_background_image');
+$image_id = get_post_thumbnail_id(get_the_ID());
+$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 
 ?>
 
 <main>
     <!-- jumbotron -->
-    <section id="jumbotron_product" class="w-100 position-relative">
-    <img src="<?php echo esc_url($cpt_post['image']['url']) ?>" alt="<?php echo esc_attr($cpt_post['image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+    <section id="jumbotron_about" class="w-100 position-relative">
+    <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <?php if (is_single() && !is_front_page()) : ?>
-                    <h1 class="display-2 museo fw-bold text-success"><?php single_post_title(); ?></h1>
+                    <h1 class="display-4 museo fw-bold text-success"><?php single_post_title(); ?></h1>
                 <?php endif; ?>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">
                         <?php custom_breadcrumbs(); ?>
                     </nav>
                 </h6>
+                <?php if(shortcode_exists('post_categories')) :?>
+                    <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
+                        <?php echo do_shortcode('[post_categories]') ?>
+                    </div>
+                <?php endif ?>
             </div>
         </div>
     </section>
+
     <section id="blog">
         <div class="container">
             <div class="row row-gap-5">
                 <div class="col-12 col-lg-9">
+
+                    <?php echo do_shortcode( '[social_share_buttons]' ) ?>
+
+                    
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                             <?php get_template_part('template-parts/components/single/single-career'); ?>
-                        <?php endwhile; endif; ?>
+                    <?php endwhile; endif; ?>
+                    
                 </div>
                 <div class="col-12 col-lg-3">
                     <div id="blog_search" class="mb-5">

@@ -1,27 +1,20 @@
 <?php
 /**
- *Template Name: Blog
+ *
  * @package herbanext
  */
 get_header();
 
-$nu_get_image = get_acf_field('news_and_updates');
 ?>
-
 <main>
  <!-- jumbotron -->
- <section id="jumbotron_product" class="w-100 position-relative">
-    
-    <img src="<?php echo $nu_get_image['news_and_updates_image']['url']?>" alt="" class="object-fit-cover w-100 position-absolute top-0 left-0">
+ <section id="jumbotron_about" class="w-100 position-relative">
+    <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-            <?php
-                if(is_post_type_archive() && !is_front_page()):?>
-                    <h1 class="display-2 museo fw-bold text-success">
-                        <?php single_post_title() ?>
-                    </h1>
-                <?php endif
-            ?>
+                <h1 class="display-3 museo fw-bold text-success">
+                    <?php echo wp_title() ?>
+                </h1>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">
                         <?php custom_breadcrumbs() ?>
@@ -33,13 +26,12 @@ $nu_get_image = get_acf_field('news_and_updates');
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">
-         <?php
-                if (is_post_type_archive('careers')) {
-                    _e('Careers', 'your-text-domain'); // Display custom post type archive title
-                } else {
-                    single_cat_title();
-                }
-                ?>
+         <?php  while(have_posts()):
+            the_post();?>
+
+            <?php get_template_part('template-parts/content/content');?>
+            
+        <?php endwhile ?>
          </div>
         <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
          <div class="row">
@@ -69,4 +61,5 @@ $nu_get_image = get_acf_field('news_and_updates');
      </div>
  </section>
 </main>
+
 <?php get_footer()?>

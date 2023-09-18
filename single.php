@@ -7,12 +7,13 @@ get_header();
 $image_id = get_post_thumbnail_id(get_the_ID());
 $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 
+$get_blog_img = get_field('blog_post_header_image','option');
+$get_blog_title = get_field('blog_post_heading_title','option');
 ?>
-
 <main>
-    <!-- jumbotron -->
-    <section id="jumbotron_about" class="w-100 position-relative">
-    <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+ <!-- jumbotron -->
+ <section id="jumbotron_product" class="w-100 position-relative">
+    <img src="<?php echo esc_url($get_blog_img) ?>" alt="<?php echo esc_attr($get_blog_title) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-10 me-auto text-center text-md-start my-auto">
                 <?php if (is_single() && !is_front_page()) : ?>
@@ -65,7 +66,7 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
                     <div id="blog_categories" class="mb-5">
                         <h4 class="fw-bold museo "><?php echo esc_html__('Categories'); ?></h4>
                         <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
-                            <?php echo do_shortcode('[parent_categories]'); ?>
+                            <?php echo do_shortcode('[all_category_list]'); ?>
                         </div>
                     </div>
                     <div id="blog_archive" class="mb-5">

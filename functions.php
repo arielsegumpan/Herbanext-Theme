@@ -124,40 +124,66 @@ function post_categories_by_post_type_shortcode($atts) {
 
     return $output;
 }
+
 add_shortcode('post_categories', 'post_categories_by_post_type_shortcode');
 
-// Get All Parent Categories and Create Shortcode
-function get_all_parent_categories() {
-    // Define arguments for the get_categories function
-    $args = array(
-        'hide_empty' => false, // Include empty categories
-        'parent' => 0, // Only retrieve parent categories
-    );
+// Get all categoreis
+function custom_category_list_shortcode($atts) {
+    // Shortcode attributes (if needed)
+    $atts = shortcode_atts(array(
+        'orderby' => 'name',
+        'order'   => 'ASC',
+    ), $atts);
 
-    // Get the categories
-    $categories = get_categories($args);
+    // Query categories based on shortcode attributes
+    $categories = get_categories(array(
+        'orderby' => $atts['orderby'],
+        'order'   => $atts['order'],
+    ));
 
-    // Initialize the output
+    // Start building the output
     $output = '';
-
-    // Check if categories were found
-    if ($categories) {
-        // Loop through the categories and build the output
-        foreach ($categories as $category) {
-            $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="text-decoration-none mb-2">
-            <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . esc_html($category->name) . '</span></a>';
-        }
-    } else {
-        $output = 'No parent categories found.';
+    // Loop through categories and create list items
+    foreach ($categories as $category) {
+        $output .= '<a href="' . get_category_link($category->term_id) . '" class="text-decoration-none mb-2">
+        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . $category->name . '</span></a>';
     }
-
-    // Return the sanitized output
     return $output;
 }
-function parent_categories_shortcode() {
-    return get_all_parent_categories();
-}
-add_shortcode('parent_categories', 'parent_categories_shortcode');
+add_shortcode('all_category_list', 'custom_category_list_shortcode');
+
+// Get All Parent Categories and Create Shortcode
+// function get_all_parent_categories() {
+//     // Define arguments for the get_categories function
+//     $args = array(
+//         'hide_empty' => false, // Include empty categories
+//         'parent' => 0, // Only retrieve parent categories
+//     );
+
+//     // Get the categories
+//     $categories = get_categories($args);
+
+//     // Initialize the output
+//     $output = '';
+
+//     // Check if categories were found
+//     if ($categories) {
+//         // Loop through the categories and build the output
+//         foreach ($categories as $category) {
+//             $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="text-decoration-none mb-2">
+//             <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . esc_html($category->name) . '</span></a>';
+//         }
+//     } else {
+//         $output = 'No parent categories found.';
+//     }
+
+//     // Return the sanitized output
+//     return $output;
+// }
+// function parent_categories_shortcode() {
+//     return get_all_parent_categories();
+// }
+// add_shortcode('parent_categories', 'parent_categories_shortcode');
 
 // Breadcrumbs
 function custom_breadcrumbs() {
@@ -202,3 +228,49 @@ function custom_add_button_to_product_loop() {
 }
 
 add_action('woocommerce_after_shop_loop_item', 'custom_add_button_to_product_loop', 5);
+
+
+// check and add acf options page
+
+// if (function_exists('acf_add_options_page')) {
+
+//     acf_add_options_page(
+//         [
+//             'page_title' => 'Herbanext Archive Settings',
+//             'menu_title' => 'Post Settings',
+//             'menu_slug'  => 'post-settings',
+//             'capability' => 'edit_posts',
+//             'icon_url'   => 'dashicons-forms',
+//             'redirect'   => true,
+//         ]
+//     );
+
+//     $sub_pages = [
+//         [
+//             'page_title'    => 'Blog Settings',
+//             'menu_title'    => 'Blogs',
+//             'parent_slug'   => 'post-settings',
+//         ],
+//         [
+//             'page_title'    => 'Careers Settings',
+//             'menu_title'    => 'Careers',
+//             'parent_slug'   => 'post-settings',
+//         ],
+//         [
+//             'page_title'    => 'Publications Settings',
+//             'menu_title'    => 'Publications',
+//             'parent_slug'   => 'post-settings',
+//         ],
+//         [
+//             'page_title'    => 'Trainings & Seminars Settings',
+//             'menu_title'    => 'Training & Seminars',
+//             'parent_slug'   => 'post-settings',
+//         ],
+//     ];
+
+//     foreach ($sub_pages as $sub_page) {
+//         acf_add_options_sub_page($sub_page);
+//     }
+// }
+
+

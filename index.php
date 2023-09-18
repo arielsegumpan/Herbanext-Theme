@@ -8,11 +8,13 @@ get_header();
 $image_id = get_post_thumbnail_id(get_the_ID());
 $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 
+$get_blog_img = get_field('blog_post_header_image','option');
+$get_blog_title = get_field('blog_post_heading_title','option');
 ?>
 <main>
  <!-- jumbotron -->
- <section id="jumbotron_about" class="w-100 position-relative">
-    <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+ <section id="jumbotron_product" class="w-100 position-relative">
+    <img src="<?php echo esc_url($get_blog_img) ?>" alt="<?php echo esc_attr($get_blog_title) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
             <?php
@@ -34,12 +36,6 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
      <div class="container">
          <div class="row row-gap-5">
              <?php 
-                $args = array(
-                    'post_type'     => 'post',
-                    'post_status'   => 'publish',
-                    'posts_per_page' => 3,
-                );
-                $getCareer = new WP_Query($args);
                 if(have_posts()): while(have_posts()): the_post()?>
                      <?php get_template_part('template-parts/content/content')?>
                 <?php endwhile; else:?>

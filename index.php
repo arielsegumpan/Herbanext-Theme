@@ -17,13 +17,12 @@ $get_blog_title = get_field('blog_post_heading_title','option');
     <img src="<?php echo esc_url($get_blog_img) ?>" alt="<?php echo esc_attr($get_blog_title) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-            <?php
+                <?php
                 if(is_home() && !is_front_page()):?>
                     <h1 class="display-2 museo fw-bold text-success">
                         <?php single_post_title() ?>
                     </h1>
-                <?php endif
-            ?>
+                <?php endif?>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">
                         <?php custom_breadcrumbs() ?>
@@ -35,8 +34,7 @@ $get_blog_title = get_field('blog_post_heading_title','option');
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">
-             <?php 
-                if(have_posts()): while(have_posts()): the_post()?>
+             <?php if(have_posts()): while(have_posts()): the_post()?>
                      <?php get_template_part('template-parts/content/content')?>
                 <?php endwhile; else:?>
                     <?php get_template_part('template-parts/content/content-empty')?>
@@ -54,7 +52,6 @@ $get_blog_title = get_field('blog_post_heading_title','option');
                                 </span>
                             </li>
                         <?php endif; ?>
-                        
                         <?php if (get_next_posts_link()) : ?>
                             <li class="page-item">
                                 <span class="btn btn-success px-5 py-3">

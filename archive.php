@@ -26,11 +26,8 @@ get_header();
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">
-         <?php  while(have_posts()):
-            the_post();?>
-
-            <?php get_template_part('template-parts/content/content');?>
-            
+         <?php  while(have_posts()): the_post();?> 
+            <?php get_template_part('template-parts/content/content');?> 
         <?php endwhile ?>
          </div>
         <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>

@@ -223,7 +223,7 @@ $partnerus = get_acf_field('partner_with_us');
                 </div>
                 <div class="row mt-5 pt-5 text-center">
                     <div class="col-6 mx-auto">
-                        <a href="#!" class="btn btn-outline-white border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i>Read More</a>
+                        <a href="<?php echo esc_url($newsupdates['news_and_update_page_link']) ?>" class="btn btn-outline-white border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i>Read More</a>
                     </div>
                 </div>
             </div>
@@ -238,14 +238,5 @@ $partnerus = get_acf_field('partner_with_us');
             </div>
         </section>
     </main>
-
-
-
-
-
-
-
-
-
 <?php
 get_footer();?>

@@ -158,8 +158,8 @@ function custom_category_list_shortcode($atts) {
         <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . $category->name . '</span></a>';
     }
     return $output;
-}
-add_shortcode('all_category_list', 'custom_category_list_shortcode');
+}   
+add_shortcode('all_categories', 'custom_category_list_shortcode');
 
 // Breadcrumbs
 function custom_breadcrumbs() {

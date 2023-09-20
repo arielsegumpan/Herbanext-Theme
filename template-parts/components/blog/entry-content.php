@@ -13,7 +13,7 @@ $career_position = get_acf_field('career_field');
         <div class="card border-0">
            <?php if($featured_image_url) :?>
             <div class="card-header border-0 p-0">
-                <img src="<?php echo esc_url($featured_image_url) ?>" alt="<?php echo esc_attr( $featured_image_alt ) ?>" class="img-fluid">
+                <img src="<?php echo esc_url($featured_image_url) ?>" alt="<?php echo esc_attr( $featured_image_alt ) ?>" class="img-fluid rounded-4">
             </div>
            <?php endif ?>
             <div class="card-body">

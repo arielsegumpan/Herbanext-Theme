@@ -17,7 +17,7 @@ $services_icons = $services ? $services['service_cards'] : [];
 $products = get_acf_field('products');
 $galleries = get_acf_field('gallery');
 $newsupdates = get_acf_field('news_and_updates');
-
+$partnerus = get_acf_field('partner_with_us');
 ?>
 
 
@@ -66,20 +66,20 @@ $newsupdates = get_acf_field('news_and_updates');
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <?php foreach($feat_repeaters as $key => $feat_repeater) :?>
-                        <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : '' ?>  mb-5 mb-md-0">
-                            <div class="feature_icon mb-5">
-                                <img src="<?php echo esc_url($feat_repeater['feature_icon']['url']) ?>" alt="<?php echo esc_attr($feat_repeater['feature_icon']['alt']) ?>">
+                    <?php if($feat_repeaters != null) :?>
+                            <?php foreach($feat_repeaters as $key => $feat_repeater) :?>
+                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : '' ?>  mb-5 mb-md-0">
+                                <div class="feature_icon mb-5">
+                                    <img src="<?php echo esc_url($feat_repeater['feature_icon']['url']) ?>" alt="<?php echo esc_attr($feat_repeater['feature_icon']['alt']) ?>">
+                                </div>
+                                <div class="feature_content px-4">
+                                    <p class="lh-lg text-white">
+                                        <?php echo esc_html_e( nl2br($feat_repeater['feature_content'])) ?>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="feature_content px-4">
-                                <p class="lh-lg text-white">
-                                    <?php echo esc_html_e( nl2br($feat_repeater['feature_content'])) ?>
-                                </p>
-                            </div>
-                        </div>
-
-                    <?php endforeach ?>
-                   
+                            <?php endforeach ?>
+                    <?php endif?>
                 </div>
             </div>
         </section>
@@ -161,7 +161,7 @@ $newsupdates = get_acf_field('news_and_updates');
         <?php endif ?>
 
         <!-- products -->
-        <?php if($products) :?>
+        <?php if($products != null) :?>
         <section id="products" class="position-relative">
             <div class="products_img position-relative">
                 <img src="<?php echo esc_url($products['product_page_background']['url']) ?>" alt="<?php echo esc_attr( $products['product_page_background']['alt'] ) ?>" class="position-absolute object-fit-cover">
@@ -204,9 +204,9 @@ $newsupdates = get_acf_field('news_and_updates');
                 <div class="row mb-md-5">
                     <div class="col-12 col-md-8 mx-auto text-center mb-5">
                         <div class="features_title text-white">
-                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e_($newsupdates['title']) ?></h1>
+                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($newsupdates['news_and_updates_title']) ?></h1>
                             <p class="lh-lg">
-                                <?php echo _e( $newsupdates['content'], 'herbanext' ) ?>
+                                <?php echo _e( $newsupdates['news_and_updates_content'] ) ?>
                             </p>
                         </div>
                     </div>
@@ -214,67 +214,11 @@ $newsupdates = get_acf_field('news_and_updates');
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <ul class="border-0 list-group list-group-flush ">
-                            <li class="list-group-item bg-transparent mb-5 mb-md-4 border-0">
-                                <a href="blog_single.html" class="text-decoration-none">
-                                    <div class="d-flex flex-column flex-md-row justify-content-md-center justify-content-md-between align-items-center gap-4">
-                                        <img src="assets/imgs/bottle-organic-oil-with-capsules-table.jpg" alt="" class="rounded-4 object-fit-cover">
-                                        <div>
-                                            <h6 class="lead museo text-white fw-bold text-center text-md-start">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                            </h6>
-                                            <div class="flex text-center text-md-start mt-3 justify-content-center justify-content-md-between">
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">Lorem, ipsum dolor</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item bg-transparent mb-5 mb-md-4 border-0">
-                                <a href="#!" class="text-decoration-none">
-                                    <div class="d-flex flex-column flex-md-row justify-content-md-center justify-content-md-between align-items-center gap-4">
-                                        <img src="assets/imgs/2b1c03_49e0d243d3f14a94ba95dd298db4005e~mv2.png" alt="" class="rounded-4 object-fit-cover">
-                                        <div>
-                                            <h6 class="lead museo text-white fw-bold text-center text-md-start">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                            </h6>
-                                            <div class="flex text-center text-md-start mt-3 justify-content-center justify-content-md-between">
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">Lorem, ipsum dolor</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="list-group-item bg-transparent mb-5 mb-md-4 border-0">
-                                <a href="#!" class="text-decoration-none">
-                                    <div class="d-flex flex-column flex-md-row justify-content-md-center justify-content-md-between align-items-center gap-4">
-                                        <img src="assets/imgs/2b1c03_49e0d243d3f14a94ba95dd298db4005e~mv2.png" alt="" class="rounded-4 object-fit-cover">
-                                        <div>
-                                            <h6 class="lead museo text-white fw-bold text-center text-md-start">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sunt?
-                                            </h6>
-                                            <div class="flex text-center text-md-start mt-3 justify-content-center justify-content-md-between">
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">Lorem, ipsum dolor</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                                <span class="badge text-bg-green rounded-2 text-small px-3">New</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                            <?php echo do_shortcode( '[get_recent_front_page_post]' ); ?>
                         </ul>
                     </div>
                     <div class="col-12 col-lg-6 text-center  mt-5 mgt-lg-0">
-                        <img src="assets/imgs/herbanext_group_photo.jpg" alt="" class="img-fluid rounded-5">
+                        <img src="<?php echo esc_url($newsupdates['news_and_update_image']['url']) ?>" alt="<?php echo esc_url($newsupdates['news_and_update_image']['alt']) ?>" class="img-fluid rounded-5">
                     </div>
                 </div>
                 <div class="row mt-5 pt-5 text-center">
@@ -287,10 +231,10 @@ $newsupdates = get_acf_field('news_and_updates');
         <?php endif?>
 
         <!-- partner with us -->
-        <section id="partner" style="background-image: url('assets/imgs/herbanext-main.jpg');" class="object-fit-cover img-fluid">
+        <section id="partner" style="background-image: url('<?php echo esc_url($partnerus['partner_with_us_image']['url']) ?>');" class="object-fit-cover img-fluid">
             <div class="bg-white"></div>
             <div class="container position-relative">
-                <?php echo do_shortcode('[contact-form-7 id="1f63276" title="Partner with us"]') ?>
+                <?php echo _e($partnerus['partner_with_us_form']) ?>
             </div>
         </section>
     </main>

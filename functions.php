@@ -15,6 +15,7 @@ function herbanext_get_theme_instance(){
 }
 herbanext_get_theme_instance();
 
+// bootstrap navwalker
 if ( ! file_exists( get_template_directory() . '/inc/navwalker/bootstrap_5_wp_nav_menu_walker.php' ) ) 
 {
         // file does not exist... return an error.
@@ -25,7 +26,6 @@ if ( ! file_exists( get_template_directory() . '/inc/navwalker/bootstrap_5_wp_na
 }
 
 
-
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
 function new_woocommerce_page_title( $page_title ) {
@@ -33,7 +33,6 @@ function new_woocommerce_page_title( $page_title ) {
 		return '<span class="fw-bold fs-2">Prodcut Catalog</span>';
 	}
 }
-
 
 // Encapsulate ACF fields
 function get_acf_field($field_name) {
@@ -132,7 +131,6 @@ function post_categories_by_post_type_shortcode($atts) {
     } else {
         $output = '';
     }
-
     return $output;
 }
 
@@ -162,39 +160,6 @@ function custom_category_list_shortcode($atts) {
     return $output;
 }
 add_shortcode('all_category_list', 'custom_category_list_shortcode');
-
-// Get All Parent Categories and Create Shortcode
-// function get_all_parent_categories() {
-//     // Define arguments for the get_categories function
-//     $args = array(
-//         'hide_empty' => false, // Include empty categories
-//         'parent' => 0, // Only retrieve parent categories
-//     );
-
-//     // Get the categories
-//     $categories = get_categories($args);
-
-//     // Initialize the output
-//     $output = '';
-
-//     // Check if categories were found
-//     if ($categories) {
-//         // Loop through the categories and build the output
-//         foreach ($categories as $category) {
-//             $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="text-decoration-none mb-2">
-//             <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . esc_html($category->name) . '</span></a>';
-//         }
-//     } else {
-//         $output = 'No parent categories found.';
-//     }
-
-//     // Return the sanitized output
-//     return $output;
-// }
-// function parent_categories_shortcode() {
-//     return get_all_parent_categories();
-// }
-// add_shortcode('parent_categories', 'parent_categories_shortcode');
 
 // Breadcrumbs
 function custom_breadcrumbs() {
@@ -259,3 +224,27 @@ function custom_add_button_to_product_loop() {
 }
 
 add_action('woocommerce_after_shop_loop_item', 'custom_add_button_to_product_loop', 5);
+
+
+// get recent post
+add_shortcode('get_recent_front_page_post', 'get_recent_front_page_posts');
+function get_recent_front_page_posts(){
+    ob_start();
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 3,
+    );
+    $loop = new WP_Query($args);
+
+    if ($loop->have_posts()) :
+        while ($loop->have_posts()) : $loop->the_post();
+            get_template_part('template-parts/components/blog/recent','post');
+        endwhile;
+    else :
+        esc_html_e('No recent post<br>display', 'text-domain'); // Use proper translation function
+    endif;
+
+    wp_reset_postdata();
+    return ob_get_clean();
+}

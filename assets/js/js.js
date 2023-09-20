@@ -24,10 +24,11 @@ $(document).ready(function () {
 
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
+
     icons.forEach (icon => {  
-    icon.addEventListener('click', (event) => {
-        icon.classList.toggle("open");
-    });
+        icon.addEventListener('click', (event) => {
+            icon.classList.toggle("open");
+        });
     });
     
     var $navbar = $('header.fixed-top');

@@ -7,6 +7,7 @@ get_header();
 
 $contact_jumbotron = get_acf_field('contact_jumbotron_image');
 $contact_map    = get_acf_field('body_map');
+$contact_form    = get_acf_field('contact_form');
 ?>
 
 <main>
@@ -40,7 +41,7 @@ $contact_map    = get_acf_field('body_map');
                    <?php echo _e($contact_map['map']) ?>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <?php echo do_shortcode('[contact-form-7 id="8dfc7ab" title="Contact form 1"]') ?>
+                    <?php echo _e($contact_form) ?>
                 </div>
             </div>
         </div>

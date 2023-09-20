@@ -3,6 +3,10 @@
  * Footer template
  * @package herbanext
  */
+
+
+ $global_number = get_field('global_contact_number', 'option');
+
 ?>
     <footer class="bg-success w-100">
         <div class="container">
@@ -19,25 +23,8 @@
                     </form>
                 </div>
                 <div class="col-12 col-md-3 mb-5 mb-md-0">
-                    <h4 class="fw-bold avenir text-white pe-md-5 mb-4 text-center">Quicklinks</h5>
-                    <?php get_template_part('template-parts/header/nav');?>
-                    <ul class="nav flex-column text-center text-md-start mx-auto ps-lg-5 ms-lg-5 text-black fw-bold">
-                        <li class="nav-item mb-4">
-                          <a class="text-black fw-bold fs-6 active" aria-current="page" href="services.html">Services</a>
-                        </li>
-                        <li class="nav-item mb-4">
-                            <a class="text-black fw-bold fs-6 active" aria-current="page" href="products.html">Products</a>
-                        </li>
-                        <li class="nav-item mb-4">
-                            <a class="text-black fw-bold fs-6 active" aria-current="page" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item mb-4">
-                            <a class="text-black fw-bold fs-6 active" aria-current="page" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item mb-4">
-                            <a class="text-black fw-bold fs-6 active" aria-current="page" href="careers.html">Career</a>
-                        </li>
-                      </ul>
+                    <h4 class="fw-bold avenir text-white pe-md-5 mb-4 text-center"><?php echo esc_html_e('Quicklinks') ?></h5>
+                    <?php get_template_part('template-parts/footer/nav');?>
                 </div>
                 <div class="col-12 col-md-3 text-center text-md-start">
                     <div class="d-flex flex-column gap-5">
@@ -45,7 +32,7 @@
                             <h4 class="avenir fw-bold text-white mb-3">Call</h4>
                             <div class="d-flex flex-row justify-content-center justify-content-md-start">
                                 <i class="bi bi-telephone-outbound text-black fs-5 me-3"></i>
-                                <a href="tel:+63347328106" class="text-decoration-none text-black fw-bold">+63 34 732 8106</a>
+                                <a href="tel:+63347328106" class="text-decoration-none text-black fw-bold"><?php echo esc_html_e($global_number) ?></a>
                             </div>
                         </div>
                         <div class="col">

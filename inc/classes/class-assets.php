@@ -32,7 +32,6 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         wp_enqueue_style('woo_style');
     }
 
-
     public function register_scripts(){
         wp_deregister_script('jquery');
 

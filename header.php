@@ -1,6 +1,6 @@
 <?php
 /**
- * Header template
+ * Header Template
  * @package herbanext
  */
 ?>
@@ -12,26 +12,21 @@
     <title>Herbanext</title>
     <?php wp_head();?>
 </head>
-  <body <?php body_class()?>>
-    <!-- preloader -->
-  
-    <!-- end of preloader -->
+  <body <?php body_class() ?>>
     <!-- nav -->
     <header class="fixed-top">
-        <nav class="navbar navbar-expand-lg bg-body-transparent py-3">
+        <nav class="navbar navbar-expand-lg bg-body-transparent">
             <div class="container">
-
             <?php
                 $custom_logo_id = get_theme_mod('custom_logo');
                 $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
                 if (has_custom_logo()) {
-                    echo '<a href="' . esc_url(home_url('/')) . '"><img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '" style="width:auto; height:42px!important;"></a>';
+                    echo '<a class="navbar-brand" href="' . esc_url(home_url('/')) . '"><img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '" width="auto" style="height:42px!important;"></a>';
                 } else {
-                    echo '<h1><a href="' . esc_url(home_url('/')) . '">' . get_bloginfo('name') . '</a></h1>';
+                    echo '<a class="navbar-brand" href="' . esc_url(home_url('/')) . '">' . get_bloginfo('name') . '</a>';
                 }
-            ?>
-
-              <button class="navbar-toggler border-0 p-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            ;?>
+              <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="wrapper me-1">
                     <div class="icon_ni nav-icon-5">
                         <span></span>
@@ -41,7 +36,7 @@
                 </div>
               </button>
               <div class="collapse navbar-collapse ps-5 ps-lg-0 py-5 py-lg-0 rounded-md-auto rounded-4" id="navbarSupportedContent">
-                <?php get_template_part('template-parts/header/nav');?>
+              <?php get_template_part('template-parts/header/nav');?>
                 
                 <div class="d-flex flex-row gap-3 mt-4 mt-md-auto">
                     <div class="shop">
@@ -51,6 +46,7 @@
                         <a href="#!" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-circle"></i></a>
                     </div>
                 </div>
+
               </div>
             </div>
         </nav>
@@ -68,16 +64,29 @@
                         <div class="row mb-5 pb-2">
                             <div class="col-10 mx-auto text-center">
                                 <a href="#!" class="text-decoration-none">
-                                    <!-- <img src="assets/imgs/herbanext.png" alt="" width="auto" height="50px"> -->
+                                    <img src="assets/imgs/herbanext.png" alt="" width="auto" height="50px">
                                 </a>
                             </div>
                         </div>
-                        <?php
-                             wp_login_form();
-                        ?>
-
-
-                        
+                        <form action="#!">
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <label for="" class="mb-2 fw-bold">Username</label>
+                                    <input type="text" class="form-control px-4 py-3" required autofocus placeholder="Enter your username">
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col">
+                                    <label for="" class="mb-2 fw-bold">Password</label>
+                                    <input type="password" class="form-control px-4 py-3" required placeholder="Enter your password">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success btn-lg w-100 py-3"><i class="bi bi-box-arrow-in-right me-3"></i>Login</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 
@@ -85,3 +94,5 @@
         </div>
     </div>
     <!-- end of nav -->
+
+

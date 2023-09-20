@@ -68,7 +68,7 @@
             <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center gap-4 pb-4">
                 <p class="fw-bold text-black">&copy;2023 by Herbanext Laboratories, Inc.</p>
                 <a href="#!" class="text-decoration-none">
-                    <img src="assets/imgs/herbanext-inverted.png" alt="" width="auto" height="50">
+                    <!-- <img src="assets/imgs/herbanext-inverted.png" alt="" width="auto" height="50"> -->
                 </a>
                 <div class="d-flex flex-column flex-md-row gap-3 text-center text-lg-start">
                     <a href="#!" class=" fw-bold text-black">Terms and Conditions</a>

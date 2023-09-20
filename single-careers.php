@@ -16,7 +16,7 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-10 me-auto text-center text-md-start my-auto">
                 <?php if (is_single() && !is_front_page()) : ?>
-                    <h2 class=" museo fw-bold text-success"><?php single_post_title(); ?></h2>
+                    <h2 class=" museo fw-bold text-success display-5"><?php single_post_title(); ?></h2>
                 <?php endif; ?>
                 <h6 class="mt-4 mt-lg-3">
                     <nav aria-label="breadcrumb">

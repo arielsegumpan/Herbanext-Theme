@@ -20,6 +20,8 @@ $(document).ready(function () {
     $('.woocommerce-pagination .next').addClass('page-item');
     $('.woocommerce-pagination .prev a').addClass('page-link');
     $('.woocommerce-pagination .next a').addClass('page-link');
+
+
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
     icons.forEach (icon => {  
@@ -27,7 +29,7 @@ $(document).ready(function () {
         icon.classList.toggle("open");
     });
     });
-
+    
     var $navbar = $('header.fixed-top');
     var stickyTop = $navbar.offset().top;
     var scrollTop = $(window).scrollTop();

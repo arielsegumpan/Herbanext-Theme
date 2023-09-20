@@ -144,7 +144,7 @@ class HerbanextCPT{
             'show_ui'               => true,
             'show_in_menu'          => true,
             'query_var'             => true,
-            'rewrite'               => array('slug' => 'training-seminars'),
+            'rewrite'               => array('slug' => 'training-and-seminars'),
             'taxonomies'            => ['post_tag', 'category'],
             'capability_type'       => 'post',
             'has_archive'           => true,

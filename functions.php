@@ -15,6 +15,17 @@ function herbanext_get_theme_instance(){
 }
 herbanext_get_theme_instance();
 
+if ( ! file_exists( get_template_directory() . '/inc/navwalker/bootstrap_5_wp_nav_menu_walker.php' ) ) 
+{
+        // file does not exist... return an error.
+        return new WP_Error( 'bootstrap_5_wp_nav_menu_walker-missing', __( 'It appears the bootstrap_5_wp_nav_menu_walker.php file may be missing.', 'bootstrap_5_wp_nav_menu_walker' ) );
+} else{
+        // file exists... require it.
+        require_once get_template_directory().'/inc/navwalker/bootstrap_5_wp_nav_menu_walker.php';
+}
+
+
+
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
 function new_woocommerce_page_title( $page_title ) {
@@ -187,32 +198,52 @@ add_shortcode('all_category_list', 'custom_category_list_shortcode');
 
 // Breadcrumbs
 function custom_breadcrumbs() {
-    $breadcrumbs = '<li class="breadcrumb-item"><a class="text-decoration-none text-success" href="' . home_url() . '">Home</a></li>';
-    $current_page = get_queried_object();
+    echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'your-text-domain').'</a>';
 
-    if (is_single()) {
-        $category = get_the_category($current_page->ID);
-        if (!empty($category)) {
-            $breadcrumbs .= '<li class="breadcrumb-item "><a class="text-decoration-none text-success" href="' . get_category_link($category[0]->term_id) . '">' . $category[0]->name . '</a></li>';
-        }
-        $breadcrumbs .= '<li class="breadcrumb-item "><a class="text-decoration-none text-success" href="' . get_permalink($current_page->ID) . '">' . get_the_title() . '</a></li>';
-    } elseif (is_page() && $current_page->post_parent) {
-        $ancestors = get_post_ancestors($current_page->ID);
-        $ancestors = array_reverse($ancestors);
-        foreach ($ancestors as $ancestor) {
-            $breadcrumbs .= '<li class="breadcrumb-item"><a class="text-decoration-none text-success" href="' . get_permalink($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
-        }
-        $breadcrumbs .= '<li class="breadcrumb-item"><a class="text-decoration-none text-success" href="' . get_permalink($current_page->ID) . '">' . get_the_title($current_page->ID) . '</a></li>';
-    } elseif (is_category()) {
-        $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . single_cat_title('', false) . '</li>';
-    } elseif (is_tag()) {
-        $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . single_tag_title('', false) . '</li>';
-    } else {
-        $breadcrumbs .= '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+    if (is_archive() || is_home()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+        echo '<span>' . esc_html(wp_title('', false)) . '</span>';
     }
 
-    echo '<ol class="breadcrumb ">' . $breadcrumbs . '</ol>';
+    if (is_category() || is_single()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+        
+        // Get the post type's slug (or category slug)
+        $post_type = get_post_type();
+        $post_type_slug = '';
+
+        if ($post_type == 'post') {
+            $post_type_slug = __('News', 'your-text-domain');
+        } else {
+            if (is_single()) {
+                $post_type_slug = ucfirst(get_post_type());
+            } else {
+                $post_type_slug = ucfirst(get_queried_object()->slug);
+            }
+        }
+        // Construct the archive link manually
+        $archive_link = esc_url(home_url()) . '/' . strtolower($post_type_slug) . '/';
+
+        // Output the post type's slug as a breadcrumb with a link
+        echo '<a class="text-success text-decoration-none" href="' . esc_url($archive_link) . '">' . esc_html($post_type_slug) . '</a>';
+
+        if (is_single()) {
+            echo " &nbsp;&nbsp;&#187;&nbsp;&nbsp; ";
+            the_title();
+        }
+    } elseif (is_page()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
+        echo esc_html(get_the_title());
+    } elseif (is_search()) {
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;".__('Search Results for... ', 'your-text-domain');
+        echo '"<em>';
+        echo esc_html(get_search_query());
+        echo '</em>"';
+    }
 }
+
+
+
 // Remove Shop title
 add_action('init','remove_loop_title');
 function remove_loop_title(){
@@ -228,49 +259,3 @@ function custom_add_button_to_product_loop() {
 }
 
 add_action('woocommerce_after_shop_loop_item', 'custom_add_button_to_product_loop', 5);
-
-
-// check and add acf options page
-
-// if (function_exists('acf_add_options_page')) {
-
-//     acf_add_options_page(
-//         [
-//             'page_title' => 'Herbanext Archive Settings',
-//             'menu_title' => 'Post Settings',
-//             'menu_slug'  => 'post-settings',
-//             'capability' => 'edit_posts',
-//             'icon_url'   => 'dashicons-forms',
-//             'redirect'   => true,
-//         ]
-//     );
-
-//     $sub_pages = [
-//         [
-//             'page_title'    => 'Blog Settings',
-//             'menu_title'    => 'Blogs',
-//             'parent_slug'   => 'post-settings',
-//         ],
-//         [
-//             'page_title'    => 'Careers Settings',
-//             'menu_title'    => 'Careers',
-//             'parent_slug'   => 'post-settings',
-//         ],
-//         [
-//             'page_title'    => 'Publications Settings',
-//             'menu_title'    => 'Publications',
-//             'parent_slug'   => 'post-settings',
-//         ],
-//         [
-//             'page_title'    => 'Trainings & Seminars Settings',
-//             'menu_title'    => 'Training & Seminars',
-//             'parent_slug'   => 'post-settings',
-//         ],
-//     ];
-
-//     foreach ($sub_pages as $sub_page) {
-//         acf_add_options_sub_page($sub_page);
-//     }
-// }
-
-

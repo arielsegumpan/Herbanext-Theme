@@ -26,7 +26,7 @@ get_header();
                 </h6>
          </div>
      </div>
- </section>  
+ </section> 
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">

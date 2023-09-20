@@ -5,14 +5,14 @@
  */
 ?>
 <!doctype html>
-<html lang="<?php language_attributes() ;?>">
+<html lang="<?php language_attributes() ?>">
   <head>
-    <meta charset="<?php bloginfo( 'charset' ) ;?>">
+    <meta charset="<?php bloginfo( 'charset' )?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Herbanext</title>
     <?php wp_head();?>
 </head>
-  <body <?php body_class() ;?>>
+  <body <?php body_class()?>>
     <!-- preloader -->
   
     <!-- end of preloader -->
@@ -31,7 +31,7 @@
                 }
             ?>
 
-              <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler border-0 p-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="wrapper me-1">
                     <div class="icon_ni nav-icon-5">
                         <span></span>
@@ -68,7 +68,7 @@
                         <div class="row mb-5 pb-2">
                             <div class="col-10 mx-auto text-center">
                                 <a href="#!" class="text-decoration-none">
-                                    <img src="assets/imgs/herbanext.png" alt="" width="auto" height="50px">
+                                    <!-- <img src="assets/imgs/herbanext.png" alt="" width="auto" height="50px"> -->
                                 </a>
                             </div>
                         </div>

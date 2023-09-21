@@ -20,6 +20,7 @@ $(document).ready(function () {
     $('.woocommerce-pagination .next').addClass('page-item');
     $('.woocommerce-pagination .prev a').addClass('page-link');
     $('.woocommerce-pagination .next a').addClass('page-link');
+    $('#review_form textarea#comment').addClass('form-control');
 
 
     //humberger

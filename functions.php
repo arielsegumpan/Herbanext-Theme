@@ -55,48 +55,7 @@ if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
     }
 }
 
-// Create shortcode getting recent products displaying on the front page
-add_shortcode('herbanext_recent_product', 'herbanext_recent_products');
-function herbanext_recent_products() {
-    $args = array(
-        'post_type' => 'product',
-        'post_status' => 'publish',
-        'stock' => 1,
-        'posts_per_page' => 4,
-    );
 
-    $loop = new WP_Query($args);
-    ob_start();
-
-    if ($loop->have_posts()) :
-        while ($loop->have_posts()) : $loop->the_post();
-            $product = wc_get_product();
-            $average_rating = $product->get_average_rating();
-            ?>
-            <div class="col">
-                <a href="<?php esc_url(the_permalink()) ?>" class="text-decoration-none position-relative">
-                    <div class="products_tag position-absolute">
-                        <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><?php echo esc_html_e('New') ?></span>
-                    </div>
-                    <?php
-                    if (has_post_thumbnail()) {
-                        the_post_thumbnail('shop_catalog', array('class' => 'rounded-5'));
-                    } else {
-                        echo '<img src="' . esc_url(woocommerce_placeholder_img_src()) . '" alt="' . esc_attr(get_the_title()) . '"rounded-5"/>';
-                    }
-                    ?>
-                </a>
-            </div>
-            <?php
-        endwhile;
-    else :
-        ?>
-        <p class="text-center"><?php _e('No Recent Product<br>display') ?></p>
-    <?php
-    endif;
-    wp_reset_postdata();
-    return ob_get_clean();
-}
 
 // Get Categories by Post Type
 function post_categories_by_post_type_shortcode($atts) {
@@ -207,39 +166,3 @@ add_action('init', 'remove_loop_title');
 function remove_loop_title() {
     remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
 }
-// Add custom buttons to WooCommerce product loop
-add_action('woocommerce_after_shop_loop_item', 'custom_add_buttons_to_product_loop', 5);
-function custom_add_buttons_to_product_loop() {
-    $product_permalink = esc_url(get_permalink());
-    $contact_url = esc_url(site_url('/contact'));
-
-    echo '<div id="product_btn" class="vstack gap-3 col-md-5 mx-auto w-100 mt-4 px-4">
-        <a href="' . $product_permalink . '" class="btn btn-outline-success py-3 fs-6"><i class="bi bi-eye me-2"></i>View</a>
-        <a href="' . $contact_url . '" class="btn btn-success py-3 fs-6"><i class="bi bi-info-circle me-2"></i>Inquiry</a>
-    </div>';
-}
-
-
-
-// get recent post
-// add_shortcode('get_recent_front_page_post', 'get_recent_front_page_posts');
-// function get_recent_front_page_posts(){
-//     ob_start();
-//     $args = array(
-//         'post_type' => 'post',
-//         'post_status' => 'publish',
-//         'posts_per_page' => 3,
-//     );
-//     $loop = new WP_Query($args);
-
-//     if ($loop->have_posts()) :
-//         while ($loop->have_posts()) : $loop->the_post();
-//             get_template_part('template-parts/components/blog/recent','post');
-//         endwhile;
-//     else :
-//         esc_html_e('No recent post<br>display', 'herbanext'); // Use proper translation function
-//     endif;
-
-//     wp_reset_postdata();
-//     return ob_get_clean();
-// }

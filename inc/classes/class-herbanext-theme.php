@@ -22,6 +22,9 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         Shortcodes::get_instance();
         HerbanextCPT::get_instance();
         Namespacecpt::get_instance();
+        Woofeat::get_instance();
+        Recentpost::get_instance();
+        Widgets::get_instance();
         $this->setup_hooks();
     }
     // set up hooks

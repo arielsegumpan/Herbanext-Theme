@@ -30,30 +30,11 @@ $shop = get_field('herbanext_shop', $shop_page_id);
                 <div class="container">
                     <div class="col mb-5">
                         <h3 class="fw-bold">
-                            Featured Products
+                            <i class="bi bi-bookmark-star me-3 bg-success text-white px-3 py-2 rounded-4"></i><?php echo esc_html_e('Featured Products') ?>
                         </h3>
                     </div>
                     <div class="row row-cols-2 row-cols-lg-4 row-gap-4">
-                        <div class="col">
-                            <a href="#!" class="text-decoration-none">
-                                <img src="assets/imgs/herbanext-dost-tawa-tawa-768x576.jpg" alt="" class="img-fluid object-fit-cover">
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="#!" class="text-decoration-none">
-                                <img src="assets/imgs/COCOLITE.png" alt="" class="img-fluid object-fit-cover">
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="#!" class="text-decoration-none">
-                                <img src="assets/imgs/herbanext-dost-tawa-tawa-768x576.jpg" alt="" class="img-fluid object-fit-cover">
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="#!" class="text-decoration-none">
-                                <img src="assets/imgs/elderly-person-holding-plant_1150-18574.jpg" alt="" class="img-fluid object-fit-cover">
-                            </a>
-                        </div>
+                    <?php echo do_shortcode( '[custom_featured_products]' ) ?>
                     </div>
                 </div>
             </div>
@@ -61,6 +42,9 @@ $shop = get_field('herbanext_shop', $shop_page_id);
             <div class="lists">
                 <div class="container">
                    <div class="row ">
+                   <div class="col mb-3">
+                        <h2 class="fw-bold"><i class="bi bi-basket2 me-3 bg-success text-white px-3 py-2 rounded-4"></i><?php echo esc_html_e('Products') ?></h2>
+                    </div>
                    <?php woocommerce_content(); ?>
                    </div>
                 </div>

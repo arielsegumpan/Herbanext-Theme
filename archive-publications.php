@@ -16,7 +16,7 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 
 <main>
  <!-- jumbotron -->
- <section id="jumbotron_about" class="w-100 position-relative">
+ <section id="jumbotron_product" class="w-100 position-relative">
  <img src="<?php echo esc_url($get_publication_bg) ?>" alt="<?php echo esc_html_e($get_publication_title)?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Story
+ * Template Name: Team
  * @package herbanext
  */
 get_header();

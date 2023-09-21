@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Menus.
+ * Register Shortcodes.
  * @package herbanext
  */
 namespace HERBANEXT_THEME\Inc;
@@ -18,6 +18,7 @@ namespace HERBANEXT_THEME\Inc;
 
     protected function setup_hooks(){
         add_shortcode('social_share_buttons', array($this, 'social_share_buttons_shortcode'));
+        add_shortcode('get_recent_front_page_post', array($this, 'get_recent_front_page_posts'));
     }
 
     public function social_share_buttons_shortcode($atts) {
@@ -63,5 +64,26 @@ namespace HERBANEXT_THEME\Inc;
         ';
 
         return $output;
+    }
+
+    function get_recent_front_page_posts(){
+        ob_start();
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => 3,
+        );
+        $loop = new \WP_Query($args);
+
+        if ($loop->have_posts()) :
+            while ($loop->have_posts()) : $loop->the_post();
+                get_template_part('template-parts/components/blog/recent','post');
+            endwhile;
+        else :
+            esc_html_e('No recent post<br>display', 'herbanext'); // Use proper translation function
+        endif;
+
+        wp_reset_postdata();
+        return ob_get_clean();
     }
  }

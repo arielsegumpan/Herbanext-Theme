@@ -137,33 +137,27 @@ function post_categories_by_post_type_shortcode($atts) {
 add_shortcode('post_categories', 'post_categories_by_post_type_shortcode');
 
 // Get all categoreis
-function custom_category_list_shortcode($atts) {
-    // Shortcode attributes (if needed)
-    $atts = shortcode_atts(array(
-        'orderby' => 'name',
-        'order'   => 'ASC',
-    ), $atts);
-
-    // Query categories based on shortcode attributes
+function get_all_categories_shortcode() {
     $categories = get_categories(array(
-        'orderby' => $atts['orderby'],
-        'order'   => $atts['order'],
+        'post_type' => ['post', 'careers', 'publications', 'trainingseminars'],
+        'hide_empty' => 1,
     ));
 
-    // Start building the output
-    $output = '';
-    // Loop through categories and create list items
+    ob_start();
+
     foreach ($categories as $category) {
-        $output .= '<a href="' . get_category_link($category->term_id) . '" class="text-decoration-none mb-2">
-        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . $category->name . '</span></a>';
+        echo '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="badge text-bg-green rounded-2 mb-2 text-small px-3 me-2 text-decoration-none">' . esc_html($category->name) . '</a>';
     }
-    return $output;
-}   
-add_shortcode('all_categories', 'custom_category_list_shortcode');
+
+    return ob_get_clean();
+}
+
+add_shortcode('all_categories', 'get_all_categories_shortcode');
+
 
 // Breadcrumbs
 function custom_breadcrumbs() {
-    echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'your-text-domain').'</a>';
+    echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'your-herbanext').'</a>';
 
     if (is_archive() || is_home()) {
         echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
@@ -178,7 +172,7 @@ function custom_breadcrumbs() {
         $post_type_slug = '';
 
         if ($post_type == 'post') {
-            $post_type_slug = __('News', 'your-text-domain');
+            $post_type_slug = __('News', 'herbanext');
         } else {
             if (is_single()) {
                 $post_type_slug = ucfirst(get_post_type());
@@ -200,7 +194,7 @@ function custom_breadcrumbs() {
         echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
         echo esc_html(get_the_title());
     } elseif (is_search()) {
-        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;".__('Search Results for... ', 'your-text-domain');
+        echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;".__('Search Results for... ', 'your-herbanext');
         echo '"<em>';
         echo esc_html(get_search_query());
         echo '</em>"';
@@ -208,43 +202,44 @@ function custom_breadcrumbs() {
 }
 
 
-
-// Remove Shop title
-add_action('init','remove_loop_title');
-function remove_loop_title(){
-    remove_action( 'woocommerce_shop_loop_item_title','woocommerce_template_loop_product_title', 10 );
+// Remove the product title from WooCommerce product loop
+add_action('init', 'remove_loop_title');
+function remove_loop_title() {
+    remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
 }
-function custom_add_button_to_product_loop() {
-    echo '
-        <div id="product_btn" class="vstack gap-3 col-md-5 mx-auto w-100 mt-4 px-4">
-            <a href="' . esc_url(get_permalink()) . '" class="btn btn-outline-success py-3 fs-6"><i class="bi bi-eye me-2"></i>View</a>
-            <a href="' . esc_url(site_url( '/contact' )) . '" type="button" class="btn btn-success py-3 fs-6"><i class="bi bi-info-circle me-2"></i>Inquiry</a>
-        </div>
-    ';
+// Add custom buttons to WooCommerce product loop
+add_action('woocommerce_after_shop_loop_item', 'custom_add_buttons_to_product_loop', 5);
+function custom_add_buttons_to_product_loop() {
+    $product_permalink = esc_url(get_permalink());
+    $contact_url = esc_url(site_url('/contact'));
+
+    echo '<div id="product_btn" class="vstack gap-3 col-md-5 mx-auto w-100 mt-4 px-4">
+        <a href="' . $product_permalink . '" class="btn btn-outline-success py-3 fs-6"><i class="bi bi-eye me-2"></i>View</a>
+        <a href="' . $contact_url . '" class="btn btn-success py-3 fs-6"><i class="bi bi-info-circle me-2"></i>Inquiry</a>
+    </div>';
 }
 
-add_action('woocommerce_after_shop_loop_item', 'custom_add_button_to_product_loop', 5);
 
 
 // get recent post
-add_shortcode('get_recent_front_page_post', 'get_recent_front_page_posts');
-function get_recent_front_page_posts(){
-    ob_start();
-    $args = array(
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'posts_per_page' => 3,
-    );
-    $loop = new WP_Query($args);
+// add_shortcode('get_recent_front_page_post', 'get_recent_front_page_posts');
+// function get_recent_front_page_posts(){
+//     ob_start();
+//     $args = array(
+//         'post_type' => 'post',
+//         'post_status' => 'publish',
+//         'posts_per_page' => 3,
+//     );
+//     $loop = new WP_Query($args);
 
-    if ($loop->have_posts()) :
-        while ($loop->have_posts()) : $loop->the_post();
-            get_template_part('template-parts/components/blog/recent','post');
-        endwhile;
-    else :
-        esc_html_e('No recent post<br>display', 'text-domain'); // Use proper translation function
-    endif;
+//     if ($loop->have_posts()) :
+//         while ($loop->have_posts()) : $loop->the_post();
+//             get_template_part('template-parts/components/blog/recent','post');
+//         endwhile;
+//     else :
+//         esc_html_e('No recent post<br>display', 'herbanext'); // Use proper translation function
+//     endif;
 
-    wp_reset_postdata();
-    return ob_get_clean();
-}
+//     wp_reset_postdata();
+//     return ob_get_clean();
+// }

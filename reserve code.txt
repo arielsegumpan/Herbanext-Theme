@@ -215,3 +215,44 @@ class HerbanextCPT{
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function custom_category_list_shortcode($atts) {
+    // Shortcode attributes (if needed)
+    $atts = shortcode_atts(array(
+        'orderby' => 'name',
+        'order'   => 'ASC',
+    ), $atts);
+
+    // Query categories based on shortcode attributes
+    $categories = get_categories(array(
+        'orderby' => $atts['orderby'],
+        'order'   => $atts['order'],
+    ));
+
+    // Start building the output
+    $output = '';
+    // Loop through categories and create list items
+    foreach ($categories as $category) {
+        $output .= '<a href="' . get_category_link($category->term_id) . '" class="text-decoration-none mb-2">
+        <span class="badge text-bg-green rounded-2 text-small px-3 me-2">' . $category->name . '</span></a>';
+    }
+    return $output;
+}   
+add_shortcode('all_categories', 'custom_category_list_shortcode');

@@ -34,9 +34,9 @@ $get_blog_title = get_field('blog_post_heading_title','option');
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">
-         <?php  while(have_posts()): the_post();?> 
+         <?php if(have_posts()): while(have_posts()): the_post();?> 
             <?php get_template_part('template-parts/content/content');?> 
-        <?php endwhile ?>
+        <?php endwhile; endif;?>
          </div>
         <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
          <div class="row">

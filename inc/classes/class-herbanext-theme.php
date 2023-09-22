@@ -39,6 +39,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_action('woocommerce_product_meta_start',[$this,'herbanext_custom_btn_single']);
         add_filter('woocommerce_sale_flash', [$this,'remove_woocommerce_sale_flash'], 10, 3);
         add_action('woocommerce_shop_loop_item_title', [$this,'abChangeProductsTitle'], 10 );
+        add_action('woocommerce_template_single_title', [$this,'add_custom_class_to_product_title']);
     }
 
     
@@ -117,5 +118,9 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     function abChangeProductsTitle() {
         echo '<h5 class="woocommerce-loop-product_title museo text-center fw-bold"><a class="text-decoration-none text-success" href="'.get_the_permalink().'">' . get_the_title() . '</a></h5>';
     
+    }
+
+    function add_custom_class_to_product_title() {
+        echo '<h1 class="display-5 lora fw-bold">' . get_the_title() . '</h1>';
     }
  }

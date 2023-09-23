@@ -18,5 +18,9 @@ class Widgets{
     protected function setup_widget_hooks() {
         // Add any setup related to custom post types here
     }
+
+    // ======================== THIS IS SIDEBAR WIDGET ========================//
+
+
 }
 

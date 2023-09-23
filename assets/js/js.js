@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     $('div#respond small a#cancel-comment-reply-link').addClass('btn btn-outline-success ms-3');
     $('h3#reply-title a.comment-reply-link').addClass('text-decoration-none');
     $('h3#reply-title').addClass('museo');

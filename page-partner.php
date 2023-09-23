@@ -45,7 +45,7 @@ $partner_team = get_acf_field('partner_team');
                     <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
                         <div class="mb-5">
                             <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($partner_sec['partner_title']) ?></h1>
-                            <div class="text-white lh-lg fs-5">
+                            <div class="text-white lh-lg">
                                 <?php echo _e( $partner_sec['partner_content'] ) ?>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ $partner_team = get_acf_field('partner_team');
         </div>
        <?php endif?>
         <!-- certified toll -->
-        <div class="certified_toll">
+        <div class="certified_toll" >
             <div class="container">
                 <div class="col-12 text-center">
                     <div class="certified_toll_content">

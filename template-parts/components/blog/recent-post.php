@@ -8,13 +8,7 @@
                     <?php echo esc_html_e(the_title()) ?>
                 </h6>
                 <div class="flex text-center text-md-start mt-3 justify-content-center justify-content-md-between">
-                    <?php 
-                    $categories = get_the_category();
-
-                    if ( ! empty( $categories ) ) {
-                        echo '<a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '">' . esc_html( $categories[0]->name ) . '</a>';
-                    }
-                    ?>
+                   <?php echo do_shortcode('[post_categories]'); ?>
                 </div>
             </div>
         </div>

@@ -79,6 +79,7 @@ if (post_password_required()) {
         'comment_field' => '<textarea id="comment" class="form-control px-3 py-3 mb-4 mt-5" name="comment" rows="4" placeholder="' . __('Your comment...', 'herbanext') . '" required></textarea>',
         'fields' => apply_filters('comment_form_default_fields', $fields),
         'comment_notes_before' => '<p class="comment-notes mt-4 text-secondary">' . __('Your email address will not be published. All fields are required <span class="text-danger fw-bold">*</span>.', 'herbanext') . '</p>',
+        
     );
 
     comment_form($args);

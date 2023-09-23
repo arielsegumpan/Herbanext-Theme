@@ -130,57 +130,11 @@ function custom_breadcrumbs() {
         }
     } elseif (is_page()) {
         $post_slug = get_post_field('post_name', get_post());
-        echo $delimiter . '<a href="' . esc_url(home_url('/' . $post_slug)) . '">' . esc_html(get_the_title()) . '</a>';
+        echo $delimiter . '<a class="text-decoration-none text-secondary" href="' . esc_url(home_url('/' . $post_slug)) . '">' . esc_html(get_the_title()) . '</a>';
     } elseif (is_search()) {
         echo $delimiter . __('Search Results for...', 'your-herbanext') . ' "<em>' . esc_html(get_search_query()) . '</em>"';
     }
 }
-
-// function custom_breadcrumbs() {
-//     echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'your-herbanext').'</a>';
-
-//     if (is_archive() || is_home()) {
-//         echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
-//         echo '<span>' . esc_html(wp_title('', false)) . '</span>';
-//     }
-
-//     if (is_category() || is_single()) {
-//         echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
-        
-//         // Get the post type's slug (or category slug)
-//         $post_type = get_post_type();
-//         $post_type_slug = '';
-
-//         if ($post_type == 'post') {
-//             $post_type_slug = __('News', 'herbanext');
-//         } else {
-//             if (is_single()) {
-//                 $post_type_slug = ucfirst(get_post_type());
-//             } else {
-//                 $post_type_slug = ucfirst(get_queried_object()->slug);
-//             }
-//         }
-//         // Construct the archive link manually
-//         $archive_link = esc_url(home_url()) . '/' . strtolower($post_type_slug) . '/';
-
-//         // Output the post type's slug as a breadcrumb with a link
-//         echo '<a class="text-success text-decoration-none" href="' . esc_url($archive_link) . '">' . esc_html($post_type_slug) . '</a>';
-
-//         if (is_single()) {
-//             echo " &nbsp;&nbsp;&#187;&nbsp;&nbsp; ";
-//             the_title();
-//         }
-//     } elseif (is_page()) {
-//         echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;";
-//         echo esc_html(get_the_title());
-//     } elseif (is_search()) {
-//         echo "&nbsp;&nbsp;&#187;&nbsp;&nbsp;".__('Search Results for... ', 'your-herbanext');
-//         echo '"<em>';
-//         echo esc_html(get_search_query());
-//         echo '</em>"';
-//     }
-// }
-
 
 // Remove the product title from WooCommerce product loop
 add_action('init', 'remove_loop_title');

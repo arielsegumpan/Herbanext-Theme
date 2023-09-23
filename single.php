@@ -77,12 +77,14 @@ $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
                             </ul>
                         </div>
                     <?php endif; ?>
-                    <div id="blog_categories" class="mb-5">
-                        <h4 class="fw-bold museo "><?php echo esc_html__('Categories'); ?></h4>
-                        <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
-                            <?php echo do_shortcode('[all_categories]'); ?>
+                    <?php if(shortcode_exists( 'all_categories' )): ?>
+                        <div id="blog_categories" class="mb-5">
+                            <h4 class="fw-bold museo "><?php echo esc_html__('Categories'); ?></h4>
+                            <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
+                                <?php echo do_shortcode('[all_categories]'); ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif?>
                     <div id="blog_archive" class="mb-5">
                         <h4 class="fw-bold museo "><?php echo esc_html__('Archive'); ?></h4>
                         <?php get_template_part('template-parts/components/archive/archives'); ?>

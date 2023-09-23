@@ -23,7 +23,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         wp_register_style('owl_carousel_css','//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css', array(), false, 'all');
         wp_register_style('icons','//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css', array(), false, 'all');
         wp_register_style('woo_style',HERBANEXT_DIR_URI.'/assets/css/woo-style.css', array(), false, 'all');
-        wp_register_style('aos_style','//cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css', array(), false, 'all');
+        wp_register_style('aos_style','//unpkg.com/aos@2.3.1/dist/aos.css', array(), false, 'all');
 
         wp_enqueue_style('style');
         wp_enqueue_style('owl_carousel_css');
@@ -39,12 +39,11 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         wp_register_script('bootstrap_js', '//cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js',NULL, microtime(),true);
         wp_register_script('owl_carousel_js','//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', NULL, '1.2.2', true);
         wp_register_script('custom_js',HERBANEXT_DIR_URI.'/assets/js/js.js',NULL, '1.0', true);
-        wp_register_script('aos_js','//cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js', NULL, '2.3.4', true);
+        
 
         wp_enqueue_script('jquery');
         wp_enqueue_script('bootstrap_js');
         wp_enqueue_script('owl_carousel_js');
         wp_enqueue_script('custom_js');
-        wp_enqueue_script('aos_js');
     }
  }

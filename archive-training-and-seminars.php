@@ -32,7 +32,7 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
  </section>  
  <section id="blog">
      <div class="container">
-         <div class="row row-gap-5">sdsdfsdf
+         <div class="row row-gap-5">
              <?php 
                 $args = array(
                     'post_type'     => 'trainingseminars',

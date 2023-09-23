@@ -19,9 +19,6 @@ $galleries = get_acf_field('gallery');
 $newsupdates = get_acf_field('news_and_updates');
 $partnerus = get_acf_field('partner_with_us');
 ?>
-
-
-
 <main>
         <?php if($jumbotron) :?>
         <!-- jumbotron -->
@@ -55,7 +52,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php if($features) :?>
         <section id="features" class="bg-success">
             <div class="container">
-                <div class="row mb-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <div class="row mb-md-5">
                     <div class="col-12 col-md-9 mx-auto text-center mb-5">
                         <div class="features_title text-white">
                             <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($features['feature_title']) ?></h1>
@@ -68,7 +65,7 @@ $partnerus = get_acf_field('partner_with_us');
                 <div class="row align-items-center justify-content-center">
                     <?php if($feat_repeaters != null) :?>
                             <?php foreach($feat_repeaters as $key => $feat_repeater) :?>
-                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : '' ?>  mb-5 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : '' ?>  mb-5 mb-md-0">
                                 <div class="feature_icon mb-5">
                                     <img src="<?php echo esc_url($feat_repeater['feature_icon']['url']) ?>" alt="<?php echo esc_attr($feat_repeater['feature_icon']['alt']) ?>">
                                 </div>
@@ -113,8 +110,6 @@ $partnerus = get_acf_field('partner_with_us');
                             <?php endforeach ?>
                         </div>
                         <?php endif; ?>
-
-
                     </div>
                 </div>
             </div>
@@ -214,7 +209,7 @@ $partnerus = get_acf_field('partner_with_us');
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <ul class="border-0 list-group list-group-flush ">
-                            <?php echo do_shortcode( '[get_recent_front_page_post]' ); ?>
+                            <?php echo do_shortcode( "[get_recent_front_page_post]" ) ?>
                         </ul>
                     </div>
                     <div class="col-12 col-lg-6 text-center  mt-5 mgt-lg-0">
@@ -223,7 +218,7 @@ $partnerus = get_acf_field('partner_with_us');
                 </div>
                 <div class="row mt-5 pt-5 text-center">
                     <div class="col-6 mx-auto">
-                        <a href="<?php echo esc_url($newsupdates['news_and_update_page_link']) ?>" class="btn btn-outline-white border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i>Read More</a>
+                        <a href="<?php echo esc_url($newsupdates['news_and_update_page_link']) ?>" class="btn btn-outline-white border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('Read More') ?></a>
                     </div>
                 </div>
             </div>

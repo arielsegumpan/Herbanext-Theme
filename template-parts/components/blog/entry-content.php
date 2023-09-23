@@ -26,7 +26,7 @@ $career_position = get_acf_field('career_field');
                 </h1>
                 <?php if(shortcode_exists('post_categories')) :?>
                 <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
-                    <?php echo do_shortcode('[post_categories]') ?>
+                    <?php echo do_shortcode('[post_categories]'); ?>
                 </div>
                 <?php endif ?>
                 <?php if($career_position) :?>

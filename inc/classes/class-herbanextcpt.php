@@ -34,7 +34,6 @@ class HerbanextCPT{
             'search_items'          => 'Search Careers',
             'not_found'             => 'No careers found',
             'not_found_in_trash'    => 'No careers found in trash',
-            
         );
 
         $args = array(
@@ -166,9 +165,7 @@ class HerbanextCPT{
             ),
             'menu_icon'             => 'dashicons-groups', // Icon for Training Seminars
         );
-
         register_post_type('trainingseminars', $args);
     }
-
 }
 

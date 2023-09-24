@@ -3,9 +3,12 @@
  * Functions template
  * @package herbanext
  */
-
 use HERBANEXT_THEME\Inc\HERBANEXT_THEME;
-
+// Define ABSPATH if not defined
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+// Define HERBANEXT_DIR_PATH and HERBANEXT_DIR_URI if not defined
 !defined('HERBANEXT_DIR_PATH') ? define('HERBANEXT_DIR_PATH',untrailingslashit( get_template_directory() )) : '';
 !defined('HERBANEXT_DIR_URI') ? define('HERBANEXT_DIR_URI',untrailingslashit( get_template_directory_uri() )) : '';
 require_once HERBANEXT_DIR_PATH . '/inc/helpers/autoloader.php';

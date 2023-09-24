@@ -22,7 +22,11 @@ if ($getTR->have_posts()) {
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_product" class="w-100 position-relative">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/imgs/close-up-medicine-pills-table.jpg" alt="" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+        <?php if(has_post_thumbnail()):?>
+            <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+        <?php else: ?>
+            <img src="<?php echo esc_url($get_blog_img) ?>" alt="<?php echo esc_attr($get_blog_title) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+        <?php endif ?>
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-10 me-auto text-center text-md-start my-auto">
                 <?php if (is_page()): ?>

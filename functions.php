@@ -4,7 +4,7 @@
  * @package herbanext
  */
 use HERBANEXT_THEME\Inc\HERBANEXT_THEME;
-// Define ABSPATH if not defined
+// Define ABSPATH
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -45,9 +45,9 @@ if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
         global $post;
         $size = 'shop_catalog'; // You can change the image size here.
         $title = get_the_title();
-        $image = has_post_thumbnail() ? get_the_post_thumbnail_url($post->ID, $size) : wc_placeholder_img_src($size);
+        $image = has_post_thumbnail() ? esc_url(get_the_post_thumbnail_url($post->ID, $size)) : esc_url(wc_placeholder_img_src($size));
 
-        echo '<img class="rounded-3" src="' . esc_url($image) . '" alt="' . esc_attr($title) . '">';
+        echo '<img class="rounded-3" src="' . $image . '" alt="' . esc_attr($title) . '">';
     }
 }
 

@@ -5,9 +5,11 @@
  */
 
 
- $global_number = get_field('global_contact_number', 'option');
-
-?>
+$global_setup = get_acf_option_field('global_settings_setup');
+$contact_number = $global_setup['global_contact_number'];
+if (!empty($contact_number)):
+substr($contact_number, 0, 1) === '0' ? $contact_number = '+63' . substr($contact_number, 1) : '';
+endif?>
     <footer class="bg-success w-100">
         <div class="container">
             <!-- main footer -->
@@ -32,20 +34,20 @@
                             <h4 class="avenir fw-bold text-white mb-3">Call</h4>
                             <div class="d-flex flex-row justify-content-center justify-content-md-start">
                                 <i class="bi bi-telephone-outbound text-black fs-5 me-3"></i>
-                                <a href="tel:+63347328106" class="text-decoration-none text-black fw-bold"><?php echo esc_html_e($global_number) ?></a>
+                                <a href="tel:<?php echo esc_attr($contact_number); ?>" class="text-decoration-none text-black fw-bold"><?php echo esc_html($contact_number); ?></a>
                             </div>
                         </div>
                         <div class="col">
                             <h4 class="avenir fw-bold text-white mb-3">Email</h4>
                             <div class="d-flex flex-wrap flex-row align-items-center justify-content-center justify-content-md-start">
                                 <i class="bi bi-link-45deg text-black fs-3 me-2"></i>
-                                <a href="mailto:info@herbanext.com" class="text-decoration-none text-black fw-bold">info@herbanext.com</a>
+                                <a href="mailto:<?php echo esc_attr($global_setup['global_email_address'])?>" class="text-decoration-none text-black fw-bold"><?php echo esc_html_e($global_setup['global_email_address'])?></a>
                             </div>
                         </div>
                         <div class="col">
                             <h4 class="avenir fw-bold text-white mb-3">Follow Us</h4>
-                            <a href="#!" class="text-decoration-none">
-                                <i class="bi bi-facebook fs-3 text-black"></i>
+                            <a href="<?php echo esc_url($global_setup['socmed_link']) ?>" class="text-decoration-none" target="_blank">
+                                <?php echo _e($global_setup['socmed_icon']) ?>
                             </a>
                         </div>
                     </div>
@@ -53,13 +55,15 @@
             </div>
             <!-- bottom footer -->
             <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center gap-4 pb-4">
-                <p class="fw-bold text-black">&copy;2023 by Herbanext Laboratories, Inc.</p>
-                <a href="#!" class="text-decoration-none">
-                    <!-- <img src="assets/imgs/herbanext-inverted.png" alt="" width="auto" height="50"> -->
+                <p class="fw-bold text-black"><?php echo esc_html_e($global_setup['global_copyright']) ?></p>
+                <?php if($global_setup['footer_logo'] != null) :?>
+                <a href="<?php echo esc_url(site_url('/')) ?>" class="text-decoration-none">
+                    <img src="<?php echo esc_url( $global_setup['footer_logo']['url'] ) ?>" alt="<?php echo esc_attr( $global_setup['footer_logo']['alt'] ) ?>" width="auto" height="50">
                 </a>
+                <?php endif?>
                 <div class="d-flex flex-column flex-md-row gap-3 text-center text-lg-start">
-                    <a href="#!" class=" fw-bold text-black">Terms and Conditions</a>
-                    <a href="#!" class=" fw-bold text-black">Privacy Policy</a>
+                    <a href="<?php echo esc_url($global_setup['global_terms_and_conditions']) ?>" class=" fw-bold text-black">Terms and Conditions</a>
+                    <a href="<?php echo esc_url($global_setup['global_privacy_policy']) ?>" class=" fw-bold text-black">Privacy Policy</a>
                 </div>
             </div>
         </div>

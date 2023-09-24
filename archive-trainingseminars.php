@@ -1,38 +1,41 @@
 <?php
 /**
- * Template Name: Careers
+ * Template Name: Training and Seminars Archive
  * @package herbanext
  */
 get_header();
 
-// Fetch values once to avoid redundancy
-$career_bg = get_field('career_post_image', 'option');
-$career_title = get_field('career_post_heading_title', 'options');
+$get_ts_bg = get_field('training_and_seminars_post_header_image','option');
+$get_ts_title = get_field('training_and_seminars_post_heading_title', 'option');
+
+$image_id = get_post_thumbnail_id(get_the_ID());
+$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 ?>
 
+
 <main>
-    <!-- jumbotron -->
-    <section id="jumbotron_product" class="w-100 position-relative">
-        <img src="<?php echo esc_url($career_bg); ?>" alt="<?php echo esc_attr($career_title); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0 rounded-4">
-        <div class="container position-absolute">
-            <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
+ <!-- jumbotron -->
+ <section id="jumbotron_about" class="w-100 position-relative">
+ <img src="<?php echo esc_url($get_ts_bg) ?>" alt="<?php echo esc_html_e($get_ts_title)?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+     <div class="container position-absolute">
+         <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <h1 class="display-2 museo fw-bold text-success">
-                    <?php echo esc_html($career_title); ?>
+                    <?php echo esc_html_e($get_ts_title)?>
                 </h1>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">
-                        <?php custom_breadcrumbs(); ?>
+                        <?php custom_breadcrumbs() ?>
                     </nav>
                 </h6>
-            </div>
-        </div>
-    </section>
-    <section id="blog">
-        <div class="container">
-            <div class="row row-gap-5">
-                <?php echo do_shortcode( '[herbanext_career_posts]' ) ?>
-            </div>
-            <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
+         </div>
+     </div>
+ </section>  
+ <section id="blog">
+     <div class="container">
+         <div class="row row-gap-5">
+           <?php echo do_shortcode( '[herbanext_training_seminar_posts]' ) ?>
+         </div>
+         <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
             <div class="row">
                 <div class="container text-center">
                     <nav aria-label="Page navigation" class="mt-5 pt-4">
@@ -55,9 +58,9 @@ $career_title = get_field('career_post_heading_title', 'options');
                     </nav>
                 </div>
             </div>
-            <?php endif?>
-        </div>
-    </section>
+         <?php endif?>
+     </div>
+ </section>
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer()?>

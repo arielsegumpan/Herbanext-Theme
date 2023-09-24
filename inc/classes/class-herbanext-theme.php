@@ -22,7 +22,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
             Namespacecpt::class,
             Woofeat::class,
             Recentpost::class,
-            Careerpost::class,
+            Getpost::class,
         ];
     
         // Initialize each class

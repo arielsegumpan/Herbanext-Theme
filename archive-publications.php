@@ -34,20 +34,32 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">
-             <?php 
-                $args = array(
-                    'post_type'     => 'publications',
-                    'post_status'   => 'publish',
-                    'posts_per_page' => 10,
-                );
-                $getCareer = new WP_Query($args);
-                if($getCareer->have_posts()): 
-                while($getCareer->have_posts()): $getCareer->the_post()?>
-                     <?php get_template_part('template-parts/components/blog/entry-content')?>
-                <?php endwhile; else:?>
-                    <?php get_template_part('template-parts/content/content-empty')?>
-            <?php endif; wp_reset_postdata();?>
+             <?php echo do_shortcode('[herbanext_publications_posts]')?>
          </div>
+         <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
+            <div class="row">
+                <div class="container text-center">
+                    <nav aria-label="Page navigation" class="mt-5 pt-4">
+                        <ul class="pagination justify-content-center">
+                            <?php if (get_previous_posts_link()) : ?>
+                                <li class="page-item">
+                                    <span class="btn btn-success px-5 py-3">
+                                        <?php previous_posts_link('<i class="bi bi-arrow-left me-3"></i>Previous'); ?>
+                                    </span>
+                                </li>
+                            <?php endif; ?>
+                            <?php if (get_next_posts_link()) : ?>
+                                <li class="page-item">
+                                    <span class="btn btn-success px-5 py-3">
+                                        <?php next_posts_link('Next<i class="bi bi-arrow-right ms-3"></i>'); ?>
+                                    </span>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <?php endif?>
      </div>
  </section>
 </main>

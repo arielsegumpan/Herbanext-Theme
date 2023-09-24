@@ -27,6 +27,10 @@ function new_woocommerce_page_title( $page_title ) {
 function get_acf_field($field_name) {
     return function_exists('get_field') ? get_field($field_name) : null;
 }
+function get_acf_option_field($field_name) {
+    return function_exists('get_field') ? get_field($field_name,'option') : null;
+}
+
 
 // Add custom image tag in product catalog
 if (!function_exists('woocommerce_template_loop_product_thumbnail')) {

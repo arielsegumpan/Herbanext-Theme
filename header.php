@@ -3,6 +3,8 @@
  * Header Template
  * @package herbanext
  */
+$get_prload_img = get_acf_option_field('preloader');
+
 ?>
 <!doctype html>
 <html lang="<?php language_attributes() ?>">
@@ -13,6 +15,14 @@
     <?php wp_head();?>
 </head>
   <body <?php body_class() ?>>
+     <!-- preloader -->
+     <div id="preloader">
+        <div class="loading-container">
+            <img src="<?php echo esc_url($get_prload_img['preloader_icon']['url']) ?>" alt="<?php echo esc_attr($get_prload_img['preloader_icon']['alt']) ?>" class="d-block mx-auto" width="<?php echo esc_attr($get_prload_img['icon_width']) ?>" height="<?php echo esc_attr($get_prload_img['icon_height']) ?>">
+            <div class="loading-text fs-5">
+            </div>
+          </div>
+    </div>
     <!-- nav -->
     <header class="fixed-top">
         <nav class="navbar navbar-expand-lg bg-body-transparent">

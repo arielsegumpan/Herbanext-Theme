@@ -83,7 +83,6 @@ namespace HERBANEXT_THEME\Inc;
         else :
             esc_html_e('No recent post<br>display', 'herbanext'); // Use proper translation function
         endif;
-
         wp_reset_postdata();
         return ob_get_clean();
     }

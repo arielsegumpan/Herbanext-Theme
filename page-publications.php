@@ -17,8 +17,7 @@ get_header();
                     <h1 class="display-2 museo fw-bold text-primary">
                         <?php single_post_title() ?>
                     </h1>
-                <?php endif
-            ?>
+                <?php endif?>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">
                         <?php custom_breadcrumbs() ?>
@@ -35,7 +34,7 @@ get_header();
                      <?php get_template_part('template-parts/content/content')?>
                 <?php endwhile; else:?>
                     <?php get_template_part('template-parts/content/content-empty')?>
-            <?php endif;?>
+            <?php endif?>
          </div>
      </div>
  </section>

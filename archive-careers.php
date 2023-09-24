@@ -8,14 +8,6 @@ get_header();
 // Fetch values once to avoid redundancy
 $career_bg = get_field('career_post_image', 'option');
 $career_title = get_field('career_post_heading_title', 'options');
-
-$args = array(
-    'post_type'      => 'careers',
-    'post_status'    => 'publish',
-    'posts_per_page' => 10,
-);
-
-$career_query = new WP_Query($args);
 ?>
 
 <main>
@@ -38,16 +30,7 @@ $career_query = new WP_Query($args);
     <section id="blog">
         <div class="container">
             <div class="row row-gap-5">
-                <?php
-                if ($career_query->have_posts()) :
-                    while ($career_query->have_posts()) : $career_query->the_post();
-                        get_template_part('template-parts/components/blog/entry-content');
-                    endwhile;
-                else :
-                    get_template_part('template-parts/content/content-empty');
-                endif;
-                wp_reset_postdata();
-                ?>
+                <?php echo do_shortcode( '[herbanext_career_posts]' ) ?>
             </div>
         </div>
     </section>

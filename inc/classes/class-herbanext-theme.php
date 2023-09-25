@@ -96,7 +96,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
 
     //ratings
     function filter_woocommerce_product_get_rating_html( $rating_html, $rating, $count ) { 
-        $rating_html  = '<div class="star-rating mx-auto fs-5">';
+        $rating_html  = '<div class="star-rating fs-5 mb-4">';
         $rating_html .= wc_get_star_rating_html( $rating, $count );
         $rating_html .= '</div>';
         return $rating_html; 

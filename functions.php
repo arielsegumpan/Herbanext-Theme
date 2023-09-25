@@ -34,34 +34,6 @@ function get_acf_option_field($field_name) {
     return function_exists('get_field') ? get_field($field_name,'option') : null;
 }
 
-function get_sanitized_acf_field($field_name, $is_option = false) {
-    if (function_exists('get_field')) {
-        $acf_value = $is_option ? get_field($field_name, 'option') : get_field($field_name);
-        
-        // Check if $acf_value is an array and sanitize its elements
-        if (is_array($acf_value)) {
-            return array_map('sanitize_text_field', $acf_value);
-        }
-        
-        // Apply appropriate sanitization based on the data type
-        switch (gettype($acf_value)) {
-            case 'string':
-                return sanitize_text_field($acf_value);
-            case 'integer':
-                return absint($acf_value);
-            case 'boolean':
-                return (bool) $acf_value;
-            case 'array': // For textarea or WYSIWYG editor fields
-                return array_map('wp_kses_post', $acf_value);
-            default:
-                return $acf_value; // No additional sanitization for other types
-        }
-    }
-    
-    return null;
-}
-
-
 // Add custom image tag in product catalog
 if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
     function woocommerce_template_loop_product_thumbnail() {
@@ -77,8 +49,6 @@ if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
         echo '<img class="rounded-3" src="' . $image . '" alt="' . esc_attr($title) . '">';
     }
 }
-
-
 
 // Get Categories by Post Type
 function post_categories_by_post_type_shortcode($atts) {

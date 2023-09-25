@@ -23,6 +23,7 @@ $(document).ready(function () {
     $('.woocommerce-pagination .prev a').addClass('page-link');
     $('.woocommerce-pagination .next a').addClass('page-link');
     $('#review_form textarea#comment').addClass('form-control');
+    $('.woocommerce div.product .woocommerce-product-rating').addClass('d-flex flex-column justify-content-start');
 
 
     //humberger

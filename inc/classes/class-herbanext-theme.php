@@ -44,6 +44,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_action('woocommerce_product_meta_start',[$this,'herbanext_custom_btn_single']);
         add_filter('woocommerce_sale_flash', [$this,'remove_woocommerce_sale_flash'], 10, 3);
         add_action('woocommerce_shop_loop_item_title', [$this,'abChangeProductsTitle'], 10 );
+        add_shortcode('custom_page_headers', [$this,'custom_page_headers_shortcode']);
         // add_action('woocommerce_single_product_summary', [$this,'custom_single_product_title'], 5);
     }
 
@@ -135,6 +136,25 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     function custom_single_product_title() {
         echo '<h5 class="fw-bold museo">Lorem, ipsum dolor</h5>';
     }
-    
 
+    // display jumbotron pages
+    function custom_page_headers_shortcode() {
+        if (is_page() && !is_front_page()) {
+            ob_start();
+            ?>
+            <h1 class="display-2 museo fw-bold text-success mx-auto text-center">
+                <?php echo esc_html(single_post_title()); ?>
+            </h1>
+            <h6 class="mt-4">
+                <nav aria-label="breadcrumb" class="justify-content-center text-center">
+                    <?php custom_breadcrumbs(); ?>
+                </nav>
+            </h6>
+            <?php
+            return ob_get_clean();
+        }
+        return ''; // Return an empty string if the condition is not met.
+    }
+    
+    
  }

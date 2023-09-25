@@ -733,3 +733,29 @@ class Getpost {
         return ob_get_clean();
     }
 }
+
+
+
+
+ <section id="jumbotron_about" class="w-100 position-relative">
+            <?php if($story_jumb != null) :?>
+                <img src="<?php echo esc_url($story_jumb['story_jumbotron']['url']) ?>" alt="<?php echo esc_attr($story_jumb['story_jumbotron']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <?php endif ?>
+            <div class="container position-absolute">
+                <?php echo shortcode_exists('custom_page_headers') ? do_shortcode( '[custom_page_headers]' ) : ''?>
+            </div>
+        </section>  
+
+
+
+         <?php
+            if(is_page() && !is_front_page()):?>
+                <h1 class="display-2 museo fw-bold text-success">
+                    <?php single_post_title() ?>
+                </h1>
+                <h6 class="mt-4">
+                    <nav aria-label="breadcrumb">
+                        <?php custom_breadcrumbs() ?>
+                    </nav>
+                </h6>
+            <?php endif?>

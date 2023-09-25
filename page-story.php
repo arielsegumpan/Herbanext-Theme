@@ -5,122 +5,130 @@
  */
 get_header();
 
+$story_jumb = get_acf_field('story_jumbotron');
+$story_who_we_Are = get_acf_field('who_we_are');
+$who_imgs = $story_who_we_Are ? $story_who_we_Are['content_image'] : [];
+$novel_portfolio = get_acf_field('novel_portfolio');
+$certified_toll = get_acf_field('certified_toll');
+$organic = get_acf_field('organic');
+$innovative = get_acf_field('innovative');
 ?>
 
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
-            <img src="assets/imgs/intern-work2.jpg" alt="" class="object-fit-cover w-100 position-absolute top-0 left-0">
+           <?php if($story_jumb != null) :?>
+                <img src="<?php echo esc_url($story_jumb['jumbotron_story_image']['url']) ?>" alt="<?php echo esc_attr($story_jumb['jumbotron_story_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+           <?php endif?>
             <div class="container position-absolute">
-                <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">
-                    <h1 class="display-2 museo fw-bold text-primary">
-                       About Us
-                    </h1>
-                    <h6 class="mt-2 mt-md-4">
-                        Home / About
-                    </h6>
-                </div>
+                <?php echo do_shortcode( '[custom_page_headers]' ) ?>
             </div>
         </section>  
        <section id="about">
         <!-- who we are -->
+        <?php if($story_who_we_Are != null):?>
         <div class="who_are_are">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
-                        <h1 class="display-3 museo fw-bold">Who we are?</h1>
+                        <h1 class="display-3 museo fw-bold">
+                            <?php echo esc_html_e($story_who_we_Are['content_title'])?>
+                        </h1>
                         <p class="lh-lg text-secondary mt-5">
-                            Herbanext Laboratories, Inc. is the country’s leader in spray-dried medicinal plant extracts derived from Philippine biodiversity. Using modern and advanced processing technology, Herbanext provides local health and wellness companies a market edge through a novel portfolio of standardized therapeutic-grade botanicals.
-                        </p>
-                        <p class="lh-lg text-secondary mt-4">Founded in 2001 as a small agricultural enterprise focused on the cultivation and processing of the medicinal mushroom Ganoderma lucidum, Herbanext underwent major transformation in 2006 expanding to other medicinal plants and tapping into the country’s vast botanical diversity. With assistance from the Philippine Department of Science and Technology, the company expanded and modernized its manufacturing plant in 2011 putting up the country’s first purpose-built extraction and spray-drying facility. This state-of-the-art and GMP accredited facility is now paving the way to an industry shift from the traditional use of powdered herbs to the use of more potent herbal extracts. Based in Bago City, Negros Occidental, Herbanext is the brainchild of multiawarded agri-entrepreneur and 2005 TOYM Awardee Philip S. Cruz.</p>
+                            <?php echo _e(nl2br($story_who_we_Are['content']))?>
+                        </p>    
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="row mb-4">
-                            <div class="col">
-                                <img src="assets/imgs/herbanext_group_photo.jpg" alt="" class="img-fluid w-100 rounded-5 object-fit-cover">
+                        <?php if($who_imgs):?>
+                            <?php foreach ($who_imgs as $key => $who_img):?>
+                            <div class="col<?php echo $key === array_key_first($who_imgs) ? '-12 mb-4' : '' ?>">
+                                <img src="<?php echo esc_url($who_img['image']['url'])?>" alt="<?php echo esc_attr($who_img['image']['alt'])?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <img src="assets/imgs/foodtech-lasalle4.jpg" alt="" class="img-fluid rounded-5">
-                            </div>
-                            <div class="col">
-                                <img src="assets/imgs/rd.jpg" alt="" class="img-fluid rounded-5">
-                            </div>
+                            <?php endforeach ?>
+                        <?php endif?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+        <?php endif?>
         <!-- novel portfolio -->
+        <?php if($novel_portfolio != NULL) :?>
         <div class="novel_portfolio bg-success">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
-                        <h1 class="display-5 museo text-white fw-bold mb-5">A Unique and Novel Portfolio of Philippine Herbal Ingredients</h1>
-                        <img src="assets/imgs/herbanext-DOST-BIST-2.jpg" alt="" class="img-fluid rounded-5">
+                    <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($novel_portfolio['content_title']) ?></h1>
+                        <img src="<?php echo esc_url($novel_portfolio['content_image']['url']) ?>" alt="<?php echo esc_url($novel_portfolio['content_image']['alt']) ?>" class="img-fluid rounded-5">
                     </div>
                     <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
                         <p class="text-secondary text-gray lh-lg">
-                            Herbanext currently offers the widest portfolio of locally produced herbal ingredients, in the form of standardized herbal extracts, powdered herbs, herbal teas, and botanical oils. These export quality products are suitable for use in functional foods and beverages, nutraceuticals, herbal drugs, herbal cosmetics, and animal health products. Among the spray-dried ingredients that Herbanext pioneered are roselle, banaba, luyang dilaw, ampalaya, serpentina, balbas pusa, mangosteen, tsaang gubat, sambong, lagundi, and recently bignay. The company is also the first to introduce standardized extracts for important phytochemical marker compounds such as curcumin in turmeric, corosolic acid in banaba, α-mangostin in mangosteen. Newest in the product lines of Herbanext are essential oils of ginger, turmeric, holy basil, calamansi, dalandan, eucalyptus, lemongrass, and Manila elemi.
+                            <?php echo esc_html_e(nl2br($novel_portfolio['content'])) ?>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-       
+        <?php endif ?>
         <!-- certified toll -->
+        <?php if($certified_toll != NULL): ?>
         <div class="certified_toll">
             <div class="container">
                 <div class="col-12 text-center">
-                    <img src="assets/imgs/herbanext_group_photo.jpg" alt="" class="rounded-5 object-fit-cover">
+                    <img src="<?php echo esc_url($certified_toll['certified_toll_image']['url']) ?>" alt="<?php echo esc_attr($certified_toll['certified_toll_image']['alt']) ?>" class="rounded-5 object-fit-cover">
                     <div class="certified_toll_content">
                         <div class="col-12 col-lg-5 mx-auto">
                             <div class="certified_icon mb-5">
-                                <img src="assets/imgs/certified-13.png" alt="">
+                                <img src="<?php echo esc_url($certified_toll['certified_toll_icon']['url']) ?>" alt="<?php echo esc_attr($certified_toll['certified_toll_icon']['alt']) ?>">
                             </div>
-                            <h1 class="display-5 museo fw-bold mb-5">GMP-Certified Toll Manufacturing Facility</h1>
+                            <h1 class="display-5 museo fw-bold mb-5"><?php echo esc_html_e($certified_toll['content_title']) ?></h1>
                         </div>
                         
                         <p class="lh-lg mt-5 text-secondary px-md-5">
-                            Complementing Herbanext’s ingredient manufacturing expertise are GMP-certified production lines for the toll manufacturing of functional foods, nutraceuticals, and herbal drugs. Manufacturing capabilities include: instant granulated beverages, loose teas and teas in teabag, tablets in strip foil, capsules in blisters, and herbal syrups. Herbanext is also an FDA-licensed manufacturer of herbal cosmetic products including creams, ointments, massage oils, soaps, and shampoos. Herbanext maintains an advanced pharmaceutical QC laboratory with in-housecapabilities for HPLC, HPTLC, and UV-Vis analysis.
+                            <?php echo _e(nl2br($certified_toll['content'])) ?>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endif ?>
         <!-- organic -->
+        <?php if($organic != NULL):?>
         <div class="organic position-relative w-100">
-            <img src="assets/imgs/essential-oil-peppermint-bottle-with-fresh-green-peppermint.jpg" alt="" class="object-fit-cover w-100 position-absolute">
+            <img src="<?php echo esc_url($organic['oragnic_image']['url']) ?>" alt="<?php echo esc_attr($organic['oragnic_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
             <div class="container position-absolute">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">
-                        <h1 class="museo dispaly-5 text-black fw-bold pe-5">Organic and Fully Traceable Raw Materials</h1>
+                        <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html_e($organic['organic_title']) ?></h1>
                         <p class="lh-lg text-secondary mt-5">
-                            Herbanext currently over 18 hectares of organic farms in Bago City, Negros Occidental, producing over 20 different species of medicinal herbs. Herbs produced in these farms are certified to be chemical-free by the Organic Certification Council of the Philippines. From these nucleus farms, Herbanext supplies traceable planting materials to marginalized farming communities for its contract farming operations. The farming of medicinal herbs generate sustainable livelihood for small farmers in Negros islands.
+                            <?php echo _e(nl2br($organic['organic_content'])) ?>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endif?>
         <!-- innovative solutions -->
+        <?php if($innovative != null): ?>
         <div class="innovative">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <img src="assets/imgs/foodtech-lasalle4.jpg" alt="" class="img-fluid rounded-5">
+                        <img src="<?php echo esc_url($innovative['innovative_image']['url']) ?>" alt="<?php echo esc_attr($innovative['innovative_image']['alt']) ?>" class="img-fluid rounded-5">
                     </div>
                     <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
-                        <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0">Innovative and Customized Solutions</h1>
+                        <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0"><?php echo esc_html_e($innovative['innovative_title']) ?></h1>
                         <p class="lh-lg text-secondary mt-5">
-                            Herbanext’s product development team consists of experienced food technologists, pharmacists, chemists, and chemical engineers. A strong research and development team and an ability to control raw materials and ingredient manufacturing processes allow Herbanext to deliver innovative and customized solutions to suit the unique need of each client. Herbanext products have already won recognitions and awards for innovation from the International Food Exhibition Philippines (IFEX), the Department of Science and Technology, and the Association of Negros Producers (ANP).
+                        <?php echo _e(nl2br($innovative['innovative_content'])) ?>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endif?>
         <!-- committed to science -->
+        <?php if($committed != null) :?>
         <div class="committed bg-success">
             <div class="container">
                 <div class="row">
@@ -135,7 +143,8 @@ get_header();
                     </div>
                 </div>
             </div>
-        </div>
+        </div endif>
+        <?php ?>
         <!-- mission vision -->
         <div class="mission_vision">
             <div class="container">

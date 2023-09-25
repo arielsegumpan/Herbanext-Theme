@@ -57,7 +57,7 @@ $partnerus = get_acf_field('partner_with_us');
                         <div class="features_title text-white">
                             <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($features['feature_title']) ?></h1>
                             <p class="lh-lg">
-                                <?php echo esc_html_e(nl2br($features['feature_content'])) ?>
+                                <?php echo esc_textarea(nl2br($features['feature_content'])) ?>
                             </p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ $partnerus = get_acf_field('partner_with_us');
                                 </div>
                                 <div class="feature_content px-4">
                                     <p class="lh-lg text-white">
-                                        <?php echo esc_html_e( nl2br($feat_repeater['feature_content'])) ?>
+                                        <?php echo esc_textarea( nl2br($feat_repeater['feature_content'])) ?>
                                     </p>
                                 </div>
                             </div>
@@ -90,9 +90,9 @@ $partnerus = get_acf_field('partner_with_us');
                     <div class="col-12 col-md-5 px-md-5 my-auto text-center text-md-start">
 
                         <div class="story_title pb-5 mb-5">
-                            <h1 class="museo display-2 fw-bold mb-5"><?php echo esc_html_e(nl2br($story['story_title'])) ?></h1>
+                            <h1 class="museo display-2 fw-bold mb-5"><?php echo esc_textarea(nl2br($story['story_title'])) ?></h1>
                             <p class="lh-lg mb-5 text-secondary">
-                                <?php echo esc_html_e(nl2br($story['story_content'])) ?>
+                                <?php echo esc_textarea(nl2br($story['story_content'])) ?>
                             </p>
                             <a href="<?php echo esc_url($story['about_page_link_2']) ?>" class="btn btn-outline-success border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php echo esc_html_e( 'Read More' ) ?></a>
                         </div>
@@ -169,7 +169,7 @@ $partnerus = get_acf_field('partner_with_us');
                             <a href="<?php echo esc_url($products['product_page_link']) ?>" class="btn btn-success px-4 py-3"><i class="bi bi-shop me-2"></i><?php esc_html_e('Products') ?></a>
                         </div>
                         <div class="row row-cols-2 row-gap-4">
-                           <?php echo do_shortcode( '[herbanext_recent_product]' ) ?>
+                           <?php echo wp_kses_post_deep( do_shortcode( '[herbanext_recent_product]' ) ) ?>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@ $partnerus = get_acf_field('partner_with_us');
                         <div class="features_title text-white">
                             <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($newsupdates['news_and_updates_title']) ?></h1>
                             <p class="lh-lg">
-                                <?php echo _e( $newsupdates['news_and_updates_content'] ) ?>
+                                <?php echo esc_textarea($newsupdates['news_and_updates_content']) ?>
                             </p>
                         </div>
                     </div>
@@ -209,7 +209,7 @@ $partnerus = get_acf_field('partner_with_us');
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <ul class="border-0 list-group list-group-flush ">
-                            <?php echo do_shortcode( "[get_recent_front_page_post]" ) ?>
+                            <?php echo wp_kses_post(do_shortcode( "[get_recent_front_page_post]" )) ?>
                         </ul>
                     </div>
                     <div class="col-12 col-lg-6 text-center  mt-5 mgt-lg-0">
@@ -229,7 +229,7 @@ $partnerus = get_acf_field('partner_with_us');
         <section id="partner" style="background-image: url('<?php echo esc_url($partnerus['partner_with_us_image']['url']) ?>');" class="object-fit-cover img-fluid">
             <div class="bg-white"></div>
             <div class="container position-relative">
-                <?php echo _e($partnerus['partner_with_us_form']) ?>
+                <?php echo wp_kses_decode_entities($partnerus['partner_with_us_form']) ?>
             </div>
         </section>
     </main>

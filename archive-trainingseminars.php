@@ -7,9 +7,6 @@ get_header();
 
 $get_ts_bg = get_field('training_and_seminars_post_header_image','option');
 $get_ts_title = get_field('training_and_seminars_post_heading_title', 'option');
-
-$image_id = get_post_thumbnail_id(get_the_ID());
-$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 ?>
 
 

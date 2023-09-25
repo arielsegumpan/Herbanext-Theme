@@ -11,7 +11,7 @@ $get_prload_img = get_acf_option_field('preloader');
   <head>
     <meta charset="<?php bloginfo( 'charset' )?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Herbanext</title>
+    <title><?php echo esc_html_e('Herbanext') ?></title>
     <?php wp_head();?>
 </head>
   <body <?php body_class() ?>>

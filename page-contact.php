@@ -7,7 +7,7 @@ get_header();
 
 $contact_jumbotron = get_acf_field('contact_jumbotron_image');
 $contact_map    = get_acf_field('body_map');
-$contact_form    = get_acf_field('contact_form');
+$contact_form   = get_acf_field('contact_form');
 ?>
 
 <main>
@@ -38,10 +38,10 @@ $contact_form    = get_acf_field('contact_form');
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6 mb-5 mb-lg-0">
-                   <?php echo _e($contact_map['map']) ?>
+                   <?php echo wp_kses_decode_entities($contact_map['map']) ?>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <?php echo _e($contact_form) ?>
+                    <?php echo wp_kses_decode_entities($contact_form) ?>
                 </div>
             </div>
         </div>

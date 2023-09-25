@@ -5,12 +5,12 @@
  */
 get_header();
 
-$get_publication_bg = get_field('publication_post_header_image','option');
-$get_publication_title = get_field('publication_post_heading_title', 'options');
+$get_publication_bg = get_acf_option_field('publication_post_header_image');
+$get_publication_title = get_acf_option_field('publication_post_heading_title');
 
 
-$image_id = get_post_thumbnail_id(get_the_ID());
-$alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
+// $image_id = get_post_thumbnail_id(get_the_ID());
+// $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 ?>
 
 

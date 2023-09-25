@@ -46,13 +46,13 @@ $partner_team = get_acf_field('partner_team');
                         <div class="mb-5">
                             <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($partner_sec['partner_title']) ?></h1>
                             <div class="text-white lh-lg">
-                                <?php echo _e( $partner_sec['partner_content'] ) ?>
+                                <?php echo wp_kses_decode_entities( $partner_sec['partner_content'] ) ?>
                             </div>
                         </div>
                         <img src="<?php echo esc_url($partner_sec['partner_image']['url']) ?>" alt="<?php echo esc_url($partner_sec['partner_image']['alt']) ?>" class="img-fluid rounded-5">
                     </div>
                     <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
-                        <?php echo _e($partner_sec['partner_form'])?>
+                        <?php echo wp_kses_decode_entities($partner_sec['partner_form'])?>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ $partner_team = get_acf_field('partner_team');
                             </div>
                             <h1 class="display-5 museo fw-bold mb-5"><?php echo esc_html_e($partner_sec_2['partner_title_section_2']) ?></h1>
                             <div class="lh-lg my-5 text-secondary px-md-5 fs-5">
-                                <?php echo _e($partner_sec_2['partner_content_section_2']) ?>
+                                <?php echo wp_kses_decode_entities($partner_sec_2['partner_content_section_2']) ?>
                             </div>
                         </div>
                         <?php endif ?>
@@ -83,8 +83,8 @@ $partner_team = get_acf_field('partner_team');
                                         <div class="d-flex flex-column justify-content-center align-items-center gap-4 rounded-5 py-4 py-md-5">
                                             <img src="<?php echo esc_url($partner['team_image']['url'])?>" alt="<?php echo esc_attr($partner['team_image']['alt'])?>" class="bg-gray rounded-5 p-3">
                                             <div class="vision_title_Wrap text-center">
-                                                <h6 class="museo fw-bold fs-3"><?php echo _e($partner['team_name'])?></h6>
-                                                <small class="text-secondary"><?php echo _e($partner['team_content'])?></small>
+                                                <h6 class="museo fw-bold fs-3"><?php echo wp_kses_decode_entities($partner['team_name'])?></h6>
+                                                <small class="text-secondary"><?php echo wp_kses_decode_entities($partner['team_content'])?></small>
                                             </div>
                                         </div>
                                     </div>

@@ -7,8 +7,8 @@ get_header();
 $image_id = get_post_thumbnail_id(get_the_ID());
 $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 
-$get_blog_img = get_field('blog_post_header_image','option');
-$get_blog_title = get_field('blog_post_heading_title','option');
+$get_blog_img = get_acf_option_field('blog_post_header_image');
+$get_blog_title = get_acf_option_field('blog_post_heading_title');
 ?>
 <main>
  <!-- jumbotron -->
@@ -21,7 +21,7 @@ $get_blog_title = get_field('blog_post_heading_title','option');
     <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <h1 class="display-3 museo fw-bold text-success">
-                    <?php echo wp_title() ?>
+                    <?php echo esc_html_e(wp_title()) ?>
                 </h1>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">

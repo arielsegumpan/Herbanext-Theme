@@ -37,7 +37,7 @@ get_header();
                         <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
                             <h1 class="display-3 museo fw-bold"><?php echo esc_html_e($cont_sec_1['content_title']) ?></h1>
                             <p class="lh-lg text-secondary mt-5">
-                            <?php echo _e(nl2br($cont_sec_1['content']))?>
+                            <?php echo esc_textarea(nl2br($cont_sec_1['content']))?>
                             </p>
                         </div>
                         <div class="col-12 col-lg-6">
@@ -65,7 +65,7 @@ get_header();
                     </div>
                     <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
                         <p class="text-secondary text-gray lh-lg">
-                            <?php echo esc_html_e(nl2br($cont_sec_2['content'])) ?>
+                            <?php echo esc_textarea(nl2br($cont_sec_2['content'])) ?>
                         </p>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ get_header();
                     <div class="col-12 col-lg-8 col-xl-6 me-auto my-auto px-5 px-md-auto">
                         <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html_e($cont_sec_3['content_title']) ?></h1>
                         <p class="lh-lg text-secondary mt-5">
-                            <?php echo _e(nl2br($cont_sec_3['content']))?>
+                            <?php echo esc_textarea(nl2br($cont_sec_3['content']))?>
                         </p>
                     </div>
                 </div>
@@ -102,7 +102,7 @@ get_header();
                     <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
                         <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0"><?php echo esc_html_e($cont_sec_4['content_title']) ?></h1>
                         <p class="lh-lg text-secondary mt-5">
-                           <?php echo _e(nl2br($cont_sec_4['content'])) ?>
+                           <?php echo esc_textarea(nl2br($cont_sec_4['content'])) ?>
                         </p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ get_header();
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <h1 class="museo dispaly-5 fw-bold text-center text-md-start"><?php echo esc_html_e($cont_sec_5['content_title']) ?></h1>
-                        <p class="lh-lg mt-5"><?php echo _e(nl2br($cont_sec_5['content'])) ?></p>
+                        <p class="lh-lg mt-5"><?php echo esc_textarea(nl2br($cont_sec_5['content'])) ?></p>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="row">

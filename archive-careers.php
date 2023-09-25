@@ -6,8 +6,8 @@
 get_header();
 
 // Fetch values once to avoid redundancy
-$career_bg = get_field('career_post_image', 'option');
-$career_title = get_field('career_post_heading_title', 'options');
+$career_bg = get_acf_option_field('career_post_image');
+$career_title = get_acf_option_field('career_post_heading_title');
 ?>
 
 <main>
@@ -17,7 +17,7 @@ $career_title = get_field('career_post_heading_title', 'options');
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <h1 class="display-2 museo fw-bold text-success">
-                    <?php echo esc_html($career_title); ?>
+                    <?php echo esc_html_e($career_title); ?>
                 </h1>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">

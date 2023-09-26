@@ -10,7 +10,6 @@ $partner_sec = get_acf_field('partner_section_1');
 $partner_sec_2 = get_acf_field('partner_section_2');
 $partner_team = get_acf_field('partner_team');
 ?>
-
 <main>
         <!-- jumbotron -->
         <?php if($partner_sec):?>

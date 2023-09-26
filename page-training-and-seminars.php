@@ -49,7 +49,7 @@ if ($getTR->have_posts()) {
                 if ($has_posts) :
                     while ($getTR->have_posts()) : $getTR->the_post();
                         get_template_part('template-parts/content/content', $has_posts ? 'regular' : 'empty');
-                    endwhile;
+                    endwhile; wp_reset_postdata( );
                 else :
                     get_template_part('template-parts/content/content', 'empty');
                 endif;

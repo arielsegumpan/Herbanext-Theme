@@ -78,25 +78,29 @@ $get_prload_img = get_acf_option_field('preloader');
                                 </a>
                             </div>
                         </div>
-                        <form action="#!">
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <label for="" class="mb-2 fw-bold">Username</label>
-                                    <input type="text" class="form-control px-4 py-3" required autofocus placeholder="Enter your username">
-                                </div>
-                            </div>
-                            <div class="row mb-5">
-                                <div class="col">
-                                    <label for="" class="mb-2 fw-bold">Password</label>
-                                    <input type="password" class="form-control px-4 py-3" required placeholder="Enter your password">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-success btn-lg w-100 py-3"><i class="bi bi-box-arrow-in-right me-3"></i>Login</button>
-                                </div>
-                            </div>
-                        </form>
+                        <?php
+                        $args = array(
+                            'echo'           => true,
+                            'redirect'       => site_url($_SERVER['REQUEST_URI']), // Redirect to the current page after login
+                            'form_id'        => 'loginform',
+                            'label_username' => 'Username',
+                            'label_password' => 'Password',
+                            'label_remember' => true,
+                            'label_log_in'   => 'Login',
+                            'id_username'    => 'user_login',
+                            'id_password'    => 'user_pass',
+                            'id_remember'    => 'rememberme',
+                            'id_submit'      => 'wp-submit',
+                            'remember'       => true,
+                            'value_remember' => false, // Set this to true to have the "Remember Me" checkbox checked by default
+                            'class_form'     => 'form-signin', // Bootstrap class for the form
+                            'class_submit'   => 'btn btn-success btn-lg w-100 py-3', // Bootstrap class for the submit button
+                            'class_input'    => 'form-control px-4 py-3', // Bootstrap class for input fields
+                        );
+
+                        wp_login_form($args);
+                        ?>
+
                     </div>
                 </div>
                 

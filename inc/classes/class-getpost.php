@@ -21,7 +21,6 @@
              'herbanext_publications_posts'   => 'publications',
              'herbanext_medicinal_herbs_posts'   => 'medicinal_herbs',
          );
- 
          foreach ($shortcodes as $shortcode => $post_type) {
              add_shortcode($shortcode, function () use ($post_type) {
                  return $this->get_recent_posts($post_type);
@@ -53,3 +52,4 @@
          return ob_get_clean();
      }
  }
+ 

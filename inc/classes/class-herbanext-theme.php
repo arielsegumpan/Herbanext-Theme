@@ -45,7 +45,6 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_filter('woocommerce_sale_flash', [$this,'remove_woocommerce_sale_flash'], 10, 3);
         add_action('woocommerce_shop_loop_item_title', [$this,'abChangeProductsTitle'], 10 );
         add_shortcode('custom_page_headers', [$this,'custom_page_headers_shortcode']);
-        // add_action('woocommerce_single_product_summary', [$this,'custom_single_product_title'], 5);
     }
 
     public function remove_price_related_actions() {
@@ -96,7 +95,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
 
     //ratings
     function filter_woocommerce_product_get_rating_html( $rating_html, $rating, $count ) { 
-        $rating_html  = '<div class="star-rating fs-5 mb-4">';
+        $rating_html  = '<div class="star-rating fs-5 mb-4 mx-auto">';
         $rating_html .= wc_get_star_rating_html( $rating, $count );
         $rating_html .= '</div>';
         return $rating_html; 
@@ -130,11 +129,6 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     // Custom shop title
     function abChangeProductsTitle() {
         echo '<h5 class="woocommerce-loop-product_title museo text-center fw-bold"><a class="text-decoration-none text-success" href="' . esc_url(get_the_permalink()) . '">' . esc_html(get_the_title()) . '</a></h5>';
-    }
-
-    // Custom single product title
-    function custom_single_product_title() {
-        echo '<h5 class="fw-bold museo">Lorem, ipsum dolor</h5>';
     }
 
     // display jumbotron pages

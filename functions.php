@@ -18,14 +18,6 @@ function herbanext_get_theme_instance(){
 }
 herbanext_get_theme_instance();
 
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
-function new_woocommerce_page_title( $page_title ) {
-	if ( $page_title == 'Shop' ) {
-		return '<span class="fw-bold fs-2">Prodcut Catalog</span>';
-	}
-}
-
 // Encapsulate ACF fields
 function get_acf_field($field_name) {
     return function_exists('get_field') ? get_field($field_name) : null;
@@ -133,8 +125,15 @@ function custom_breadcrumbs() {
         echo $delimiter . __('Search Results for...', 'your-herbanext') . ' "<em>' . esc_html(get_search_query()) . '</em>"';
     }
 }
-// Remove the product title from WooCommerce product loop
-add_action('init', 'remove_loop_title');
-function remove_loop_title() {
-    remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
-}
+  // Remove the product title from WooCommerce product loop
+  add_action('init', 'remove_loop_title');
+  function remove_loop_title() {
+      remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
+  }
+  remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+  add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
+  function new_woocommerce_page_title( $page_title ) {
+      if ( $page_title == 'Shop' ) {
+          return '<span class="fw-bold fs-2">Prodcut Catalog</span>';
+      }
+  }

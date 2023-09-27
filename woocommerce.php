@@ -45,10 +45,23 @@ $shop = get_field('herbanext_shop', $shop_page_id);
             <div class="lists">
                 <div class="container">
                    <div class="row ">
-                   <div class="col mb-5">
-                        <h2 class="fw-bold"><i class="bi bi-basket2 me-3 bg-success text-white px-3 py-2 rounded-4"></i><?php echo esc_html_e('Products') ?></h2>
-                    </div>
-                   <?php woocommerce_content(); ?>
+                        <div class="col-12 col-lg-9 mb-5 mb-lg-0 pb-4 pb-md-auto">
+                            <div class="row">
+                                <div class="col mb-5">
+                                    <h2 class="fw-bold"><i class="bi bi-basket2 me-3 bg-success text-white px-3 py-2 rounded-4"></i><?php echo esc_html_e('Products') ?></h2>
+                                </div>
+                            </div>
+                            <?php woocommerce_content(); ?>
+                        </div>
+
+                        <!-- aside -->
+                        <div class="col-12 col-lg-3">
+                        <?php
+                            if (is_active_sidebar('herbanext-product-sidebar')) :
+                                dynamic_sidebar('herbanext-product-sidebar');
+                            endif;
+                        ?>
+                        </div>
                    </div>
                 </div>
             </div>

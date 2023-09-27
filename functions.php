@@ -26,6 +26,32 @@ function get_acf_option_field($field_name) {
     return function_exists('get_field') ? get_field($field_name,'option') : null;
 }
 
+// register sidebar widget
+function herbanext_register_custom_sidebars() {
+    // Register Herbanext Product Sidebar
+    register_sidebar(array(
+        'name' => 'Herbanext Product Sidebar',
+        'id' => 'herbanext-product-sidebar',
+        'description' => 'Widgets in this sidebar will appear on product-related pages.',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title fw-bold museo">',
+        'after_title' => '</h4>',
+    ));
+
+    // Register Herbanext Post Sidebar
+    register_sidebar(array(
+        'name' => 'Herbanext Post Sidebar',
+        'id' => 'herbanext-post-sidebar',
+        'description' => 'Widgets in this sidebar will appear on post-related pages.',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title fw-bold museo">',
+        'after_title' => '</h4>',
+    ));
+}
+add_action('widgets_init', 'herbanext_register_custom_sidebars');
+
 // Add custom image tag in product catalog
 if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
     function woocommerce_template_loop_product_thumbnail() {

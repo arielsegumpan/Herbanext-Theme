@@ -17,6 +17,8 @@ class Woofeat {
         // Add shortcode registration
         add_shortcode('custom_featured_products', [$this,'custom_get_featured_products_shortcode']);
         add_action('woocommerce_after_shop_loop_item', [$this,'custom_add_buttons_to_product_loop'], 5);
+        add_filter('loop_shop_columns',[$this,'custom_woocommerce_loop_columns']);
+        add_filter('loop_shop_per_page', [$this,'custom_woocommerce_products_per_page']);
     }
 
     function custom_get_featured_products_shortcode() {
@@ -53,7 +55,7 @@ class Woofeat {
         endif;
         return $output;
     }
-
+    // custom button woocomemrce
     function custom_add_buttons_to_product_loop() {
         $product_permalink = esc_url(get_permalink());
         $contact_url = esc_url(site_url('/contact'));
@@ -65,5 +67,16 @@ class Woofeat {
             <a href="' . $contact_url . '" class="btn btn-success py-3 fs-6"><i class="bi bi-info-circle me-2"></i>' . $inquiry_button_text . '</a>
         </div>';
     }
+    // Customize the number of products per row
+    function custom_woocommerce_loop_columns() {
+        return 3; // Change this number to adjust the number of products per row
+    }
+  
+
+    // Customize the number of products per page
+    function custom_woocommerce_products_per_page() {
+        return 9; // Change this number to adjust the number of products per page
+    }
+    
 
 }

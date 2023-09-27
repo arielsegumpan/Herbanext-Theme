@@ -18,20 +18,7 @@ $partner_team = get_acf_field('partner_team');
                 <img src="<?php echo esc_url($partner_sec['partner_jumbotron_image']['url']) ?>" alt="<?php echo esc_url($partner_sec['partner_jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
             <?php endif ?>
             <div class="container position-absolute">
-                <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-                    <?php
-                        if(is_page() && !is_front_page()):?>
-                            <h1 class="display-2 museo fw-bold text-success">
-                                <?php single_post_title() ?>
-                            </h1>
-                        <?php endif
-                    ?>
-                    <h6 class="mt-2 mt-md-4">
-                        <nav aria-label="breadcrumb">
-                            <?php custom_breadcrumbs() ?>
-                        </nav>
-                    </h6>
-                </div>
+                <?php echo do_shortcode('[custom_page_headers]') ?>
             </div>
         </section>
         <?php endif?>

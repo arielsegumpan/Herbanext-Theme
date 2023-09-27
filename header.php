@@ -4,7 +4,8 @@
  * @package herbanext
  */
 $get_prload_img = get_acf_option_field('preloader');
-
+$login_url = esc_url(site_url('/wp-login.php'));
+$shop = esc_url(site_url('/shop'));
 ?>
 <!doctype html>
 <html lang="<?php language_attributes() ?>">
@@ -50,10 +51,10 @@ $get_prload_img = get_acf_option_field('preloader');
                 
                 <div class="d-flex flex-row gap-3 mt-4 mt-md-auto">
                     <div class="shop">
-                        <a href="<?php echo esc_url(site_url('/shop')) ?>" class="btn btn-success"><i class="bi bi-shop"></i></a>
+                        <a href="<?php echo $shop ?>" class="btn btn-success"><i class="bi bi-shop"></i></a>
                     </div>
                     <div class="login">
-                        <a href="#!" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-person-circle"></i></a>
+                        <a href="<?php echo $login_url ?>" class="btn btn-success"><i class="bi bi-person-circle"></i></a>
                     </div>
                 </div>
 
@@ -61,33 +62,7 @@ $get_prload_img = get_acf_option_field('preloader');
             </div>
         </nav>
     </header>
-    <!-- Modal -->
-    <div class="modal fade " id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-5 p-3">
-                <div class="modal-header border-0">
-                <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pb-5">
-                    <div class="container">
-                        <div class="row mb-5 pb-2">
-                            <div class="col-10 mx-auto text-center">
-                                <a href="#!" class="text-decoration-none">
-                                    <img src="assets/imgs/herbanext.png" alt="" width="auto" height="50px">
-                                </a>
-                            </div>
-                        </div>
-                        <?php
-                        wp_login_form();
-                        ?>
 
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
     <!-- end of nav -->
 
 

@@ -6,28 +6,22 @@
 get_header();
 
 $science_page = get_acf_field('science_page');
+$sci_image_id = get_post_thumbnail_id();
+$sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
 ?>
 <main>
-     <!-- jumbotron -->
- <section id="jumbotron_product" class="w-100 position-relative">
-     <img src="assets/imgs/close-up-medicine-pills-table.jpg" alt="" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
-     <div class="container position-absolute">
-         <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-            <?php
-                if(is_home() && !is_front_page()):?>
-                    <h1 class="display-2 museo fw-bold text-primary">
-                        <?php single_post_title() ?>
-                    </h1>
-                <?php endif?>
-                <h6 class="mt-4">
-                    <nav aria-label="breadcrumb">
-                        <?php custom_breadcrumbs() ?>
-                    </nav>
-                </h6>
-         </div>
-     </div>
- </section> 
- <section id="about">
+    <!-- jumbotron -->
+    <section id="jumbotron_about" class="w-100 position-relative">
+        <?php if(!empty($science_page['jumbotron'])):?>
+            <img src="<?php echo esc_url($science_page['jumbotron']['url']); ?>" alt="<?php echo esc_attr($science_page['jumbotron']['alt']); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+        <?php else:?>
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($sci_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+        <?php endif?>
+        <div class="container position-absolute">
+            <?php echo do_shortcode('[custom_page_headers]') ?>
+        </div>
+    </section>
+     <section id="about">
         <?php if (!empty($science_page['science_section_content_1'])) : ?>
             <div class="novel_portfolio bg-success">
                 <div class="container">
@@ -75,21 +69,21 @@ $science_page = get_acf_field('science_page');
             </div>
         </div>
        <?php endif?>
-        <!-- organic -->
+        <?php if(!empty($science_page['science_section_content_3'])) :?>
         <div class="organic position-relative w-100">
-            <img src="assets/imgs/essential-oil-peppermint-bottle-with-fresh-green-peppermint.jpg" alt="" class="object-fit-cover w-100 position-absolute">
+            <img src="<?php echo esc_url($science_page['science_section_content_3']['background_image']['url']) ?>" alt="<?php echo esc_attr($science_page['science_section_content_3']['background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
             <div class="container position-absolute">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">
-                        <h1 class="museo dispaly-5 text-black fw-bold pe-5">Organic and Fully Traceable Raw Materials</h1>
-                        <p class="lh-lg text-secondary mt-5">
-                            Herbanext currently over 18 hectares of organic farms in Bago City, Negros Occidental, producing over 20 different species of medicinal herbs. Herbs produced in these farms are certified to be chemical-free by the Organic Certification Council of the Philippines. From these nucleus farms, Herbanext supplies traceable planting materials to marginalized farming communities for its contract farming operations. The farming of medicinal herbs generate sustainable livelihood for small farmers in Negros islands.
-                        </p>
+                        <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html_e($science_page['science_section_content_3']['title']) ?></h1>
+                        <div class="lh-lg text-secondary mt-5">
+                           <?php echo nl2br(wp_kses_decode_entities( $science_page['science_section_content_3']['content'] )) ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- innovative solutions -->
+        <?php endif?>
         <div class="innovative">
             <div class="container">
                 <div class="row">

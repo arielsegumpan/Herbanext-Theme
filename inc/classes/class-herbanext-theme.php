@@ -23,6 +23,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
             Woofeat::class,
             Recentpost::class,
             Getpost::class,
+            Customlogin::class,
         ];
     
         // Initialize each class
@@ -45,6 +46,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_filter('woocommerce_sale_flash', [$this,'remove_woocommerce_sale_flash'], 10, 3);
         add_action('woocommerce_shop_loop_item_title', [$this,'abChangeProductsTitle'], 10 );
         add_shortcode('custom_page_headers', [$this,'custom_page_headers_shortcode']);
+        add_action('widgets_init', array($this, 'register_custom_sidebars'));
     }
 
     public function remove_price_related_actions() {
@@ -149,6 +151,31 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         }
         return ''; // Return an empty string if the condition is not met.
     }
-    
+    // register sidebar widget
+    public function register_custom_sidebars() {
+        // Register Product Sidebar
+        register_sidebar(
+            array(
+                'name' => esc_html__('Product Sidebar', 'herbanext'),
+                'id' => 'product-sidebar',
+                'before_widget' => '<div class="widget">',
+                'after_widget' => '</div>',
+                'before_title' => '<h4 class="widget-title">',
+                'after_title' => '</h4>'
+            )
+        );
+
+        // Register Post Sidebar
+        register_sidebar(
+            array(
+                'name' => esc_html__('Post Sidebar', 'herbanext'),
+                'id' => 'post-sidebar',
+                'before_widget' => '<div class="widget">',
+                'after_widget' => '</div>',
+                'before_title' => '<h4 class="widget-title">',
+                'after_title' => '</h4>'
+            )
+        );
+    }
     
  }

@@ -18,7 +18,7 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
            <?php if($jumb): ?>
-            <img src="<?php echo esc_url($jumb['jumbotron_background_image']['url']) ?>" alt="<?php echo esc_url($jumb['jumbotron_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <img src="<?php echo esc_url($jumb['jumbotron_background_image']['url']) ?>" alt="<?php echo esc_url($jumb['jumbotron_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
            <?php endif?>
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">

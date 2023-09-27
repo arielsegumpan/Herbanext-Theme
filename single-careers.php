@@ -49,27 +49,27 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
                 </div>
                 <div class="col-12 col-lg-3">
                     <div id="blog_search" class="mb-5">
-                        <h4 class="fw-bold museo "><?php echo esc_html__('Search'); ?></h4>
-                        <input type="text" class="form-control px-3 py-2" placeholder="Search here...">
+                        <h4 class="fw-bold museo mb-4"><i class="bi bi-search me-2"></i><?php echo esc_html__('Search'); ?></h4>
+                        <?php get_search_form() ?>
                     </div>
-                    <?php if (get_post_type() === 'careers') : ?>
+                    <?php if (get_post_type() === 'post') : ?>
                         <div id="blog_recent" class="mb-5">
-                            <h4 class="fw-bold museo "><?php echo esc_html__('Recent Post'); ?></h4>
+                            <h4 class="fw-bold museo "><i class="bi bi-file-earmark-post me-2"></i><?php echo esc_html__('Recent Post'); ?></h4>
                             <ul class="list-group list-group-flush mt-4">
-                                <?php get_template_part('template-parts/sidebars/recent-careers'); ?>
+                                <?php get_template_part('template-parts/sidebars/recent-post'); ?>
                             </ul>
                         </div>
                     <?php endif; ?>
                     <?php if(shortcode_exists( 'all_categories' )): ?>
                         <div id="blog_categories" class="mb-5">
-                            <h4 class="fw-bold museo "><?php echo esc_html__('Categories'); ?></h4>
+                            <h4 class="fw-bold museo "><i class="bi bi-bookmarks me-2"></i><?php echo esc_html__('Categories'); ?></h4>
                             <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
                                 <?php echo do_shortcode('[all_categories]'); ?>
                             </div>
                         </div>
                     <?php endif?>
                     <div id="blog_archive" class="mb-5">
-                        <h4 class="fw-bold museo "><?php echo esc_html__('Archive'); ?></h4>
+                        <h4 class="fw-bold museo mb-4"><i class="bi bi-archive me-2"></i><?php echo esc_html__('Archive'); ?></h4>
                         <?php get_template_part('template-parts/components/archive/archives'); ?>
                     </div>
                 </div>

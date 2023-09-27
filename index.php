@@ -35,7 +35,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
      <div class="container">
          <div class="row row-gap-5">
              <?php if(have_posts()): while(have_posts()): the_post()?>
-                     <?php get_template_part('template-parts/content/content')?>
+                     <?php get_template_part('template-parts/content/content')?> 
                 <?php endwhile; else:?>
                     <?php get_template_part('template-parts/content/content-empty')?>
             <?php endif;wp_reset_postdata();?>

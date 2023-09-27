@@ -79,26 +79,7 @@ $get_prload_img = get_acf_option_field('preloader');
                             </div>
                         </div>
                         <?php
-                        $args = array(
-                            'echo'           => true,
-                            'redirect'       => site_url($_SERVER['REQUEST_URI']), // Redirect to the current page after login
-                            'form_id'        => 'loginform',
-                            'label_username' => 'Username',
-                            'label_password' => 'Password',
-                            'label_remember' => true,
-                            'label_log_in'   => 'Login',
-                            'id_username'    => 'user_login',
-                            'id_password'    => 'user_pass',
-                            'id_remember'    => 'rememberme',
-                            'id_submit'      => 'wp-submit',
-                            'remember'       => true,
-                            'value_remember' => false, // Set this to true to have the "Remember Me" checkbox checked by default
-                            'class_form'     => 'form-signin', // Bootstrap class for the form
-                            'class_submit'   => 'btn btn-success btn-lg w-100 py-3', // Bootstrap class for the submit button
-                            'class_input'    => 'form-control px-4 py-3', // Bootstrap class for input fields
-                        );
-
-                        wp_login_form($args);
+                        wp_login_form();
                         ?>
 
                     </div>

@@ -78,7 +78,6 @@ namespace HERBANEXT_THEME\Inc;
         if ($loop->have_posts()) :
             while ($loop->have_posts()) : $loop->the_post();
                 get_template_part('template-parts/components/blog/recent','post');
-                
             endwhile;
         else :
             esc_html_e('No recent post<br>display', 'herbanext'); // Use proper translation function

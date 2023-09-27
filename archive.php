@@ -6,13 +6,12 @@
 get_header();
 $image_id = get_post_thumbnail_id(get_the_ID());
 $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
-
 $get_blog_img = get_acf_option_field('blog_post_header_image');
 $get_blog_title = get_acf_option_field('blog_post_heading_title');
 ?>
 <main>
  <!-- jumbotron -->
- <section id="jumbotron_product" class="w-100 position-relative">
+ <section id="jumbotron_about" class="w-100 position-relative">
     <?php if(has_post_thumbnail()):?>
         <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
    <?php else: ?>
@@ -30,7 +29,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
                 </h6>
          </div>
      </div>
- </section>  
+ </section>
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">

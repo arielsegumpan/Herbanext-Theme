@@ -9,12 +9,13 @@ $career_position = get_acf_field('career_field');
 ?>
 
 <div class="col-12 col-md-6">
-    <a href="<?php esc_url(the_permalink()) ?>" class="text-decoration-none">
         <div class="card border-0">
            <?php if($featured_image_url) :?>
-            <div class="card-header border-0 p-0">
-                <img src="<?php echo esc_url($featured_image_url) ?>" alt="<?php echo esc_attr( $featured_image_alt ) ?>" class="img-fluid rounded-4">
-            </div>
+            <a href="<?php echo esc_url(the_permalink()) ?>" class="text-decoration-none"></a>
+                <div class="card-header border-0 p-0">
+                    <img src="<?php echo esc_url($featured_image_url) ?>" alt="<?php echo esc_attr( $featured_image_alt ) ?>" class="img-fluid rounded-4">
+                </div>
+            </a>
            <?php endif ?>
             <div class="card-body">
                 <div class="post_small_details d-flex flex-wrap flex-row text-secondary gap-4 mt-4">
@@ -22,7 +23,7 @@ $career_position = get_acf_field('career_field');
                     <h6 class="fw-bold"><?php echo get_the_date('j/ n/ Y') ?></h6>
                 </div>
                 <h1 class="fs-3 museo fw-bold">
-                    <?php esc_html( the_title() )?>
+                    <?php esc_html( the_title() )?> 
                 </h1>
                 <?php if(shortcode_exists('post_categories')) :?>
                 <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
@@ -41,5 +42,4 @@ $career_position = get_acf_field('career_field');
                 <?php endif ?>
             </div>
         </div>
-    </a>
 </div>

@@ -19,6 +19,7 @@
              'herbanext_career_posts'        => 'careers',
              'herbanext_training_seminar_posts' => 'trainingseminars',
              'herbanext_publications_posts'   => 'publications',
+             'herbanext_medicinal_herbs_posts'   => 'medicinal_herbs',
          );
  
          foreach ($shortcodes as $shortcode => $post_type) {

@@ -1,24 +1,17 @@
 <?php
 /**
- * 
+ * Template Name: Medicinal Herbs
  * @package herbanext
  */
-get_header();
-
-$get_publication_bg = get_acf_option_field('publication_post_header_image');
-$get_publication_title = get_acf_option_field('publication_post_heading_title');
-
-?>
-
-
+get_header();?>
 <main>
  <!-- jumbotron -->
- <section id="jumbotron_product" class="w-100 position-relative">
- <img src="<?php echo esc_url($get_publication_bg) ?>" alt="<?php echo esc_html_e($get_publication_title)?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+ <section id="jumbotron_about" class="w-100 position-relative">
+ <img src="<?php echo esc_url($get_ts_bg) ?>" alt="<?php echo esc_html_e($get_ts_title)?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <h1 class="display-2 museo fw-bold text-success">
-                    <?php echo esc_html_e($get_publication_title)?>
+                    <?php echo esc_html_e($get_ts_title)?>
                 </h1>
                 <h6 class="mt-4">
                     <nav aria-label="breadcrumb">
@@ -27,11 +20,11 @@ $get_publication_title = get_acf_option_field('publication_post_heading_title');
                 </h6>
          </div>
      </div>
- </section>  
+ </section>
  <section id="blog">
      <div class="container">
-         <div class="row row-gap-5">
-             <?php echo do_shortcode('[herbanext_publications_posts]')?>
+         <div class="row row-gap-5">asdasdasdasd
+           <?php echo do_shortcode( '[herbanext_medicinal_herbs_posts]' ) ?>
          </div>
          <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
             <div class="row">
@@ -56,7 +49,7 @@ $get_publication_title = get_acf_option_field('publication_post_heading_title');
                     </nav>
                 </div>
             </div>
-            <?php endif?>
+         <?php endif?>
      </div>
  </section>
 </main>

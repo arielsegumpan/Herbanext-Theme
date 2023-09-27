@@ -1,26 +1,34 @@
 <?php
+
 /**
  * Register Herbanext Custom Post Type.
  * @package herbanext
  */
+
 namespace HERBANEXT_THEME\Inc;
+
 use HERBANEXT_THEME\Inc\Traits\Singleton;
 
-class HerbanextCPT{
+class HerbanextCPT
+{
     use Singleton;
 
-    protected function __construct() {
+    protected function __construct()
+    {
         // Add action hooks to register custom post types
         $this->setup_cpt_hooks();
     }
 
-    protected function setup_cpt_hooks(){
+    protected function setup_cpt_hooks()
+    {
         add_action('init', [$this, 'register_careers_post_type']);
         add_action('init', [$this, 'register_publications_post_type']);
         add_action('init', [$this, 'register_trainingseminars_post_type']);
+        add_action('init', [$this, 'register_medicinal_herbs_post_type']);
     }
     // Register Custom Post Type for Careers
-    public function register_careers_post_type() {
+    public function register_careers_post_type()
+    {
         $labels = array(
             'name'                  => 'Careers',
             'singular_name'         => 'Career',
@@ -44,7 +52,7 @@ class HerbanextCPT{
             'show_in_menu'          => true,
             'query_var'             => true,
             'rewrite'               => array('slug' => 'careers'),
-            'taxonomies'            => ['post_tag', 'category'],	
+            'taxonomies'            => ['post_tag', 'category'],
             'capability_type'       => 'post',
             'has_archive'           => true,
             'hierarchical'          => false,
@@ -70,7 +78,8 @@ class HerbanextCPT{
     }
 
     // Register Custom Post Type for Publications
-    public function register_publications_post_type() {
+    public function register_publications_post_type()
+    {
         $labels = array(
             'name'                  => 'Publications',
             'singular_name'         => 'Publication',
@@ -120,7 +129,8 @@ class HerbanextCPT{
     }
 
     // Register Custom Post Type for Training Seminars
-    public function register_trainingseminars_post_type() {
+    public function register_trainingseminars_post_type()
+    {
         $labels = array(
             'name'                  => 'Training Seminars',
             'singular_name'         => 'Training Seminar',
@@ -167,5 +177,54 @@ class HerbanextCPT{
         );
         register_post_type('trainingseminars', $args);
     }
-}
 
+    // Register Custom Post Type for Medicinal Herbs
+    public function register_medicinal_herbs_post_type()
+    {
+        $labels = array(
+            'name'                  => 'Medicinal Herbs',
+            'singular_name'         => 'Medicinal Herb',
+            'menu_name'             => 'Medicinal Herbs',
+            'add_new'               => 'Add New Medicinal Herb',
+            'add_new_item'          => 'Add New Medicinal Herb',
+            'edit_item'             => 'Edit Medicinal Herb',
+            'new_item'              => 'New Medicinal Herb',
+            'all_items'             => 'All Medicinal Herbs',
+            'view_item'             => 'View Medicinal Herb',
+            'search_items'          => 'Search Medicinal Herbs',
+            'not_found'             => 'No medicinal herbs found',
+            'not_found_in_trash'    => 'No medicinal herbs found in trash',
+        );
+
+        $args = array(
+            'labels'                => $labels,
+            'public'                => true,
+            'publicly_queryable'    => true,
+            'show_ui'               => true,
+            'show_in_menu'          => true,
+            'query_var'             => true,
+            'rewrite'               => array('slug' => 'medicinal-herbs'), // Updated slug
+            'taxonomies'            => ['post_tag', 'category'],
+            'capability_type'       => 'post',
+            'has_archive'           => true,
+            'hierarchical'          => false,
+            'menu_position'         => 6,
+            'show_in_rest'          => true,
+            'supports'              => array(
+                'title',
+                'editor',
+                'excerpt',
+                'trackbacks',
+                'custom-fields',
+                'comments',
+                'revisions',
+                'thumbnail',
+                'author',
+                'page-attributes',
+                'permalinks',
+            ),
+            'menu_icon'             => 'dashicons-image-filter', // Icon for Medicinal Herbs
+        );
+        register_post_type('medicinal_herbs', $args); // Updated post type name
+    }
+}

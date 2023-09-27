@@ -60,7 +60,7 @@ function post_categories_by_post_type_shortcode($atts) {
     }
 
     // Define the allowed post types
-    $allowed_post_types = array('careers', 'publications', 'trainingseminars', 'post');
+    $allowed_post_types = array('careers', 'publications', 'trainingseminars', 'post','medicinalherbs');
 
     // Get the post's post type
     $post_type = get_post_type($post);
@@ -93,12 +93,10 @@ function display_all_categories() {
     $categories = get_categories(array(
         'hide_empty' => 0,
     ));
-
     if (empty($categories)) {
         echo 'No categories found.';
         return;
     }
-
     foreach ($categories as $category) {
         $category_link = esc_url(get_category_link($category->term_id));
         $category_name = esc_html($category->name);
@@ -115,20 +113,16 @@ add_shortcode('all_categories', 'display_all_categories');
 // Breadcrumbs
 function custom_breadcrumbs() {
     echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'your-herbanext').'</a>';
-
     $delimiter = "&nbsp;&nbsp;&#187;&nbsp;&nbsp;"; // Delimiter between breadcrumbs
-
     if (is_archive() || is_home()) {
         echo $delimiter . '<span>' . esc_html(wp_title('', false)) . '</span>';
     }
-
     if (is_category() || is_single()) {
         $post_type = get_post_type();
         $post_type_slug = ($post_type == 'post') ? __('News', 'herbanext') : ucfirst($post_type);
 
         $archive_link = esc_url(get_post_type_archive_link($post_type));
         echo $delimiter . '<a class="text-success text-decoration-none" href="' . esc_url($archive_link) . '">' . esc_html($post_type_slug) . '</a>';
-
         if (is_single()) {
             echo $delimiter . the_title('', '', false);
         }
@@ -139,7 +133,6 @@ function custom_breadcrumbs() {
         echo $delimiter . __('Search Results for...', 'your-herbanext') . ' "<em>' . esc_html(get_search_query()) . '</em>"';
     }
 }
-
 // Remove the product title from WooCommerce product loop
 add_action('init', 'remove_loop_title');
 function remove_loop_title() {

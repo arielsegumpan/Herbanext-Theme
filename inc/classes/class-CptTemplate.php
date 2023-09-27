@@ -16,7 +16,7 @@ class CustomPostTypeArchiveTemplate {
     }
 
     public function locate_custom_post_type_archive_template($template) {
-        $custom_post_types = ['careers', 'publications', 'trainingseminars'];
+        $custom_post_types = ['careers', 'publications', 'trainingseminars','medicinal_herbs'];
 
         foreach ($custom_post_types as $post_type) {
             if (is_post_type_archive($post_type)) {

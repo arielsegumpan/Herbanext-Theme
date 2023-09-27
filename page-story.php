@@ -152,50 +152,49 @@ $quality_standard = get_acf_field('quality_standard');
         <?php endif ?>
         <!-- mission vision -->
         <?php if (!empty($mission_and_vision)) : ?>
-            <div class="mission_vision">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <?php if (!empty($mission_and_vision['mission_image'])) : ?>
-                                <img src="<?php echo esc_url($mission_and_vision['mission_image']['url']) ?>" alt="<?php echo esc_attr($mission_and_vision['mission_image']['alt']) ?>" class="img-fluid rounded-5">
-                            <?php endif ?>
+            <div class="mission_vision container">
+                <div class="row">
+                    <div class="col-12">
+                        <?php if (!empty($mission_and_vision['mission_image'])) : ?>
+                            <img src="<?php echo esc_url($mission_and_vision['mission_image']['url']) ?>" alt="<?php echo esc_attr($mission_and_vision['mission_image']['alt']) ?>" class="img-fluid rounded-5">
+                        <?php endif ?>
+                    </div>
+                    <div class="col-12 col-md-6 mx-auto text-center mt-5">
+                        <div class="mission">
+                            <h1 class="museo dispaly-5 fw-bold"><?php echo esc_html($mission_and_vision['mission_title']) ?></h1>
+                            <p class="lh-lg lead"><?php echo esc_html($mission_and_vision['mission_subheading']) ?></p>
                         </div>
+                    </div>
+                </div>
+                <div class="vision">
+                    <div class="row mb-5">
                         <div class="col-12 col-md-6 mx-auto text-center mt-5">
                             <div class="mission">
-                                <h1 class="museo dispaly-5 fw-bold"><?php echo esc_html($mission_and_vision['mission_title']) ?></h1>
-                                <p class="lh-lg lead"><?php echo esc_html($mission_and_vision['mission_subheading']) ?></p>
+                                <h1 class="museo display-5 fw-bold"><?php echo esc_html($mission_and_vision['vision_title']) ?></h1>
                             </div>
                         </div>
                     </div>
-                    <div class="vision">
-                        <div class="row mb-5">
-                            <div class="col-12 col-md-6 mx-auto text-center mt-5">
-                                <div class="mission">
-                                    <h1 class="museo display-5 fw-bold"><?php echo esc_html($mission_and_vision['vision_title']) ?></h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-cols row-cols-md-2 row-cols-lg-3 row-gap-5">
-                            <?php if (!empty($vision_cards)) : ?>
-                                <?php foreach ($vision_cards as $key => $vision_card) : ?>
-                                    <div class="col">
-                                        <div class="d-flex flex-row justify-content-between align-items-start gap-3">
-                                            <?php if (!empty($vision_card['icon']['url'])) : ?>
-                                                <img src="<?php echo esc_url($vision_card['icon']['url']) ?>" alt="<?php echo esc_attr($vision_card['icon']['alt']) ?>" class="bg-gray rounded-5 p-3">
-                                            <?php endif ?>
-                                            <div class="vision_title_Wrap">
-                                                <h6 class="museo fw-bold fs-3"><?php echo esc_html($vision_card['title']) ?></h6>
-                                                <small class="text-secondary"><?php echo wp_kses_post($vision_card['content']) ?></small>
-                                            </div>
+                    <div class="row row-cols row-cols-md-2 row-cols-lg-3 row-gap-5">
+                        <?php if (!empty($mission_and_vision['herbanext_visions'])) : ?>
+                            <?php foreach ($mission_and_vision['herbanext_visions'] as $item) : ?>
+                                <div class="col">
+                                    <div class="d-flex flex-row justify-content-between align-items-start gap-3">
+                                        <?php if (!empty($item['icon']['url'])) : ?>
+                                            <img src="<?php echo esc_url($item['icon']['url']) ?>" alt="<?php echo esc_attr($item['icon']['alt']) ?>" class="bg-gray rounded-5 p-3">
+                                        <?php endif ?>
+                                        <div class="vision_title_Wrap">
+                                            <h6 class="museo fw-bold fs-3"><?php echo esc_html($item['title']) ?></h6>
+                                            <small class="text-secondary"><?php echo wp_kses_post($item['content']) ?></small>
                                         </div>
                                     </div>
-                                <?php endforeach ?>
-                            <?php endif ?>
-                        </div>
+                                </div>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
         <?php endif ?>
+
         <!-- core vlaues -->
         <?php if (!empty($core_values)) : ?>
             <div class="core_values bg-success">

@@ -1,8 +1,7 @@
 <select name="archive-dropdown" class="form-control custom-select" id="exampleFormControlSelect1" onChange='document.location.href=this.options[this.selectedIndex].value;'>
     <option disabled selected value=""><?php echo esc_attr(__('Select')); ?></option>
     <?php
-    $custom_post_types = array('post', 'careers', 'publications', 'trainingseminars');
-    
+    $custom_post_types = array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs');
     foreach ($custom_post_types as $post_type) {
         $post_type_object = get_post_type_object($post_type);
         $post_count = wp_count_posts($post_type)->publish;

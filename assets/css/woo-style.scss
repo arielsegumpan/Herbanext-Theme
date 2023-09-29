@@ -112,11 +112,23 @@ section#product_lists{
     color: $warning!important;
 }
 
-// X-Small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
+    .woocommerce #review_form #respond form#commentform p label{
+        margin-bottom: 1rem!important;
+        font-weight: bold!important;
+    }
+    .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) #respond input#submit, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button, .woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) input.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce #respond input#submit, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce button.button, :where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce input.button {
+        padding: 1.3rem 3rem!important;
+        border-radius: 10px!important;
+        color: $white!important;
+        background-color: $green!important;
+        margin-top: 3rem!important;
+    }
+    .woocommerce #reviews #comment{
+        height: 140px!important;
+    }
     section#jumbotron_about{
         h6{
             display: none;

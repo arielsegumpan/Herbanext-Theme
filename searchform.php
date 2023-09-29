@@ -1,9 +1,7 @@
-<?php
-$aria_label = !empty($args['label']) ? 'aria-label="' . esc_attr($args['label']) . '"' : '';
-$search_query = esc_attr(get_search_query());
-?>
-
-<form role="search" <?php echo $aria_label; ?> method="get" action="<?php echo esc_url(home_url('/')); ?>">
-<input type="hidden" name="post_type" value="any"> <!-- Set a default post type -->
-        <input type="search" class="form-control px-3 py-2" name="s" value="<?php echo $search_query; ?>" placeholder="Search here" required />
+<form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+    <label>
+        <span class="screen-reader-text">Search for:</span>
+        <input type="search" class="search-field" placeholder="Search..." value="<?php echo get_search_query(); ?>" name="s" />
+    </label>
+    <button type="submit" class="search-submit"><span class="screen-reader-text">Search</span></button>
 </form>

@@ -24,13 +24,22 @@ $(document).ready(function () {
     $('.woocommerce-pagination .next a').addClass('page-link');
     $('#review_form textarea#comment').addClass('form-control');
     $('.woocommerce div.product .woocommerce-product-rating a.woocommerce-review-link').addClass('text-decoration-none ps-4 d-flex flex-row pt-1');
-    // $('.woocommerce div.product .woocommerce-product-rating').addClass('d-flex flex-column justify-content-start');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond p.comment-form-comment textarea#comment').addClass('form-control p-3');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform p.comment-form-author input#author').addClass('form-control p-3');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform p.comment-form-email input#email').addClass('form-control p-3');
+   
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond p.comment-form-comment').addClass('mb-4');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform p.comment-form-author').addClass('mb-4');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform p.comment-form-email').addClass('mb-4');
 
-
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating').addClass('my-5');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating p.stars').addClass('fs-3');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating p.stars a').addClass('text-success');
+    $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating label').addClass('mb-3');
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
 
-    icons.forEach (icon => {  
+    icons.forEach (icon => {    
         icon.addEventListener('click', (event) => {
             icon.classList.toggle("open");
         });

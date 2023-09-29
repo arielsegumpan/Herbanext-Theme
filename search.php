@@ -33,7 +33,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
                 <?php endwhile; else:?>
                     <?php get_template_part('template-parts/content/content-empty')?>
             <?php endif;wp_reset_postdata();?>
-         </div>
+         </div> 
         <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
          <div class="row">
             <div class="container text-center">

@@ -156,6 +156,8 @@ function custom_breadcrumbs() {
   function remove_loop_title() {
       remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
   }
+
+
   remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
   add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
   function new_woocommerce_page_title( $page_title ) {
@@ -163,12 +165,11 @@ function custom_breadcrumbs() {
           return '<span class="fw-bold fs-2">Prodcut Catalog</span>';
       }
   }
-// add hidden field in search input field
-function custom_search_form($form) {
-    $post_types = array('careers', 'post', 'publications', 'trainingseminars', 'medicinal_herbs');
-    foreach ($post_types as $post_type) {
-        $form = str_replace('<input type="search"', '<input type="hidden" name="post_type[]" value="' . esc_attr($post_type) . '"><input type="search"', $form);
+
+add_action('pre_get_posts', 'custom_post_type_search');
+function custom_post_type_search($query) {
+    if ($query->is_search && !is_admin()) {
+        $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
     }
-    return $form;
 }
-add_filter('get_search_form', 'custom_search_form');
+

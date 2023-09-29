@@ -69,14 +69,11 @@ class Woofeat {
     }
     // Customize the number of products per row
     function custom_woocommerce_loop_columns() {
-        return 3; // Change this number to adjust the number of products per row
+        return 4; // Change this number to adjust the number of products per row
     }
   
-
     // Customize the number of products per page
     function custom_woocommerce_products_per_page() {
         return 9; // Change this number to adjust the number of products per page
     }
-    
-
 }

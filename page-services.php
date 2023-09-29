@@ -4,26 +4,37 @@
  * @package herbanext
  */
 get_header();
-$service_image_id = get_post_thumbnail_id();
-$service_alt_text = get_post_meta($service_image_id, '_wp_attachment_image_alt', true);
-$jumb = get_acf_field('services_jumbotron');
+
+$service_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
+
+$acf_services_fields = array(
+    'jumb_serv_dev' => 'services_page_jumbotron',
+    'serv_cont_1' => 'services_page_content_1',
+    'serv_cont_2' => 'services_page_content_2',
+    'serv_cont_3' => 'services_page_content_3',
+    'serv_cont_4' => 'services_page_content_4',
+);
+$acf_services_values = array();
+
+foreach ($acf_services_fields as $key => $field_name) {
+    $acf_services_values[$key] = get_acf_field($field_name);
+}
 ?>
     <main>
-        <!-- jumbotron -->
+        <?php if (!empty($acf_services_values['jumb_serv_dev'])) : ?>
         <section id="jumbotron_about" class="w-100 position-relative">
-            <?php if(!empty($jumb['jumbotron_image'])):?>
-                <img src="<?php echo esc_url($jumb['jumbotron_image']['url']) ?>" alt="<?php echo esc_url($jumb['jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
-            <?php else:?>
-                <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($service_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
-            <?php endif?>
+            <?php if (!empty($acf_services_values['jumb_serv_dev']['image'])) : ?>
+                <img src="<?php echo esc_url($acf_services_values['jumb_serv_dev']['image']['url']) ?>" alt="<?php echo esc_attr($acf_services_values['jumb_serv_dev']['image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+            <?php else : ?>
+                <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($prod_dev_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <?php endif ?>
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">
-                <?php
-                    if(is_page() && !is_front_page()):?>
+                    <?php if (is_page() && !is_front_page()) : ?>
                         <h1 class="display-2 museo fw-bold text-success">
                             <?php single_post_title() ?>
                         </h1>
-                    <?php endif?>
+                    <?php endif ?>
                     <h6 class="mt-4">
                         <nav aria-label="breadcrumb">
                             <?php custom_breadcrumbs() ?>
@@ -31,112 +42,113 @@ $jumb = get_acf_field('services_jumbotron');
                     </h6>
                 </div>
             </div>
-        </section>  
-
-         <!-- CONTENT 1-->
-       <section id="about">
-        <?php if($cont_sec_1) : ?>
-            <div class="who_are_are">
-                <div class="container">
+        </section>
+        <?php endif?>
+        <section id="about">
+            <?php if (!empty($acf_services_values['serv_cont_1'])) :?>
+            <!-- CONTENT 1 -->
+            <div class="novel_portfolio bg-success">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
-                            <h1 class="display-3 museo fw-bold"><?php echo esc_html_e($cont_sec_1['content_title']) ?></h1>
-                            <p class="lh-lg text-secondary mt-5">
-                            <?php echo wp_kses_decode_entities($cont_sec_1['content'])?>
+                        <div class="col-12 col-lg-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
+                            <div id="services_carous" class="owl-theme owl-carousel position-relative">
+                            <?php if (!empty($acf_services_values['serv_cont_1']['slide_images'])) : 
+                                foreach ($acf_services_values['serv_cont_1']['slide_images'] as $key =>  $slide_image) : ?>
+                                    <div class="item">
+                                        <img src="<?php echo esc_url($slide_image['image']['url']); ?>" alt="<?php echo esc_attr($slide_image['image']['alt']); ?>" class="img-fluid rounded-5 object-fit-cover">
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 text-center text-lg-start my-auto pe-lg-5 mt-5 mt-lg-0 pt-md-4">
+                            <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($acf_services_values['serv_cont_1']['title']) ?></h1>
+                            <p class="text-secondary text-gray lh-lg">
+                               <?php echo nl2br(esc_textarea( $acf_services_values['serv_cont_1']['content'] )) ?>
                             </p>
                         </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="row mb-4">
-                                <?php foreach ($cont_imgs as $key => $cont_img):?>
-                                <div class="col<?php echo $key === array_key_first($cont_imgs) ? '-12 mb-4' : '' ?>">
-                                    <img src="<?php echo esc_url($cont_img['image']['url'])?>" alt="<?php echo esc_attr($cont_img['image']['alt'])?>" class="img-fluid w-100 rounded-5 object-fit-cover">
-                                </div>
-                                <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+            <?php endif?>
+            <?php if (!empty($acf_services_values['serv_cont_2']['background_image']) && !empty($acf_services_values['serv_cont_2']['title'])) :?>
+            <!-- CONTENT 2 -->
+            <div class="organic position-relative w-100">
+                <img id="organic_img" src="<?php echo esc_url($acf_services_values['serv_cont_2']['background_image']['url']) ?>" alt="<?php echo esc_attr($acf_services_values['serv_cont_2']['background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
+                <div class="bg_color"></div>
+                <div class="container position-absolute">
+                    <div class="row">
+                        <div class="col-12 col-lg-7 me-auto my-auto px-5 px-md-auto">
+                            <h2 class="museo dispaly-5 text-success fw-bold text-center text-lg-start pe-lg-5 mb-5"><?php echo esc_html_e($acf_services_values['serv_cont_2']['title']) ?></h2>
+                            <div class="row row-cols-2 g-4">
+                            <?php if (!empty($acf_services_values['serv_cont_2']['images'])) : 
+                                foreach ($acf_services_values['serv_cont_2']['images'] as $key =>  $get_image) : ?>
+                                    <div class="org_img">
+                                        <img src="<?php echo esc_url($get_image['image']['url']); ?>" alt="<?php echo esc_attr($get_image['image']['alt']); ?>" class="img-fluid rounded-5 object-fit-cover">
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php endif ?>
-
-        <!-- CONTENT 2 -->
-        <?php if($cont_sec_2) :?>
-        <div class="novel_portfolio bg-success">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
-                        <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($cont_sec_2['content_title']) ?></h1>
-                        <img src="<?php echo esc_url($cont_sec_2['content_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_2['content_image']['alt']) ?>" class="img-fluid rounded-5">
-                    </div>
-                    <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
-                        <p class="text-secondary text-gray lh-lg">
-                            <?php echo esc_textarea(nl2br($cont_sec_2['content'])) ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endif ?>
-
-
-        <!-- CONTENT 3 -->
-        <?php if($cont_sec_3) :?>
-        <div class="organic position-relative w-100">
-            <img id="organic_img" src="<?php echo esc_url($cont_sec_3['content_3_background_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_3['content_3_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
-            <div class="container position-absolute">
-                <div class="row">
-                    <div class="col-12 col-lg-8 col-xl-6 me-auto my-auto px-5 px-md-auto">
-                        <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html_e($cont_sec_3['content_title']) ?></h1>
-                        <p class="lh-lg text-secondary mt-5">
-                            <?php echo esc_textarea(nl2br($cont_sec_3['content']))?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endif ?>
-
-        <!-- CONTENT 4 -->
-        <?php if($cont_sec_4) :?>
-        <div class="innovative">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                    <img src="<?php echo esc_url($cont_sec_4['content_4_image']['url']) ?>" alt="<?php echo esc_attr($cont_sec_4['content_4_image']['alt']) ?>" class="img-fluid rounded-5">
-                    </div>
-                    <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
-                        <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0"><?php echo esc_html_e($cont_sec_4['content_title']) ?></h1>
-                        <p class="lh-lg text-secondary mt-5">
-                           <?php echo esc_textarea(nl2br($cont_sec_4['content'])) ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endif ?>
-
-        <!-- CONTENT 5 -->
-        <?php if($cont_sec_5) :?>
-        <div class="quality_standard bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h1 class="museo dispaly-5 fw-bold text-center text-md-start"><?php echo esc_html_e($cont_sec_5['content_title']) ?></h1>
-                        <p class="lh-lg mt-5"><?php echo esc_textarea(nl2br($cont_sec_5['content'])) ?></p>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="row">
-                            <?php foreach ($cont_imgs_5 as $key => $cont_img_5):?>
-                                <div class="col<?php echo $key === array_key_last($cont_imgs_5) ? '-12' : ' mb-4' ?>">
-                                    <img src="<?php echo esc_url($cont_img_5['image']['url'])?>" alt="<?php echo esc_attr($cont_img_5['image']['alt'])?>" class="img-fluid w-100 rounded-5 object-fit-cover">
+            <?php endif?>
+            <?php if (!empty($acf_services_values['serv_cont_3']['services_lists'])) :?>
+            <!-- CONTENT 3 -->
+            <div class="certified_toll">
+                <div class="container">
+                    <div class="row row-cols-2 g-4">
+                        <?php foreach($acf_services_values['serv_cont_3']['services_lists'] as $key => $service_list):?>
+                        <div class="cert_img">
+                            <a href="<?php echo esc_url($service_list['page_link_to']) ?>" class="text-decoration-none">
+                                <div class="card mb-3 border-0" >
+                                    <div class="row g-0">
+                                        <?php if(!empty($service_list['card_image'])) :?>
+                                        <div class="col-md-4">
+                                            <img src="<?php echo esc_url($service_list['card_image']['url']) ?>" alt="<?php echo esc_attr($service_list['card_image']['alt']) ?>" class="img-fluid rounded-5">
+                                        </div>
+                                        <?php endif?>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                            <h3 class="card-title museo"><?php echo esc_html_e($service_list['title']) ?></h3>
+                                            <p class="card-text text-secondary"><?php echo nl2br(esc_textarea( $service_list['excerpt'] ))?></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            <?php endforeach ?>
+                            </a>
+                        </div>
+                        <?php endforeach?>
+                    </div>
+                </div>
+            </div>
+            <?php endif?>
+
+            <?php if (!empty($acf_services_values['serv_cont_4']['title']) && !empty($acf_services_values['serv_cont_4']['content'])) :?>
+            <!-- CONTENT 4 -->
+            <div class="quality_standard">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h1 class="museo dispaly-5 fw-bold text-center text-md-start"><?php echo esc_html_e($acf_services_values['serv_cont_4']['title']) ?></h1>
+                            <p class="lh-lg mt-5"><?php echo nl2br(esc_textarea( $acf_services_values['serv_cont_4']['content'] )) ?></p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="row">
+                            <?php if (!empty($acf_services_values['serv_cont_4']['images'])) : 
+                            foreach ($acf_services_values['serv_cont_4']['images'] as $key =>  $getimage) : ?>
+                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>">
+                                    <img src="<?php echo esc_url($getimage['image']['url']); ?>" alt="<?php echo esc_attr($getimage['image']['alt']); ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
+                                </div>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php endif ?>
+            <?php endif?>
        </section>
     </main>
 <?php

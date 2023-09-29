@@ -137,12 +137,7 @@ $jumb = get_acf_field('services_jumbotron');
             </div>
         </div>
         <?php endif ?>
-        
        </section>
     </main>
-
-
-
-
 <?php
 get_footer()?>

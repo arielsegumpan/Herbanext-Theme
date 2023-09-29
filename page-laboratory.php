@@ -96,7 +96,7 @@ foreach ($acf_fields as $key => $field_name) {
             </div>
         </div>
         <?php endif?>
-        <!-- quality standards -->
+         <!-- POST CONTENT  -->
         <?php if(!empty( get_the_content())):?>
         <div class="quality_standard bg-gray">
             <div class="container">
@@ -105,7 +105,7 @@ foreach ($acf_fields as $key => $field_name) {
                        <div class="container">
                         <div class="row">
                             <div id="qual_content" class="overflow-x-scroll">
-                                <?php get_template_part('template-parts/components/blog/lab','content') ?>
+                                <?php get_template_part('template-parts/components/blog/services','content') ?>
                             </div>
                         </div>
                        </div>
@@ -123,7 +123,7 @@ foreach ($acf_fields as $key => $field_name) {
                         <?php if(!empty($acf_lab_values['lab_cont_3']['title']) || !empty($acf_lab_values['lab_cont_3']['content'])) :?>
                        <div id="scrollContent" class="qual_wrapper mb-5 text-center text-lg-start">
                             <h1 class="museo dispaly-5 fw-bold text-center text-lg-start mb-5"><?php echo wp_kses_decode_entities($acf_lab_values['lab_cont_3']['title']) ?></h1>
-                            <p class="lh-lg text-secondary"><?php echo esc_textarea($acf_lab_values['lab_cont_3']['content']) ?></p>
+                            <p class="lh-lg text-secondary"><?php echo nl2br(esc_textarea($acf_lab_values['lab_cont_3']['content'])) ?></p>
                        </div>
                        <?php endif?>
                        <?php

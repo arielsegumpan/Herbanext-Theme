@@ -28,7 +28,7 @@ $partner_team = get_acf_field('partner_team');
         <div class="novel_portfolio bg-success">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
+                    <div class="col-12 col-lg-6 px-md-5 mb-5 mb-lg-0 text-center text-md-start">
                         <div class="mb-5">
                             <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($partner_sec['partner_title']) ?></h1>
                             <div class="text-white lh-lg">
@@ -37,7 +37,7 @@ $partner_team = get_acf_field('partner_team');
                         </div>
                         <img src="<?php echo esc_url($partner_sec['partner_image']['url']) ?>" alt="<?php echo esc_url($partner_sec['partner_image']['alt']) ?>" class="img-fluid rounded-5">
                     </div>
-                    <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
+                    <div class="col-12 col-lg-6 px-md-5 px-lg-auto text-center text-md-start my-auto pe-lg-5">
                         <?php echo wp_kses_decode_entities($partner_sec['partner_form'])?>
                     </div>
                 </div>

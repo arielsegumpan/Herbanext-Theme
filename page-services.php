@@ -4,13 +4,18 @@
  * @package herbanext
  */
 get_header();
-
-
+$service_image_id = get_post_thumbnail_id();
+$service_alt_text = get_post_meta($service_image_id, '_wp_attachment_image_alt', true);
+$jumb = get_acf_field('services_jumbotron');
 ?>
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
-            <img src="<?php echo esc_url($jumb['jumbotron_background_image']['url']) ?>" alt="<?php echo esc_url($jumb['jumbotron_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <?php if(!empty($jumb['jumbotron_image'])):?>
+                <img src="<?php echo esc_url($jumb['jumbotron_image']['url']) ?>" alt="<?php echo esc_url($jumb['jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+            <?php else:?>
+                <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($service_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <?php endif?>
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">
                 <?php
@@ -37,7 +42,7 @@ get_header();
                         <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
                             <h1 class="display-3 museo fw-bold"><?php echo esc_html_e($cont_sec_1['content_title']) ?></h1>
                             <p class="lh-lg text-secondary mt-5">
-                            <?php echo esc_textarea(nl2br($cont_sec_1['content']))?>
+                            <?php echo wp_kses_decode_entities($cont_sec_1['content'])?>
                             </p>
                         </div>
                         <div class="col-12 col-lg-6">

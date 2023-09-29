@@ -16,10 +16,11 @@ $shop = get_field('herbanext_shop', $shop_page_id);
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                     <h1 class="display-2 museo fw-bold text-success">
-                       Our Products
+                      <?php echo esc_html_e('Our Products')?>
                     </h1>
-                    <h6 class="mt-4">
-                        Home / Products
+                    <h6 class="mt-4 fs-6">
+                        <!-- display breadcrumb -->
+                    <?php class_exists('WooCommerce') ? woocommerce_breadcrumb() : '' ?>
                     </h6>
                 </div>
             </div>
@@ -62,6 +63,12 @@ $shop = get_field('herbanext_shop', $shop_page_id);
                                 dynamic_sidebar('herbanext-product-sidebar');
                             endif;
                             ?>
+
+                            <hr class="my-5">
+                            <div id="product_categories" class="mb-5">
+                                <h4 class="fw-bold museo"><?php echo esc_html_e('Product Categories') ?></h4>
+                                <?php echo do_shortcode( '[herbanext_product_categories]' ) ?>
+                            </div>
                         </div>
                     <?php endif ?>
                 </div>

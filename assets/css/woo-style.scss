@@ -115,6 +115,18 @@ section#product_lists{
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
+    main section#jumbotron_product h6 nav.woocommerce-breadcrumb a{
+        color:#1a1a1a!important;
+
+    }
+    .widget.widget_block .wp-block-product-new .wc-block-grid__products li.wc-block-grid__product a.wc-block-grid__product-link{
+        text-decoration: none!important;
+        color: $green!important;
+        font-family: $museo!important;
+    }
+    .widget.widget_block .wp-block-product-new .wc-block-grid__products li.wc-block-grid__product a.wc-block-grid__product-link .wc-block-grid__product-image img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail{
+        border-radius: 25px!important;
+    }
     .woocommerce #review_form #respond form#commentform p label{
         margin-bottom: 1rem!important;
         font-weight: bold!important;

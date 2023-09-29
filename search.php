@@ -7,6 +7,12 @@ get_header();
 
 $get_blog_img = get_acf_option_field('blog_post_header_image');
 $get_blog_title = get_acf_option_field('blog_post_heading_title');
+
+$s=get_search_query();
+$args = array(
+                's' =>$s
+            );
+$the_query = new WP_Query( $args );
 ?>
 <main>
  <!-- jumbotron -->
@@ -28,7 +34,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
  <section id="blog">
      <div class="container">
          <div class="row row-gap-5">
-             <?php if(have_posts()): while(have_posts()): the_post()?>
+             <?php if($the_query->have_posts()): while($the_query->have_posts()): $the_query->the_post()?>
                      <?php get_template_part('template-parts/content/content')?> 
                 <?php endwhile; else:?>
                     <?php get_template_part('template-parts/content/content-empty')?>

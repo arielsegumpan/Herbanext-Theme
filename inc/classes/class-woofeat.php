@@ -19,6 +19,7 @@ class Woofeat {
         add_action('woocommerce_after_shop_loop_item', [$this,'custom_add_buttons_to_product_loop'], 5);
         add_filter('loop_shop_columns',[$this,'custom_woocommerce_loop_columns']);
         add_filter('loop_shop_per_page', [$this,'custom_woocommerce_products_per_page']);
+        add_shortcode('herbanext_product_categories', [$this,'herbanext_categories_shortcode']);
     }
 
     function custom_get_featured_products_shortcode() {
@@ -76,4 +77,25 @@ class Woofeat {
     function custom_woocommerce_products_per_page() {
         return 9; // Change this number to adjust the number of products per page
     }
+
+    // get all product categories
+    function herbanext_categories_shortcode() {
+      // Get WooCommerce categories
+    $woocommerce_categories = get_terms(array(
+            'taxonomy' => 'product_cat',
+            'hide_empty' => true,
+        ));
+
+        // Generate output
+        $output = '<div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">';
+        foreach ($woocommerce_categories as $category) {
+            $output .= '<a class="text-decoration-none  mb-2" href="' . esc_url(get_term_link($category)) . '"><span class="badge text-bg-green rounded-2 text-small px-3 me-2">
+            ' . esc_html($category->name) . '</span></a>';
+        }
+        $output .= ' </div>';
+
+        return $output;
+    }
+    
+    
 }

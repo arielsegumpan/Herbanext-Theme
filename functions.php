@@ -88,10 +88,9 @@ function post_categories_by_post_type_shortcode($atts) {
         // Get the post's categories
         $categories = get_the_category();
         $output = '';
-
         if (!empty($categories)) {
             foreach ($categories as $category) {
-                $output .= '<a href="' . get_category_link($category->term_id) . '" class="text-decoration-none mb-2">
+                $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="text-decoration-none mb-2">
                     <span class="badge text-bg-green rounded-2 text-small px-3 me-2">
                     ' . $category->name . '</span></a>';
             }
@@ -166,10 +165,10 @@ function custom_breadcrumbs() {
       }
   }
 
-add_action('pre_get_posts', 'custom_post_type_search');
-function custom_post_type_search($query) {
-    if ($query->is_search && !is_admin()) {
-        $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
-    }
-}
+// add_action('pre_get_posts', 'custom_post_type_search');
+// function custom_post_type_search($query) {
+//     if ($query->is_search && !is_admin()) {
+//         $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
+//     }
+// }
 

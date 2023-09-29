@@ -83,15 +83,14 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
         </div>
         <?php endif ?>
 
-
         <!-- CONTENT 3 -->
         <?php if($cont_sec_3) :?>
         <div class="organic position-relative w-100">
-            <img src="<?php echo esc_url($cont_sec_3['content_3_background_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_3['content_3_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
+            <img id="organic_img" src="<?php echo esc_url($cont_sec_3['content_3_background_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_3['content_3_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
             <div class="container position-absolute">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xl-6 me-auto my-auto px-5 px-md-auto">
-                        <h1 class="museo dispaly-5 text-success fw-bold pe-5"><?php echo esc_html_e($cont_sec_3['content_title']) ?></h1>
+                        <h1 class="museo dispaly-5 text-success fw-bold pe-lg-5"><?php echo esc_html_e($cont_sec_3['content_title']) ?></h1>
                         <p class="lh-lg text-secondary mt-5">
                             <?php echo _e(nl2br($cont_sec_3['content']))?>
                         </p>

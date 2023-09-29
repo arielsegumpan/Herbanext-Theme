@@ -82,7 +82,7 @@ $jumb = get_acf_field('services_jumbotron');
         <!-- CONTENT 3 -->
         <?php if($cont_sec_3) :?>
         <div class="organic position-relative w-100">
-            <img src="<?php echo esc_url($cont_sec_3['content_3_background_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_3['content_3_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
+            <img id="organic_img" src="<?php echo esc_url($cont_sec_3['content_3_background_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_3['content_3_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
             <div class="container position-absolute">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xl-6 me-auto my-auto px-5 px-md-auto">

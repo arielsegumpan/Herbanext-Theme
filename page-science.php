@@ -71,7 +71,7 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
        <?php endif?>
         <?php if(!empty($science_page['science_section_content_3'])) :?>
         <div class="organic position-relative w-100">
-            <img src="<?php echo esc_url($science_page['science_section_content_3']['background_image']['url']) ?>" alt="<?php echo esc_attr($science_page['science_section_content_3']['background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
+            <img id="organic_img" src="<?php echo esc_url($science_page['science_section_content_3']['background_image']['url']) ?>" alt="<?php echo esc_attr($science_page['science_section_content_3']['background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
             <div class="container position-absolute">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">

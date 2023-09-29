@@ -101,7 +101,7 @@ $quality_standard = get_acf_field('quality_standard');
         <!-- organic -->
         <?php if (!empty($organic)) : ?>
             <div class="organic position-relative w-100">
-                <img src="<?php echo esc_url($organic['oragnic_image']['url']) ?>" alt="<?php echo esc_attr($organic['oragnic_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
+                <img id="organic_img" src="<?php echo esc_url($organic['oragnic_image']['url']) ?>" alt="<?php echo esc_attr($organic['oragnic_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
                 <div class="container position-absolute">
                     <div class="row">
                         <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">

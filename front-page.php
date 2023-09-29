@@ -20,7 +20,7 @@ $newsupdates = get_acf_field('news_and_updates');
 $partnerus = get_acf_field('partner_with_us');
 ?>
 <main>
-        <?php if($jumbotron) :?>
+        <?php if(!empty($jumbotron['title']) && !empty($jumbotron['subtitle']) && !empty($jumbotron['jumbotron_image'])) :?>
         <!-- jumbotron -->
         <section id="jumbotron" class="w-100 position-relative">
                 <img src="<?php echo esc_url($jumbotron['jumbotron_image']['url']) ?>" alt="<?php echo esc_attr( $jumbotron['jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
@@ -49,7 +49,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php endif;?>
 
         <!-- features -->
-        <?php if($features) :?>
+        <?php if(!empty($features['feature_title']) && !empty($features['feature_content'])) :?>
         <section id="features" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
@@ -57,13 +57,13 @@ $partnerus = get_acf_field('partner_with_us');
                         <div class="features_title text-white">
                             <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($features['feature_title']) ?></h1>
                             <p class="lh-lg">
-                                <?php echo esc_textarea(nl2br($features['feature_content'])) ?>
+                                <?php echo nl2br(esc_textarea($features['feature_content'])) ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <?php if($feat_repeaters != null) :?>
+                    <?php if(!empty($feat_repeaters)) :?>
                             <?php foreach($feat_repeaters as $key => $feat_repeater) :?>
                             <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : '' ?>  mb-5 mb-md-0">
                                 <div class="feature_icon mb-5">
@@ -83,7 +83,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php endif;?>
 
         <!-- story -->
-        <?php if($story) : ?>
+        <?php if(!empty($story['story_title']) && !empty($story['story_content'])) : ?>
         <section id="story">
             <div class="container-fluid">
                 <div class="row">
@@ -102,11 +102,9 @@ $partnerus = get_acf_field('partner_with_us');
                         <?php if($story['story_carousel']):?>
                         <div id="story" class="owl-theme owl-carousel position-relative">
                             <?php foreach($story_carousel_imgs as $story_carousel_img) :?>
-
                                 <div class="item">
                                     <img src="<?php echo esc_url($story_carousel_img['story_carousel_image']['url']) ?>" alt="<?php echo esc_attr($story_carousel_img['story_carousel_image']['alt']) ?>" class="img-fluid">
                                 </div>
-
                             <?php endforeach ?>
                         </div>
                         <?php endif; ?>
@@ -117,7 +115,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php endif; ?>
 
         <!-- services -->
-        <?php if($services) :?>
+        <?php if(!empty($services['service_title']) && !empty($services['service_content'])) :?>
         <section id="services" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
@@ -131,7 +129,7 @@ $partnerus = get_acf_field('partner_with_us');
                     </div>
                 </div>
                 <div class="row">
-                <?php if($services_icons):?>
+                <?php if(!empty($services_icons)):?>
                     <?php foreach ($services_icons as $services_icon):?>
                         <div class="col mb-5 mb-md-auto">
                             <div class="d-flex flex-row gap-4 text-white align-items-center museo">
@@ -156,7 +154,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php endif ?>
 
         <!-- products -->
-        <?php if($products != null) :?>
+        <?php if(!empty($products['product_page_background']) && !empty($products['product_title']) ) :?>
         <section id="products" class="position-relative">
             <div class="products_img position-relative">
                 <img src="<?php echo esc_url($products['product_page_background']['url']) ?>" alt="<?php echo esc_attr( $products['product_page_background']['alt'] ) ?>" class="position-absolute object-fit-cover">
@@ -178,7 +176,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php endif?>
         <!-- gallery -->
 
-        <?php if($galleries) : ?>
+        <?php if(!empty($galleries['gallery_image'])) : ?>
             <section id="gallery">
                 <div class="container-fluid">
                     <div class="row gap-0">
@@ -193,7 +191,7 @@ $partnerus = get_acf_field('partner_with_us');
         <?php endif ?>
 
         <!-- news and updates -->
-        <?php if($newsupdates) :?>
+        <?php if(!empty($newsupdates['news_and_updates_title']) && !empty($newsupdates['news_and_updates_content'])) :?>
         <section id="newsupdates" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
@@ -224,7 +222,7 @@ $partnerus = get_acf_field('partner_with_us');
             </div>
         </section>
         <?php endif?>
-
+        <?php if(!empty($partnerus['partner_with_us_image']) && !empty($partnerus['partner_with_us_form'])):?>
         <!-- partner with us -->
         <section id="partner" style="background-image: url('<?php echo esc_url($partnerus['partner_with_us_image']['url']) ?>');" class="object-fit-cover img-fluid">
             <div class="bg-white"></div>
@@ -232,6 +230,7 @@ $partnerus = get_acf_field('partner_with_us');
                 <?php echo wp_kses_decode_entities($partnerus['partner_with_us_form']) ?>
             </div>
         </section>
+        <?php endif?>
     </main>
 <?php
 get_footer();?>

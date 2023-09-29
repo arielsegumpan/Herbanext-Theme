@@ -26,7 +26,8 @@ $error_alt_text = get_post_meta($error_image_id, '_wp_attachment_image_alt', tru
                 </div>
             </div>
             <?php endif?>
-        </section>  
+        </section> 
+        <?php if(!empty($err_page['error_image']) && $err_page['error_title']):?>
         <section id="error">
             <div class="container">
                <div class="row">
@@ -40,6 +41,7 @@ $error_alt_text = get_post_meta($error_image_id, '_wp_attachment_image_alt', tru
                </div>
             </div>
         </section>
+        <?php endif?>
     </main>
 
 

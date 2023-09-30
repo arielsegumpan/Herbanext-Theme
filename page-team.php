@@ -11,7 +11,6 @@ $team_cards = get_acf_field('team_cards');
 $team_card_contents = !empty($team_cards['card']) ? $team_cards['card'] : [];
 
 ?>
-
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_about" class="w-100 position-relative">
@@ -73,8 +72,27 @@ $team_card_contents = !empty($team_cards['card']) ? $team_cards['card'] : [];
             </div>
         </div>
     </section>
+    <?php if(!empty( get_the_content())):?>
+         <!-- POST CONTENT  -->
+        <section id="about">
+            <div class="page_post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div id="qual_content">
+                                        <?php get_template_part('template-parts/components/blog/services','content') ?>
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php endif?>
 </main>
-
 <?php
 get_footer();
 ?>

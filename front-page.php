@@ -1,205 +1,241 @@
 <?php
 /**
-*   Template Name: Front Page
-*   Main template file.
-*   @package herbanext
-*/
+ * Template Name: Front Page
+ * Main template file.
+ * @package herbanext
+ */
 get_header();
 
-// Call ACF FIELDS function
-$jumbotron = get_acf_field('jumbotron');
-$features = get_acf_field('features');
-$feat_repeaters = $features ? $features['feature_cards'] : [];
-$story = get_acf_field('story');
-$story_carousel_imgs = $story ? $story['story_carousel'] : [];
-$services = get_acf_field('services');
-$services_icons = $services ? $services['service_cards'] : [];
-$products = get_acf_field('products');
-$galleries = get_acf_field('gallery');
-$newsupdates = get_acf_field('news_and_updates');
-$partnerus = get_acf_field('partner_with_us');
+// Define an array of fields
+$acf_fields = array(
+    'jumbotron' => 'jumbotron',
+    'features' => 'features',
+    'story' => 'story',
+    'services' => 'services',
+    'products' => 'products',
+    'galleries' => 'gallery',
+    'newsupdates' => 'news_and_updates',
+    'partnerus' => 'partner_with_us',
+);
+
+// Initialize an empty array to store the field values
+$acf_values = array();
+
+// Loop through the field names and fetch their values
+foreach ($acf_fields as $key => $field_name) {
+    $acf_values[$key] = get_acf_field($field_name);
+}
 ?>
+
 <main>
-        <?php if(!empty($jumbotron['title']) && !empty($jumbotron['subtitle']) && !empty($jumbotron['jumbotron_image'])) :?>
+    <?php
+    // Jumbotron Section
+    $jumbotron = $acf_values['jumbotron'];
+    if (!empty($jumbotron['title']) && !empty($jumbotron['subtitle']) && !empty($jumbotron['jumbotron_image'])) :
+    ?>
         <!-- jumbotron -->
         <section id="jumbotron" class="w-100 position-relative">
-                <img src="<?php echo esc_url($jumbotron['jumbotron_image']['url']) ?>" alt="<?php echo esc_attr( $jumbotron['jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
+            <img src="<?php echo esc_url($jumbotron['jumbotron_image']['url']); ?>" alt="<?php echo esc_attr($jumbotron['jumbotron_image']['alt']); ?>" class="object-fit-cover w-100 position-absolute">
         </section>
         <!-- jumbortron content -->
         <section id="jumb_content" class="position-relative">
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start">
                     <h1 class="display-2 museo fw-bold text-success">
-                       <?php echo esc_html_e( $jumbotron['title']) ?>
+                        <?php echo esc_html($jumbotron['title']); ?>
                     </h1>
                     <h4 class="mt-4 mb-5">
-                        <?php echo esc_html_e( $jumbotron['subtitle']) ?>
+                        <?php echo esc_html($jumbotron['subtitle']); ?>
                     </h4>
                     <div class="d-flex flex-row justify-content-center justify-content-md-start gap-3 pt-3">
                         <div class="products_btn">
-                            <a href="<?php echo esc_url( $jumbotron['product_page_link']) ?>" class="btn btn-lg btn-success px-4 py-3"><i class="bi bi-shop me-2"></i><?php esc_html_e('Products') ?></a>
+                            <a href="<?php echo esc_url($jumbotron['product_page_link']); ?>" class="btn btn-lg btn-success px-4 py-3"><i class="bi bi-shop me-2"></i><?php esc_html_e('Products'); ?></a>
                         </div>
                         <div class="more_btn">
-                            <a href="<?php echo esc_url( $jumbotron['about_page_link']) ?>" class="btn btn-lg btn-outline-success px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('More') ?></a>
+                            <a href="<?php echo esc_url($jumbotron['about_page_link']); ?>" class="btn btn-lg btn-outline-success px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('More'); ?></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <?php endif;?>
+    <?php endif; ?>
 
-        <!-- features -->
-        <?php if(!empty($features['feature_title']) && !empty($features['feature_content'])) :?>
+    <?php
+    // Features Section
+    $features = $acf_values['features'];
+    if (!empty($features['feature_title']) && !empty($features['feature_content'])) :
+    ?>
         <section id="features" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
                     <div class="col-12 col-md-9 mx-auto text-center mb-5">
                         <div class="features_title text-white">
-                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($features['feature_title']) ?></h1>
+                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html($features['feature_title']); ?></h1>
                             <p class="lh-lg">
-                                <?php echo nl2br(esc_textarea($features['feature_content'])) ?>
+                                <?php echo nl2br(esc_textarea($features['feature_content'])); ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
-                    <?php if(!empty($feat_repeaters)) :?>
-                            <?php foreach($feat_repeaters as $key => $feat_repeater) :?>
-                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : '' ?>  mb-5 mb-md-0">
+                    <?php
+                    $feat_repeaters = $features['feature_cards'];
+                    if (!empty($feat_repeaters)) :
+                        foreach ($feat_repeaters as $key => $feat_repeater) :
+                    ?>
+                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : ''; ?>  mb-5 mb-md-0">
                                 <div class="feature_icon mb-5">
-                                    <img src="<?php echo esc_url($feat_repeater['feature_icon']['url']) ?>" alt="<?php echo esc_attr($feat_repeater['feature_icon']['alt']) ?>">
+                                    <img src="<?php echo esc_url($feat_repeater['feature_icon']['url']); ?>" alt="<?php echo esc_attr($feat_repeater['feature_icon']['alt']); ?>">
                                 </div>
                                 <div class="feature_content px-4">
                                     <p class="lh-lg text-white">
-                                        <?php echo esc_textarea( nl2br($feat_repeater['feature_content'])) ?>
+                                        <?php echo esc_textarea(nl2br($feat_repeater['feature_content'])); ?>
                                     </p>
                                 </div>
                             </div>
-                            <?php endforeach ?>
-                    <?php endif?>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
                 </div>
             </div>
         </section>
-        <?php endif;?>
+    <?php endif; ?>
 
-        <!-- story -->
-        <?php if(!empty($story['story_title']) && !empty($story['story_content'])) : ?>
+    <?php
+    // Story Section
+    $story = $acf_values['story'];
+    $story_carousel_imgs = $story['story_carousel'];
+    if (!empty($story['story_title']) && !empty($story['story_content'])) :
+    ?>
         <section id="story">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-5 px-md-5 my-auto text-center text-md-start">
-
                         <div class="story_title pb-5 mb-5">
-                            <h1 class="museo display-2 fw-bold mb-5"><?php echo esc_textarea(nl2br($story['story_title'])) ?></h1>
+                            <h1 class="museo display-2 fw-bold mb-5"><?php echo nl2br(esc_textarea($story['story_title'])); ?></h1>
                             <p class="lh-lg mb-5 text-secondary">
-                                <?php echo esc_textarea(nl2br($story['story_content'])) ?>
+                                <?php echo nl2br(esc_textarea($story['story_content'])); ?>
                             </p>
-                            <a href="<?php echo esc_url($story['about_page_link_2']) ?>" class="btn btn-outline-success border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php echo esc_html_e( 'Read More' ) ?></a>
+                            <a href="<?php echo esc_url($story['about_page_link_2']); ?>" class="btn btn-outline-success border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('Read More'); ?></a>
                         </div>
                     </div>
                     <div class="col-12 col-md-7 pe-md-0 mb-5 mb-md-0 pb-4 pb-md-0">
                         <!-- Displaying Carousel image sa front page -->
-                        <?php if($story['story_carousel']):?>
-                        <div id="story" class="owl-theme owl-carousel position-relative">
-                            <?php foreach($story_carousel_imgs as $story_carousel_img) :?>
-                                <div class="item">
-                                    <img src="<?php echo esc_url($story_carousel_img['story_carousel_image']['url']) ?>" alt="<?php echo esc_attr($story_carousel_img['story_carousel_image']['alt']) ?>" class="img-fluid">
-                                </div>
-                            <?php endforeach ?>
-                        </div>
+                        <?php if ($story['story_carousel']) : ?>
+                            <div id="story" class="owl-theme owl-carousel position-relative">
+                                <?php foreach ($story_carousel_imgs as $story_carousel_img) : ?>
+                                    <div class="item">
+                                        <img src="<?php echo esc_url($story_carousel_img['story_carousel_image']['url']); ?>" alt="<?php echo esc_attr($story_carousel_img['story_carousel_image']['alt']); ?>" class="img-fluid">
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
         </section>
-        <?php endif; ?>
+    <?php endif; ?>
 
-        <!-- services -->
-        <?php if(!empty($services['service_title']) && !empty($services['service_content'])) :?>
+    <?php
+    // Services Section
+    $services = $acf_values['services'];
+    $services_icons = $services['service_cards'];
+    if (!empty($services['service_title']) && !empty($services['service_content'])) :
+    ?>
         <section id="services" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
                     <div class="col-12 col-md-8 mx-auto text-center mb-5">
                         <div class="features_title text-white">
-                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($services['service_title']) ?></h1>
+                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html($services['service_title']); ?></h1>
                             <p class="lh-lg">
-                                <?php echo esc_html_e($services['service_content'])?>
+                                <?php echo esc_html($services['service_content']); ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                <?php if(!empty($services_icons)):?>
-                    <?php foreach ($services_icons as $services_icon):?>
-                        <div class="col mb-5 mb-md-auto">
-                            <div class="d-flex flex-row gap-4 text-white align-items-center museo">
-                                <div class="services_icon">
-                                    <img src="<?php echo esc_url($services_icon['service_card_icon']['url'])?>" alt="<?php echo esc_attr($services_icon['service_card_icon']['alt'])?>" class="rounded-4 object-fit-cover" width="100" height="100">
-                                </div>
-                                <div class="services_content">
-                                    <p class="fs-6 fw-bold"><?php echo esc_html_e($services_icon['service_card_title'])?></p>
+                    <?php if (!empty($services_icons)) : ?>
+                        <?php foreach ($services_icons as $services_icon) : ?>
+                            <div class="col mb-5 mb-md-auto">
+                                <div class="d-flex flex-row gap-4 text-white align-items-center museo">
+                                    <div class="services_icon">
+                                        <img src="<?php echo esc_url($services_icon['service_card_icon']['url']); ?>" alt="<?php echo esc_attr($services_icon['service_card_icon']['alt']); ?>" class="rounded-4 object-fit-cover" width="100" height="100">
+                                    </div>
+                                    <div class="services_content">
+                                        <p class="fs-6 fw-bold"><?php echo esc_html($services_icon['service_card_title']); ?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach ?>
-                <?php endif?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="row mt-5 pt-md-5 text-center">
                     <div class="col-12 col-md-6 mx-auto">
-                        <a href="<?php echo esc_url($services['service_page_link']) ?>" class="btn btn-outline-white border-3 px-5 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php echo esc_html_e( 'More' ) ?></a>
+                        <a href="<?php echo esc_url($services['service_page_link']); ?>" class="btn btn-outline-white border-3 px-5 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('More'); ?></a>
                     </div>
                 </div>
             </div>
         </section>
-        <?php endif ?>
+    <?php endif; ?>
 
-        <!-- products -->
-        <?php if(!empty($products['product_page_background']) && !empty($products['product_title']) ) :?>
+    <?php
+    // Products Section
+    $products = $acf_values['products'];
+    if (!empty($products['product_page_background']) && !empty($products['product_title'])) :
+    ?>
         <section id="products" class="position-relative">
             <div class="products_img position-relative">
-                <img src="<?php echo esc_url($products['product_page_background']['url']) ?>" alt="<?php echo esc_attr( $products['product_page_background']['alt'] ) ?>" class="position-absolute object-fit-cover">
+                <img src="<?php echo esc_url($products['product_page_background']['url']); ?>" alt="<?php echo esc_attr($products['product_page_background']['alt']); ?>" class="position-absolute object-fit-cover">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-xl-5 me-auto">
                         <div class="d-flex flex-row justify-content-between align-items-end mb-5">
-                            <h1 class="museo display-4 fw-bold"><?php echo nl2br($products['product_title']) ?></h1>
-                            <a href="<?php echo esc_url($products['product_page_link']) ?>" class="btn btn-success px-4 py-3"><i class="bi bi-shop me-2"></i><?php esc_html_e('Products') ?></a>
+                            <h1 class="museo display-4 fw-bold"><?php echo nl2br(esc_html($products['product_title'])); ?></h1>
+                            <a href="<?php echo esc_url($products['product_page_link']); ?>" class="btn btn-success px-4 py-3"><i class="bi bi-shop me-2"></i><?php esc_html_e('Products'); ?></a>
                         </div>
                         <div class="row row-cols-2 row-gap-4">
-                           <?php echo wp_kses_post_deep( do_shortcode( '[herbanext_recent_product]' ) ) ?>
+                            <?php echo wp_kses_post_deep(do_shortcode('[herbanext_recent_product]')); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <?php endif?>
-        <!-- gallery -->
+    <?php endif; ?>
 
-        <?php if(!empty($galleries['gallery_image'])) : ?>
-            <section id="gallery">
-                <div class="container-fluid">
-                    <div class="row gap-0">
-                        <?php foreach ($galleries as $gallery):?>
+    <?php
+    // Gallery Section
+    $galleries = $acf_values['galleries'];
+    if (!empty($galleries['gallery_image'])) :
+    ?>
+        <section id="gallery">
+            <div class="container-fluid">
+                <div class="row gap-0">
+                    <?php foreach ($galleries['gallery_image'] as $gallery) : ?>
                         <div class="col p-0">
-                            <img src="<?php echo esc_url($gallery['gallery_image']['url']) ?>" alt="<?php echo esc_attr( $gallery['gallery_image']['alt']) ?>" >
+                            <img src="<?php echo esc_url($gallery['url']); ?>" alt="<?php echo esc_attr($gallery['alt']); ?>">
                         </div>
-                       <?php endforeach ?>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            </section>
-        <?php endif ?>
+            </div>
+        </section>
+    <?php endif; ?>
 
-        <!-- news and updates -->
-        <?php if(!empty($newsupdates['news_and_updates_title']) && !empty($newsupdates['news_and_updates_content'])) :?>
+    <?php
+    // News and Updates Section
+    $newsupdates = $acf_values['newsupdates'];
+    if (!empty($newsupdates['news_and_updates_title']) && !empty($newsupdates['news_and_updates_content'])) :
+    ?>
         <section id="newsupdates" class="bg-success">
             <div class="container">
                 <div class="row mb-md-5">
                     <div class="col-12 col-md-8 mx-auto text-center mb-5">
                         <div class="features_title text-white">
-                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html_e($newsupdates['news_and_updates_title']) ?></h1>
+                            <h1 class="museo fs-1 fw-bold text-white mb-5"><?php echo esc_html($newsupdates['news_and_updates_title']); ?></h1>
                             <p class="lh-lg">
-                                <?php echo esc_textarea($newsupdates['news_and_updates_content']) ?>
+                                <?php echo wp_kses_post($newsupdates['news_and_updates_content']); ?>
                             </p>
                         </div>
                     </div>
@@ -207,30 +243,33 @@ $partnerus = get_acf_field('partner_with_us');
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <ul class="border-0 list-group list-group-flush ">
-                            <?php echo wp_kses_post(do_shortcode( "[get_recent_front_page_post]" )) ?>
+                            <?php echo wp_kses_post(do_shortcode("[get_recent_front_page_post]")); ?>
                         </ul>
                     </div>
                     <div class="col-12 col-lg-6 text-center  mt-5 mgt-lg-0">
-                        <img src="<?php echo esc_url($newsupdates['news_and_update_image']['url']) ?>" alt="<?php echo esc_url($newsupdates['news_and_update_image']['alt']) ?>" class="img-fluid rounded-5">
+                        <img src="<?php echo esc_url($newsupdates['news_and_update_image']['url']); ?>" alt="<?php echo esc_attr($newsupdates['news_and_update_image']['alt']); ?>" class="img-fluid rounded-5">
                     </div>
                 </div>
                 <div class="row mt-5 pt-5 text-center">
                     <div class="col-6 mx-auto">
-                        <a href="<?php echo esc_url($newsupdates['news_and_update_page_link']) ?>" class="btn btn-outline-white border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('Read More') ?></a>
+                        <a href="<?php echo esc_url($newsupdates['news_and_update_page_link']); ?>" class="btn btn-outline-white border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('Read More'); ?></a>
                     </div>
                 </div>
             </div>
         </section>
-        <?php endif?>
-        <?php if(!empty($partnerus['partner_with_us_image']) && !empty($partnerus['partner_with_us_form'])):?>
-        <!-- partner with us -->
-        <section id="partner" style="background-image: url('<?php echo esc_url($partnerus['partner_with_us_image']['url']) ?>');" class="object-fit-cover img-fluid">
+    <?php endif; ?>
+
+    <?php
+    // Partner with Us Section
+    $partnerus = $acf_values['partnerus'];
+    if (!empty($partnerus['partner_with_us_image']) && !empty($partnerus['partner_with_us_form'])) :?>
+        <section id="partner" style="background-image: url('<?php echo esc_url($partnerus['partner_with_us_image']['url']); ?>');" class="object-fit-cover img-fluid">
             <div class="bg-white"></div>
             <div class="container position-relative">
-                <?php echo wp_kses_decode_entities($partnerus['partner_with_us_form']) ?>
+                <?php echo wp_kses_decode_entities($partnerus['partner_with_us_form']); ?>
             </div>
         </section>
-        <?php endif?>
-    </main>
-<?php
-get_footer();?>
+    <?php endif; ?>
+</main>
+
+<?php get_footer(); ?>

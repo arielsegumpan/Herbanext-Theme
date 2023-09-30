@@ -132,6 +132,24 @@ $quality_standard = get_acf_field('quality_standard');
                 </div>
             </div>
         <?php endif ?>
+        <?php if(!empty( get_the_content())):?>
+         <!-- POST CONTENT  -->
+        <div class="page_post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container">
+                            <div class="row">
+                                <div id="qual_content">
+                                    <?php get_template_part('template-parts/components/blog/services','content') ?>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif?>
         <!-- committed to science -->
         <?php if (!empty($committed)) : ?>
             <div class="committed bg-success">

@@ -22,7 +22,7 @@ class Namespacecpt{
 
     function namespace_add_custom_types($query) {
         if ($query->is_main_query() && (is_category() || is_tag())) {
-            $post_types = ['post', 'careers', 'publications', 'trainingseminars','medicinalherbs'];
+            $post_types = ['post', 'careers', 'publications', 'trainingseminars','medicinal_herbs'];
             $query->set('post_type', $post_types);
         }
     }

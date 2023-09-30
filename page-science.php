@@ -28,7 +28,7 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
                     <div class="row">
                         <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5 text-white lh-lg">
                         <?php $content = $science_page['science_section_content_1']['content'];
-                        echo !empty($content) ? wp_kses_decode_entities($content) : '';?>
+                        echo !empty($content) ? wp_kses_post($content) : '';?>
                         </div>
                         <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
                             <img src="<?php echo esc_url($science_page['science_section_content_1']['hero_image']['url']); ?>"
@@ -69,7 +69,25 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             </div>
         </div>
        <?php endif?>
-        <?php if(!empty($science_page['science_section_content_3'])) :?>
+       <?php if(!empty( get_the_content())):?>
+         <!-- POST CONTENT  -->
+        <div class="page_post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container">
+                            <div class="row">
+                                <div id="qual_content">
+                                    <?php get_template_part('template-parts/components/blog/services','content') ?>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif?>
+        <?php if(!empty($science_page['science_section_content_3']['background_image']['url']) && !empty($science_page['science_section_content_3']['title'])) :?>
         <div class="organic position-relative w-100">
             <img id="organic_img" src="<?php echo esc_url($science_page['science_section_content_3']['background_image']['url']) ?>" alt="<?php echo esc_attr($science_page['science_section_content_3']['background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute">
             <div class="container position-absolute">
@@ -77,19 +95,19 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
                     <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">
                         <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html_e($science_page['science_section_content_3']['title']) ?></h1>
                         <div class="lh-lg text-secondary mt-5">
-                           <?php echo nl2br(wp_kses_decode_entities( $science_page['science_section_content_3']['content'] )) ?>
+                           <?php echo nl2br(wp_kses_post( $science_page['science_section_content_3']['content'] )) ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <?php endif?>
+        <?php if($science_page['science_section_content_1']['title'] && !empty($science_page['gallery'])) :?>
         <div class="innovative">
             <div class="container">
                 <div class="row">
                     <h1 class="museo dispaly-5 fw-bold text-center mb-5 pb-lg-5"> <?php echo esc_html($science_page['science_section_content_1']['title']); ?></h1>
-                    <!-- science_page -->
-                    <?php if(!empty($science_page)) :?>
+
                     <div id="science_page">
                         <div class="row g-3">
                             <?php foreach ($science_page['gallery'] as $key => $science_gallery):?>
@@ -99,11 +117,11 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
                             <?php endforeach ?>
                         </div>
                     </div>
-                    <?php endif?>
                     <!-- end of science_page -->
                 </div>
             </div>
         </div>
+        <?php endif?>
  </section>
 
 

@@ -18,12 +18,27 @@ function herbanext_get_theme_instance(){
 }
 herbanext_get_theme_instance();
 
-// Encapsulate ACF fields
+apply_filters( 'acf/prepare_field', 'herbanext_acf_prepare_field' );
+function herbanext_acf_prepare_field($field) {
+    return get_all_acf($field['name'], $field['name'] . '_option');
+}
+
 function get_acf_field($field_name) {
     return function_exists('get_field') ? get_field($field_name) : null;
 }
 function get_acf_option_field($field_name) {
     return function_exists('get_field') ? get_field($field_name,'option') : null;
+}
+
+function get_all_acf($acf_val, $acf_option_val){
+    $acf_field_value = get_acf_field($acf_val);
+    $acf_option_field_value = get_acf_option_field($acf_option_val);
+
+    // Return an array containing both field and option values
+    return [
+        'acf_field_value' => $acf_field_value,
+        'acf_option_field_value' => $acf_option_field_value
+    ];
 }
 
 // register sidebar widget

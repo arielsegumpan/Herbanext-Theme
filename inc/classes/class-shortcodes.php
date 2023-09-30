@@ -13,7 +13,6 @@ namespace HERBANEXT_THEME\Inc;
     private function __construct() {
         // Add your shortcode hooks here
         $this->setup_hooks();
-       
     }
 
     protected function setup_hooks(){

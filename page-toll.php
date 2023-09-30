@@ -122,32 +122,24 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
             </div>
         </div>
         <?php endif ?>
-
-        <!-- CONTENT 5 -->
-        <?php if($cont_sec_5['content']) :?>
-        <div class="quality_standard bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <h1 class="museo dispaly-5 fw-bold text-center text-md-start"><?php echo esc_html_e($cont_sec_5['content_title']) ?></h1>
-                        <p class="lh-lg mt-5"><?php echo nl2br(esc_textarea( $cont_sec_5['content'] )) ?></p>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="row">
-                            <?php if($cont_imgs_5): ?>
-                                <?php foreach ($cont_imgs_5 as $key => $cont_img_5):?>
-                                <div class="col<?php echo $key === array_key_last($cont_imgs_5) ? '-12' : ' mb-4' ?>">
-                                    <img src="<?php echo esc_url($cont_img_5['image']['url'])?>" alt="<?php echo esc_attr($cont_img_5['image']['alt'])?>" class="img-fluid w-100 rounded-5 object-fit-cover">
+        <?php if(!empty( get_the_content())):?>
+         <!-- POST CONTENT  -->
+            <div class="page_post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div id="qual_content">
+                                        <?php get_template_part('template-parts/components/blog/services','content') ?>
+                                    </div>
                                 </div>
-                                <?php endforeach ?>
-                            <?php endif?>
-                        </div>  
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php endif ?>
-        
+        <?php endif?>
        </section>
     </main>
 

@@ -149,6 +149,24 @@ foreach ($acf_services_fields as $key => $field_name) {
                 </div>
             </div>
             <?php endif?>
+            <?php if(!empty( get_the_content())):?>
+            <!-- POST CONTENT  -->
+                <div class="page_post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="container">
+                                    <div class="row">
+                                        <div id="qual_content">
+                                            <?php get_template_part('template-parts/components/blog/services','content') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif?>
        </section>
     </main>
 <?php

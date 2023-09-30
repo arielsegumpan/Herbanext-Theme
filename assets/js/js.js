@@ -2,6 +2,7 @@ $(document).ready(function () {
     $(window).on("load", function() {
         $("#preloader").fadeOut("slow");
     });
+    
     $('div#respond small a#cancel-comment-reply-link').addClass('btn btn-outline-success ms-3');
     $('h3#reply-title a.comment-reply-link').addClass('text-decoration-none');
     $('h3#reply-title').addClass('museo');
@@ -115,4 +116,10 @@ $(document).ready(function () {
             }
         }
     })
+
+
+    var qualContent = $('#qual_content');
+    if (qualContent.width() > 1320) {
+        qualContent.addClass('overflow-x-scroll');
+    }
 });

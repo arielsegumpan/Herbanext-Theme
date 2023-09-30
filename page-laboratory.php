@@ -104,7 +104,7 @@ foreach ($acf_fields as $key => $field_name) {
                     <div class="col-12">
                        <div class="container">
                         <div class="row">
-                            <div id="qual_content" class="overflow-x-scroll">
+                            <div id="qual_content">
                                 <?php get_template_part('template-parts/components/blog/services','content') ?>
                             </div>
                         </div>

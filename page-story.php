@@ -36,21 +36,21 @@ $quality_standard = get_acf_field('quality_standard');
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
-                            <h1 class="display-3 museo fw-bold">
+                            <h1 class="display-3 museo fw-bold" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                                 <?php echo esc_html($story_who_we_Are['content_title']) ?>
                             </h1>
-                            <p class="lh-lg text-secondary mt-5">
+                            <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo esc_textarea($story_who_we_Are['content']) ?>
                             </p>
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="row mb-4">
-                                <?php if (!empty($story_who_we_Are['content_image'])) : ?>
+                                <?php if (!empty($story_who_we_Are['content_image'])) : $story_delay = 200  ?>
                                     <?php foreach ($story_who_we_Are['content_image'] as $key => $who_img) : ?>
-                                        <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>">
+                                        <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($story_delay); ?>">
                                             <img src="<?php echo esc_url($who_img['image']['url']) ?>" alt="<?php echo esc_attr($who_img['image']['alt']) ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php $story_delay += 200; endforeach ?>
                                 <?php endif ?>
                             </div>
                         </div>
@@ -64,10 +64,10 @@ $quality_standard = get_acf_field('quality_standard');
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
-                            <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html($novel_portfolio['content_title']) ?></h1>
-                            <img src="<?php echo esc_url($novel_portfolio['content_image']['url']) ?>" alt="<?php echo esc_attr($novel_portfolio['content_image']['alt']) ?>" class="img-fluid rounded-5">
+                            <h1 class="display-5 museo text-white fw-bold mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($novel_portfolio['content_title']) ?></h1>
+                            <img src="<?php echo esc_url($novel_portfolio['content_image']['url']) ?>" alt="<?php echo esc_attr($novel_portfolio['content_image']['alt']) ?>" class="img-fluid rounded-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                         </div>
-                        <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
+                        <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>">
                             <p class="text-secondary text-gray lh-lg">
                                 <?php echo nl2br(esc_textarea($novel_portfolio['content'])) ?>
                             </p>
@@ -84,13 +84,13 @@ $quality_standard = get_acf_field('quality_standard');
                         <img src="<?php echo esc_url($certified_toll['certified_toll_image']['url']) ?>" alt="<?php echo esc_attr($certified_toll['certified_toll_image']['alt']) ?>" class="rounded-5 object-fit-cover">
                         <div class="certified_toll_content">
                             <div class="col-12 col-lg-5 mx-auto">
-                                <div class="certified_icon mb-5">
+                                <div class="certified_icon mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                                     <img src="<?php echo esc_url($certified_toll['certified_toll_icon']['url']) ?>" alt="<?php echo esc_attr($certified_toll['certified_toll_icon']['alt']) ?>">
                                 </div>
-                                <h1 class="display-5 museo fw-bold mb-5"><?php echo esc_html($certified_toll['content_title']) ?></h1>
+                                <h1 class="display-5 museo fw-bold mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_html($certified_toll['content_title']) ?></h1>
                             </div>
 
-                            <p class="lh-lg mt-5 text-secondary px-md-5">
+                            <p class="lh-lg mt-5 text-secondary px-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>">
                                 <?php echo nl2br(esc_textarea($certified_toll['content'])) ?>
                             </p>
                         </div>
@@ -105,8 +105,8 @@ $quality_standard = get_acf_field('quality_standard');
                 <div class="container position-absolute">
                     <div class="row">
                         <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">
-                            <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html($organic['organic_title']) ?></h1>
-                            <p class="lh-lg text-secondary mt-5">
+                            <h1 class="museo dispaly-5 text-black fw-bold pe-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($organic['organic_title']) ?></h1>
+                            <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo nl2br(esc_textarea($organic['organic_content'])) ?>
                             </p>
                         </div>
@@ -123,8 +123,8 @@ $quality_standard = get_acf_field('quality_standard');
                             <img src="<?php echo esc_url($innovative['innovative_image']['url']) ?>" alt="<?php echo esc_attr($innovative['innovative_image']['alt']) ?>" class="img-fluid rounded-5">
                         </div>
                         <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
-                            <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0"><?php echo esc_html($innovative['innovative_title']) ?></h1>
-                            <p class="lh-lg text-secondary mt-5">
+                            <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($innovative['innovative_title']) ?></h1>
+                            <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo nl2br(esc_textarea($innovative['innovative_content'])) ?>
                             </p>
                         </div>
@@ -156,8 +156,8 @@ $quality_standard = get_acf_field('quality_standard');
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-6 my-auto text-center text-md-start mb-5 mb-md-0">
-                            <h1 class="museo display-5 text-white fw-bold"><?php echo esc_html($committed['committed_title']) ?></h1>
-                            <p class="lh-lg text-white mt-5">
+                            <h1 class="museo display-5 text-white fw-bold" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($committed['committed_title']) ?></h1>
+                            <p class="lh-lg text-white mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo nl2br(esc_textarea($committed['committed_content'])) ?>
                             </p>
                         </div>
@@ -193,9 +193,9 @@ $quality_standard = get_acf_field('quality_standard');
                         </div>
                     </div>
                     <div class="row row-cols row-cols-md-2 row-cols-lg-3 row-gap-5">
-                        <?php if (!empty($mission_and_vision['herbanext_visions'])) : ?>
+                        <?php if (!empty($mission_and_vision['herbanext_visions'])) : $vis_delay = 200?>
                             <?php foreach ($mission_and_vision['herbanext_visions'] as $item) : ?>
-                                <div class="col">
+                                <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($vis_delay); ?>">
                                     <div class="d-flex flex-row justify-content-between align-items-start gap-3">
                                         <?php if (!empty($item['icon']['url'])) : ?>
                                             <img src="<?php echo esc_url($item['icon']['url']) ?>" alt="<?php echo esc_attr($item['icon']['alt']) ?>" class="bg-gray rounded-5 p-3">
@@ -206,7 +206,7 @@ $quality_standard = get_acf_field('quality_standard');
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach ?>
+                            <?php $vis_delay+=200; endforeach ?>
                         <?php endif ?>
                     </div>
                 </div>
@@ -225,9 +225,9 @@ $quality_standard = get_acf_field('quality_standard');
                         </div>
                     </div>
                     <div class="row row-cols-3 row-gap-5 mt-5 pt-5">
-                        <?php if (!empty($core_values['core_values_cards'])) : ?>
+                        <?php if (!empty($core_values['core_values_cards'])) : $cor_delay=100?>
                             <?php foreach ($core_values['core_values_cards'] as $key => $core_values_img) : ?>
-                                <div class="col-12 col-md-3">
+                                <div class="col-12 col-md-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($cor_delay); ?>">
                                     <div class="d-flex flex-column justify-content-center gap-3 align-items-center">
                                         <?php if (!empty($core_values_img['core_card_image']['url'])) : ?>
                                             <img src="<?php echo esc_url($core_values_img['core_card_image']['url']) ?>" alt="<?php echo esc_attr($core_values_img['core_card_image']['alt']) ?>" class="bg-gray rounded-5 p-3">
@@ -238,7 +238,7 @@ $quality_standard = get_acf_field('quality_standard');
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach ?>
+                            <?php $cor_delay+=100; endforeach ?>
                         <?php endif ?>
                     </div>
                 </div>
@@ -252,9 +252,9 @@ $quality_standard = get_acf_field('quality_standard');
                         <div class="col-12 col-md-6">
                             <h1 class="museo dispaly-5 fw-bold text-center text-md-start"><?php echo wp_kses_decode_entities(nl2br($quality_standard['title'])) ?></h1>
                             <ul class="list-group list-group-flush mt-5">
-                                <?php if (!empty($quality_standard['quality_standard_lists'])) : $count = 0; ?>
+                                <?php if (!empty($quality_standard['quality_standard_lists'])) : $count_delay = 200; $count = 0; ?>
                                     <?php foreach ($quality_standard['quality_standard_lists'] as $key => $quality_standard_list) : $count++ ?>
-                                        <li class="list-group-item bg-transparent mb-5 mb-md-4 pt-0 px-0 pb-4">
+                                        <li class="list-group-item bg-transparent mb-5 mb-md-4 pt-0 px-0 pb-4" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($count_delay); ?>">
                                             <div class="d-flex flex-column flex-md-row justify-content-md-start align-items-center gap-3">
                                                 <span class="bg-success px-4 py-3 text-white fw-bold rounded-4"><?php echo $count < 10 ? '0' . $count : $count; ?></span>
                                                 <div>
@@ -264,7 +264,7 @@ $quality_standard = get_acf_field('quality_standard');
                                                 </div>
                                             </div>
                                         </li>
-                                    <?php endforeach ?>
+                                    <?php $count_delay += 200; endforeach ?>
                                 <?php endif ?>
                             </ul>
                         </div>

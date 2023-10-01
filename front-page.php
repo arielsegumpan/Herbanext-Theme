@@ -80,10 +80,11 @@ foreach ($acf_fields as $key => $field_name) {
                 <div class="row align-items-center justify-content-center">
                     <?php
                     $feat_repeaters = $features['feature_cards'];
+                    $feat_delay = 200;
                     if (!empty($feat_repeaters)) :
                         foreach ($feat_repeaters as $key => $feat_repeater) :
                     ?>
-                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : ''; ?>  mb-5 mb-md-0">
+                            <div class="col-12 col-md-4 text-center <?php echo $key !== array_key_last($feat_repeaters) ? 'border_col_feature' : ''; ?>  mb-5 mb-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($feat_delay); ?>">
                                 <div class="feature_icon mb-5">
                                     <img src="<?php echo esc_url($feat_repeater['feature_icon']['url']); ?>" alt="<?php echo esc_attr($feat_repeater['feature_icon']['alt']); ?>">
                                 </div>
@@ -94,6 +95,7 @@ foreach ($acf_fields as $key => $field_name) {
                                 </div>
                             </div>
                     <?php
+                        $feat_delay += 200;
                         endforeach;
                     endif;
                     ?>
@@ -113,11 +115,11 @@ foreach ($acf_fields as $key => $field_name) {
                 <div class="row">
                     <div class="col-12 col-md-5 px-md-5 my-auto text-center text-md-start">
                         <div class="story_title pb-5 mb-5">
-                            <h1 class="museo display-2 fw-bold mb-5"><?php echo nl2br(esc_textarea($story['story_title'])); ?></h1>
-                            <p class="lh-lg mb-5 text-secondary">
+                            <h1 class="museo display-2 fw-bold mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo nl2br(esc_textarea($story['story_title'])); ?></h1>
+                            <p class="lh-lg mb-5 text-secondary" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo nl2br(esc_textarea($story['story_content'])); ?>
                             </p>
-                            <a href="<?php echo esc_url($story['about_page_link_2']); ?>" class="btn btn-outline-success border-3 px-4 py-3"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('Read More'); ?></a>
+                            <a href="<?php echo esc_url($story['about_page_link_2']); ?>" class="btn btn-outline-success border-3 px-4 py-3" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>"><i class="bi bi-arrow-right me-2 border-2"></i><?php esc_html_e('Read More'); ?></a>
                         </div>
                     </div>
                     <div class="col-12 col-md-7 pe-md-0 mb-5 mb-md-0 pb-4 pb-md-0">
@@ -156,20 +158,22 @@ foreach ($acf_fields as $key => $field_name) {
                     </div>
                 </div>
                 <div class="row">
-                    <?php if (!empty($services_icons)) : ?>
-                        <?php foreach ($services_icons as $services_icon) : ?>
-                            <div class="col mb-5 mb-md-auto">
-                                <div class="d-flex flex-row gap-4 text-white align-items-center museo">
-                                    <div class="services_icon">
-                                        <img src="<?php echo esc_url($services_icon['service_card_icon']['url']); ?>" alt="<?php echo esc_attr($services_icon['service_card_icon']['alt']); ?>" class="rounded-4 object-fit-cover" width="100" height="100">
-                                    </div>
-                                    <div class="services_content">
-                                        <p class="fs-6 fw-bold"><?php echo esc_html($services_icon['service_card_title']); ?></p>
-                                    </div>
+                <?php if (!empty($services_icons)) : 
+                    $delay = 200; // Starting delay in milliseconds
+                    foreach ($services_icons as $services_icon) : ?>
+                        <div class="col mb-5 mb-lg-auto" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($delay); ?>">
+                            <div class="d-flex flex-row gap-4 text-white align-items-center museo">
+                                <div class="services_icon">
+                                    <img src="<?php echo esc_url($services_icon['service_card_icon']['url']); ?>" alt="<?php echo esc_attr($services_icon['service_card_icon']['alt']); ?>" class="rounded-4 object-fit-cover" width="100" height="100">
+                                </div>
+                                <div class="services_content">
+                                    <p class="fs-6 fw-bold"><?php echo esc_html($services_icon['service_card_title']); ?></p>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                        </div>
+                        <?php $delay += 200; // Increment delay by 200 milliseconds for the next iteration ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 </div>
                 <div class="row mt-5 pt-md-5 text-center">
                     <div class="col-12 col-md-6 mx-auto">

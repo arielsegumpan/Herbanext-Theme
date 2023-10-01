@@ -1530,3 +1530,52 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
             </div>
         </div>
         <?php endif ?>
+
+
+
+
+
+            // function namespace_add_custom_types($query) {
+    //     if ($query->is_main_query() && (is_category() || is_tag())) {
+    //         $post_types = ['post', 'careers', 'publications', 'trainingseminars','medicinal_herbs'];
+    //         $query->set('post_type', $post_types);
+    //     }
+    // }
+    function reset_custom_types($query) {
+        if ($query->is_main_query() && (is_category() || is_tag())) {
+            $query->set('post_type', 'post');
+        }
+    }
+    
+
+
+    // add_action('pre_get_posts', 'custom_post_type_search');
+// function custom_post_type_search($query) {
+//     if ($query->is_search && !is_admin()) {
+//         $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
+//     }
+// }
+
+// function tg_include_custom_post_types_in_search_results( $query ) {
+//     if ( $query->is_main_query() && $query->is_search() && ! is_admin() ) {
+//         $query->set( 'post_type', array( 'post', 'careers', 'publications', 'trainingseminars', 'medicinalherbs' ) );
+//     }
+// }
+// add_action( 'pre_get_posts', 'tg_include_custom_post_types_in_search_results' );
+
+
+
+<?php
+$aria_label = ! empty( $args['label'] ) ? 'aria-label="' . esc_attr( $args['label'] ) . '"' : '';
+?>
+<form role="search" <?php echo $aria_label; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?> method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<div class="input-group">
+    <input type="hidden" name="post_type" value="any">
+    <input type="search" class="form-control py-4" name="s" value="<?php echo get_search_query(); ?>" placeholder="Search here" required />
+    <div class="input-group-append">
+        <button class="btn btn-secondary px-3" type="submit">
+            <span class="icon-search"></span>
+        </button>
+     </div>
+</div>
+</form>

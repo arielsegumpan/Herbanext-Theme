@@ -5,7 +5,7 @@
  */
 $get_prload_img = get_acf_option_field('preloader');
 $login_url = esc_url(site_url('/wp-login.php'));
-$shop = esc_url(site_url('/shop'));
+$shop_url = esc_url(site_url('/products'));
 ?>
 <!doctype html>
 <html lang="<?php language_attributes() ?>">
@@ -23,6 +23,10 @@ $shop = esc_url(site_url('/shop'));
             <div class="loading-text fs-5">
             </div>
           </div>
+    </div>
+     <!-- scroll btn -->
+    <div id="scroll_btn">
+        <i class='bi bi-chevron-double-up fs-4 rounded-3 bg-success'></i>
     </div>
     <!-- nav -->
     <header class="fixed-top">
@@ -51,7 +55,7 @@ $shop = esc_url(site_url('/shop'));
                 
                 <div class="d-flex flex-row gap-3 mt-4 mt-md-auto">
                     <div class="shop">
-                        <a href="<?php echo $shop ?>" class="btn btn-success"><i class="bi bi-shop"></i></a>
+                        <a href="<?php echo $shop_url ?>" class="btn btn-success"><i class="bi bi-shop"></i></a>
                     </div>
                     <div class="login">
                         <a href="<?php echo $login_url ?>" class="btn btn-success"><i class="bi bi-person-circle"></i></a>

@@ -35,10 +35,10 @@ $team_card_contents = !empty($team_cards['card']) ? $team_cards['card'] : [];
     <section id="team">
         <div class="container">
             <div class="row">
-                <?php if (!empty($team_card_contents)) : ?>
+                <?php if (!empty($team_card_contents)) : $team_delay = 200?>
                     <?php foreach ($team_card_contents as $team_card_content) : ?>
                         <?php if (!empty($team_card_content)) : ?>
-                            <div class="col-12 col-md-4 col-lg-3 pb-4 text-center mb-5">
+                            <div class="col-12 col-md-4 col-lg-3 pb-4 text-center mb-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr($team_delay); ?>">
                                 <div class="team_img">
                                     <?php if (!empty($team_card_content['profile_picture']['url'])) : ?>
                                         <img src="<?php echo esc_url($team_card_content['profile_picture']['url']) ?>" alt="<?php echo esc_attr($team_card_content['profile_picture']['alt']) ?>" class="img-fluid object-fit-cover rounded-5">
@@ -67,7 +67,7 @@ $team_card_contents = !empty($team_cards['card']) ? $team_cards['card'] : [];
                                 </div>
                             </div>
                         <?php endif ?>
-                    <?php endforeach ?>
+                    <?php $team_delay += 200; endforeach ?>
                 <?php endif ?>
             </div>
         </div>

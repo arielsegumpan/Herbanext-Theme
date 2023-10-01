@@ -2,7 +2,7 @@ $(document).ready(function () {
     $(window).on("load", function() {
         $("#preloader").fadeOut("slow");
     });
-    
+    AOS.init();
     $('div#respond small a#cancel-comment-reply-link').addClass('btn btn-outline-success ms-3');
     $('h3#reply-title a.comment-reply-link').addClass('text-decoration-none');
     $('h3#reply-title').addClass('museo');
@@ -37,6 +37,7 @@ $(document).ready(function () {
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating p.stars').addClass('fs-3');
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating p.stars a').addClass('text-success');
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating label').addClass('mb-3');
+    $('div#tab-description p').addClass('text-secondary lh-lg');
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
 
@@ -59,11 +60,19 @@ $(document).ready(function () {
 
         if (scrollTop >= 50) {
             $navbar.addClass('bg_nav_white');
+            $('#scroll_btn').fadeIn('slow');
         } else {
             $navbar.removeClass('bg_nav_white');
+            $('#scroll_btn').fadeOut('slow');
         }
     });
-
+    $('#scroll_btn').click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        },300);
+        return false;
+    });
+    
     // Add hover event handlers
     $('.dropdown').hover(
         function () {
@@ -119,7 +128,17 @@ $(document).ready(function () {
 
 
     var qualContent = $('#qual_content');
-    if (qualContent.width() > 1320) {
-        qualContent.addClass('overflow-x-scroll');
+    var tabContent  = $('div#tab-description');
+    function handleResize() {
+        $(window).width() < 768 ? qualContent.addClass('overflow-x-scroll') : qualContent.removeClass('overflow-x-scroll');
+        $(window).width() < 768 ? tabContent.addClass('overflow-x-scroll') :  tabContent.removeClass('overflow-x-scroll');
     }
+
+    handleResize();
+
+    $(window).resize(function() {
+        handleResize();
+    });
+
+
 });

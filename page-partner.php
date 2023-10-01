@@ -46,17 +46,17 @@ foreach ($partner_acf_fields as $key => $partner_field_name) {
                     <div class="row">
                         <div class="col-12 col-lg-6 px-md-5 mb-5 mb-lg-0 text-center text-md-start">
                             <div class="mb-5">
-                                <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html($section1['partner_title']); ?></h1>
-                                <div class="text-white lh-lg">
+                                <h1 class="display-5 museo text-white fw-bold mb-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_html($section1['partner_title']); ?></h1>
+                                <div class="text-white lh-lg" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
                                     <?php echo wp_kses_post($section1['partner_content']); ?>
                                 </div>
                             </div>
                             <?php $partner_image = $section1['partner_image']; ?>
                             <?php if (!empty($partner_image['url'])) : ?>
-                                <img src="<?php echo esc_url($partner_image['url']); ?>" alt="<?php echo esc_attr($partner_image['alt']); ?>" class="img-fluid rounded-5">
+                                <img src="<?php echo esc_url($partner_image['url']); ?>" alt="<?php echo esc_attr($partner_image['alt']); ?>" class="img-fluid rounded-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('600'); ?>">
                             <?php endif; ?>
                         </div>
-                        <div class="col-12 col-lg-6 px-md-5 px-lg-auto text-center text-md-start my-auto pe-lg-5">
+                        <div class="col-12 col-lg-6 px-md-5 px-lg-auto text-center text-md-start my-auto pe-lg-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
                             <?php echo wp_kses_decode_entities($section1['partner_form']); ?>
                         </div>
                     </div>
@@ -87,14 +87,14 @@ foreach ($partner_acf_fields as $key => $partner_field_name) {
                             <?php endif; ?>
 
                             <?php $partner_team = $partner_acf_values['partner_team']; ?>
-                            <?php if (!empty($partner_team)) : ?>
+                            <?php if (!empty($partner_team)) : $part_delay = 200 ?>
                                 <div class="container-fluid p-0">
                                     <div id="partner">
                                         <div class="row row-cols row-cols-md-2 row-cols-lg-3 row-gap-lg-5">
                                             <?php foreach ($partner_team as $partner) : ?>
                                                 <?php $team_image = $partner['team_image']; ?>
                                                 <?php if (!empty($team_image['url'])) : ?>
-                                                    <div class="col">
+                                                    <div class="col" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr($part_delay); ?>">
                                                         <div class="d-flex flex-column justify-content-center align-items-center gap-4 rounded-5 py-4 py-md-5">
                                                             <img src="<?php echo esc_url($team_image['url']); ?>" alt="<?php echo esc_attr($team_image['alt']); ?>" class="bg-gray rounded-5 p-3">
                                                             <div class="vision_title_Wrap text-center">
@@ -104,7 +104,7 @@ foreach ($partner_acf_fields as $key => $partner_field_name) {
                                                         </div>
                                                     </div>
                                                 <?php endif; ?>
-                                            <?php endforeach; ?>
+                                            <?php $part_delay += 200; endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +133,6 @@ foreach ($partner_acf_fields as $key => $partner_field_name) {
             </div>
         </div>
     <?php endif?>
-
     </section>
 </main>
 

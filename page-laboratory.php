@@ -52,22 +52,22 @@ foreach ($acf_fields as $key => $field_name) {
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 mb-5 mb-lg-0 text-center text-md-start">
-                        <h1 class="display-3 museo fw-bold"><?php echo esc_html_e($acf_lab_values['lab_cont_1']['title']) ?></h1>
-                        <p class="lh-lg text-secondary mt-5">
+                        <h1 class="display-3 museo fw-bold" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html_e($acf_lab_values['lab_cont_1']['title']) ?></h1>
+                        <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                           <?php echo esc_textarea( $acf_lab_values['lab_cont_1']['content'] ) ?>
                         </p>
-                        <a href="#scrollContent" class="btn btn-success px-5 py-4 btn-lg mt-5"><?php echo wp_kses_decode_entities( $acf_lab_values['lab_cont_1']['button_label_with_icon'] ) ?></a>
+                        <a href="#scrollContent" class="btn btn-success px-5 py-4 btn-lg mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>"><?php echo wp_kses_decode_entities( $acf_lab_values['lab_cont_1']['button_label_with_icon'] ) ?></a>
                     </div>
                     <div class="col-12 col-lg-6 mt-4 mt-lg-0">
                         <div id="who_we_are">
                             <div class="row row-cols-2 g-4">
                                <?php 
-                                if (!empty($acf_lab_values['lab_cont_1']['images'])) : 
+                                if (!empty($acf_lab_values['lab_cont_1']['images'])) : $card_delay = 200;
                                     foreach ($acf_lab_values['lab_cont_1']['images'] as $image) : ?>
-                                        <div class="col">
+                                        <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($card_delay); ?>">
                                         <img src="<?php echo esc_url($image['image']['url']); ?>" alt="<?php echo esc_attr($image['image']['alt']); ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                                         </div>
-                                    <?php endforeach; ?>
+                                    <?php $card_delay += 200; endforeach ?>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -82,13 +82,13 @@ foreach ($acf_fields as $key => $field_name) {
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
-                        <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($acf_lab_values['lab_cont_2']['title']) ?></h1>
+                        <h1 class="display-5 museo text-white fw-bold mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html_e($acf_lab_values['lab_cont_2']['title']) ?></h1>
                         <?php if($acf_lab_values['lab_cont_2']['image']):?>
-                            <img src="<?php echo esc_url($acf_lab_values['lab_cont_2']['image']['url']) ?>" alt="<?php echo esc_attr($acf_lab_values['lab_cont_2']['image']['alt']) ?>" class="img-fluid rounded-5">
+                            <img src="<?php echo esc_url($acf_lab_values['lab_cont_2']['image']['url']) ?>" alt="<?php echo esc_attr($acf_lab_values['lab_cont_2']['image']['alt']) ?>" class="img-fluid rounded-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                         <?php endif?>
                     </div>
                     <div class="col-12 col-lg-6 text-center text-lg-start mt-5 mt-lg-auto my-auto pe-lg-5">
-                        <p class="text-secondary text-gray lh-lg">
+                        <p class="text-secondary text-gray lh-lg" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>">
                             <?php echo nl2br(esc_textarea($acf_lab_values['lab_cont_2']['content'])) ?>
                         </p>
                     </div>
@@ -104,7 +104,7 @@ foreach ($acf_fields as $key => $field_name) {
                     <div class="col-12">
                        <div class="container">
                         <div class="row">
-                            <div id="qual_content">
+                            <div id="qual_content" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                                 <?php get_template_part('template-parts/components/blog/services','content') ?>
                             </div>
                         </div>
@@ -132,12 +132,12 @@ foreach ($acf_fields as $key => $field_name) {
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="row">
-                            <?php if($acf_lab_values['lab_cont_3']['content_3_images']) :?>
+                            <?php if($acf_lab_values['lab_cont_3']['content_3_images']) : $lab_delay = 200?>
                                 <?php foreach($acf_lab_values['lab_cont_3']['content_3_images'] as $key => $labcontImages) :?>
-                                <div class="col<?php echo $key === array_key_last($acf_lab_values['lab_cont_3']['content_3_images']) ? '-12' : ' mb-4' ?>">
+                                <div class="col<?php echo $key === array_key_last($acf_lab_values['lab_cont_3']['content_3_images']) ? '-12' : ' mb-4' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($lab_delay); ?>">
                                     <img src="<?php echo esc_url($labcontImages['image']['url'])?>" alt="<?php echo esc_attr($labcontImages['image']['alt'])?>" class="img-fluid rounded-5">
                                 </div>
-                                <?php endforeach?>
+                                <?php $lab_delay += 200; endforeach?>
                             <?php endif?>
                         </div>
                     </div>

@@ -52,19 +52,19 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
                         <h1 class="display-3 museo fw-bold">
                             <?php echo esc_html_e($acf_prod_dev_values['prod_dev_cont_1']['title']) ?>
                         </h1>
-                        <p class="lh-lg text-secondary mt-5">
+                        <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                             <?php echo esc_textarea( $acf_prod_dev_values['prod_dev_cont_1']['content'] ) ?>
                         </p>
-                       <a href="#qualContent" class="btn btn-success px-5 py-4 btn-lg mt-5"><?php echo wp_kses_decode_entities( $acf_prod_dev_values['prod_dev_cont_1']['button_label_with_icon'] ) ?></a>
+                       <a href="#qualContent" class="btn btn-success px-5 py-4 btn-lg mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('400'); ?>"><?php echo wp_kses_decode_entities( $acf_prod_dev_values['prod_dev_cont_1']['button_label_with_icon'] ) ?></a>
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="row">
-                        <?php if (!empty($acf_prod_dev_values['prod_dev_cont_1']['images'])) : 
+                        <?php if (!empty($acf_prod_dev_values['prod_dev_cont_1']['images'])) : $prod_img_delay = 200;
                             foreach ($acf_prod_dev_values['prod_dev_cont_1']['images'] as $key =>  $image) : ?>
-                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>">
+                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($prod_img_delay); ?>">
                                     <img src="<?php echo esc_url($image['image']['url']); ?>" alt="<?php echo esc_attr($image['image']['alt']); ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                                 </div>
-                            <?php endforeach; ?>
+                            <?php $prod_img_delay += 200; endforeach ?>
                         <?php endif; ?>
                         </div>
                     </div>
@@ -76,7 +76,7 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
        
         <?php if(!empty( get_the_content())):?>
          <!-- POST CONTENT  -->
-        <div class="post_page">
+        <div class="post_page" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -109,12 +109,12 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="row">
-                            <?php if($acf_prod_dev_values['prod_dev_cont_2']['content_3_images']) :?>
+                            <?php if($acf_prod_dev_values['prod_dev_cont_2']['content_3_images']) : $prod_form_delay = 200;?>
                                 <?php foreach($acf_prod_dev_values['prod_dev_cont_2']['content_3_images'] as $key => $labcontImages) :?>
-                                <div class="col<?php echo $key === array_key_last($acf_prod_dev_values['prod_dev_cont_2']['content_3_images']) ? '-12' : ' mb-4' ?>">
+                                <div class="col<?php echo $key === array_key_last($acf_prod_dev_values['prod_dev_cont_2']['content_3_images']) ? '-12' : ' mb-4' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($prod_form_delay); ?>">
                                     <img src="<?php echo esc_url($labcontImages['image']['url'])?>" alt="<?php echo esc_attr($labcontImages['image']['alt'])?>" class="img-fluid rounded-5">
                                 </div>
-                                <?php endforeach?>
+                                <?php $prod_form_delay += 200; endforeach?>
                             <?php endif?>
                         </div>
                     </div>

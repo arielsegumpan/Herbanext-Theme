@@ -93,7 +93,7 @@ function post_categories_by_post_type_shortcode($atts) {
     }
 
     // Define the allowed post types
-    $allowed_post_types = array('careers', 'publications', 'trainingseminars', 'post','medicinalherbs');
+    $allowed_post_types = array('careers', 'publications', 'trainingseminars', 'post','medicinal_herbs');
 
     // Get the post's post type
     $post_type = get_post_type($post);
@@ -162,7 +162,7 @@ function custom_breadcrumbs() {
         $post_slug = get_post_field('post_name', get_post());
         echo $delimiter . '<a class="text-decoration-none text-secondary" href="' . esc_url(home_url('/' . $post_slug)) . '">' . esc_html(get_the_title()) . '</a>';
     } elseif (is_search()) {
-        echo $delimiter . __('Search Results for...', 'your-herbanext') . ' "<em>' . esc_html(get_search_query()) . '</em>"';
+        echo $delimiter . __('Search Results for...', 'herbanext') . ' "<em>' . esc_html(get_search_query()) . '</em>"';
     }
 }
   // Remove the product title from WooCommerce product loop
@@ -180,10 +180,12 @@ function custom_breadcrumbs() {
       }
   }
 
-// add_action('pre_get_posts', 'custom_post_type_search');
-// function custom_post_type_search($query) {
-//     if ($query->is_search && !is_admin()) {
-//         $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
-//     }
-// }
 
+
+  
+add_action('pre_get_posts', 'custom_post_type_search');
+function custom_post_type_search($query) {
+    if ($query->is_search && !is_admin()) {
+        $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
+    }
+}

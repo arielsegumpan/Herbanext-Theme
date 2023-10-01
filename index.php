@@ -14,7 +14,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_product" class="w-100 position-relative">
-    <img src="<?php echo esc_url($get_blog_img) ?>" alt="<?php echo esc_attr($get_blog_title) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+    <img src="<?php echo esc_url($get_blog_img['url']) ?>" alt="<?php echo esc_attr($get_blog_img['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <?php

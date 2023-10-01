@@ -50,19 +50,19 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
                 <div class="row g-lg-5">
                     <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                         <div class="row">
-                        <?php if (!empty($acf_ing_dev_values['ing_dev_cont_1']['images'])) : 
+                        <?php if (!empty($acf_ing_dev_values['ing_dev_cont_1']['images'])) : $ing_delay = 200;
                             foreach ($acf_ing_dev_values['ing_dev_cont_1']['images'] as $key =>  $image) : ?>
-                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>">
+                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($ing_delay); ?>">
                                     <img src="<?php echo esc_url($image['image']['url']); ?>" alt="<?php echo esc_attr($image['image']['alt']); ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                                 </div>
-                            <?php endforeach; ?>
+                            <?php $ing_delay += 200; endforeach; ?>
                         <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-lg-start">
-                        <h1 class="display-3 museo text-white fw-bold"> <?php echo esc_html_e($acf_ing_dev_values['ing_dev_cont_1']['title']) ?></h1>
-                        <p class="lh-lg text-white mt-5"><?php echo esc_textarea( $acf_ing_dev_values['ing_dev_cont_1']['content'] ) ?></p>
-                       <a href="#qualContent" class="btn btn-white px-5 py-4 btn-lg mt-5  text-success"><?php echo wp_kses_decode_entities( $acf_ing_dev_values['ing_dev_cont_1']['button_label_with_icon'] ) ?></a>
+                        <h1 class="display-3 museo text-white fw-bold" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"> <?php echo esc_html_e($acf_ing_dev_values['ing_dev_cont_1']['title']) ?></h1>
+                        <p class="lh-lg text-white mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_textarea( $acf_ing_dev_values['ing_dev_cont_1']['content'] ) ?></p>
+                       <a href="#qualContent" class="btn btn-white px-5 py-4 btn-lg mt-5  text-success" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>"><?php echo wp_kses_decode_entities( $acf_ing_dev_values['ing_dev_cont_1']['button_label_with_icon'] ) ?></a>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
                     <div class="col-12">
                         <div class="container">
                             <div class="row">
-                                <div id="qual_content">
+                                <div id="qual_content" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                                     <?php get_template_part('template-parts/components/blog/services','content') ?>
                                 </div>
                             </div>
@@ -104,12 +104,12 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="row">
-                            <?php if($acf_ing_dev_values['ing_dev_cont_2']['content_images']) :?>
+                            <?php if($acf_ing_dev_values['ing_dev_cont_2']['content_images']) : $ing_dev = 200?>
                                 <?php foreach($acf_ing_dev_values['ing_dev_cont_2']['content_images'] as $key => $ingcontImages) :?>
-                                <div class="col<?php echo $key === array_key_last($acf_ing_dev_values['ing_dev_cont_2']['content_images']) ? '-12' : ' mb-4' ?>">
+                                <div class="col<?php echo $key === array_key_last($acf_ing_dev_values['ing_dev_cont_2']['content_images']) ? '-12' : ' mb-4' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($ing_dev); ?>">
                                     <img src="<?php echo esc_url($ingcontImages['image']['url'])?>" alt="<?php echo esc_attr($ingcontImages['image']['alt'])?>" class="img-fluid rounded-5">
                                 </div>
-                                <?php endforeach?>
+                                <?php $ing_dev += 200; endforeach?>
                             <?php endif?>
                         </div>
                     </div>

@@ -26,11 +26,11 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             <div class="novel_portfolio bg-success">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5 text-white lh-lg">
+                        <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5 text-white lh-lg" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>">
                         <?php $content = $science_page['science_section_content_1']['content'];
                         echo !empty($content) ? wp_kses_post($content) : '';?>
                         </div>
-                        <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
+                        <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
                             <img src="<?php echo esc_url($science_page['science_section_content_1']['hero_image']['url']); ?>"
                                 alt="<?php echo esc_attr($science_page['science_section_content_1']['hero_image']['alt']); ?>"
                                 class="img-fluid rounded-5">
@@ -45,24 +45,24 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-6">
-                        <?php if (!empty($science_page['science_section_content_2']['images'])) : ?>
+                        <?php if (!empty($science_page['science_section_content_2']['images'])) : $who_delay = 200?>
                             <div class="row">
                             <?php foreach ($science_page['science_section_content_2']['images'] as $key => $science_img) : ?>
-                                <div class="col<?php echo $key === array_key_first($science_page['science_section_content_2']['images']) ? '-12 mb-4' : '' ?>">
+                                <div class="col<?php echo $key === array_key_first($science_page['science_section_content_2']['images']) ? '-12 mb-4' : '' ?>" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr($who_delay); ?>">
                                     <img src="<?php echo esc_url($science_img['image']['url']) ?>" alt="<?php echo esc_attr($science_img['image']['alt']) ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                                 </div>
-                            <?php endforeach ?>
+                            <?php $who_delay += 200; endforeach ?>
                             </div>
                         <?php endif ?>
                     </div>
                     <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
-                        <h1 class="display-4 museo fw-bold"><?php echo $science_page['science_section_content_2']['title'] ?></h1>
-                        <div class="lh-lg text-secondary mt-5">
+                        <h1 class="display-4 museo fw-bold" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo $science_page['science_section_content_2']['title'] ?></h1>
+                        <div class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
                             <?php $content = $science_page['science_section_content_2']['content'];
                             echo !empty($content) ? wp_kses_decode_entities($content) : '';?>
                         </div>
                         <?php if(!empty($science_page['science_section_content_2']['call_to_action'])): ?>
-                            <a href="<?php echo esc_url($science_page['science_section_content_2']['call_to_action']) ?>" class="btn btn-success px-4 py-3 mt-5"><?php echo wp_kses_decode_entities( $science_page['science_section_content_2']['call_to_action_icon'] ) ?><?php echo wp_kses_decode_entities( $science_page['science_section_content_2']['call_to_action_title'] ) ?></a>
+                            <a href="<?php echo esc_url($science_page['science_section_content_2']['call_to_action']) ?>" class="btn btn-success px-4 py-3 mt-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('300'); ?>"><?php echo wp_kses_decode_entities( $science_page['science_section_content_2']['call_to_action_icon'] ) ?><?php echo wp_kses_decode_entities( $science_page['science_section_content_2']['call_to_action_title'] ) ?></a>
                         <?php endif?>
                     </div>
                 </div>
@@ -93,8 +93,8 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             <div class="container position-absolute">
                 <div class="row">
                     <div class="col-12 col-lg-8 col-xl-7 me-auto my-auto px-5 px-md-auto">
-                        <h1 class="museo dispaly-5 text-black fw-bold pe-5"><?php echo esc_html_e($science_page['science_section_content_3']['title']) ?></h1>
-                        <div class="lh-lg text-secondary mt-5">
+                        <h1 class="museo dispaly-5 text-black fw-bold pe-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html_e($science_page['science_section_content_3']['title']) ?></h1>
+                        <div class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>">
                            <?php echo nl2br(wp_kses_post( $science_page['science_section_content_3']['content'] )) ?>
                         </div>
                     </div>
@@ -110,11 +110,11 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
 
                     <div id="science_page">
                         <div class="row g-3">
-                            <?php foreach ($science_page['gallery'] as $key => $science_gallery):?>
-                            <a href="<?php echo esc_url($science_gallery['gallery_image']['url']) ?>" data-toggle="lightbox" data-gallery="<?php echo esc_attr($science_gallery['group_name']) ?>" class="col-4 col-lg-3">
+                            <?php $gal_delay = 200; foreach ($science_page['gallery'] as $key => $science_gallery):?>
+                            <a href="<?php echo esc_url($science_gallery['gallery_image']['url']) ?>" data-toggle="lightbox" data-gallery="<?php echo esc_attr($science_gallery['group_name']) ?>" class="col-4 col-lg-3" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr($gal_delay); ?>">
                                 <img src="<?php echo esc_url($science_gallery['gallery_image']['url']) ?>" alt="<?php echo esc_attr($science_gallery['gallery_image']['alt']) ?>" class="img-fluid">
                             </a>
-                            <?php endforeach ?>
+                            <?php $gal_delay += 200; endforeach ?>
                         </div>
                     </div>
                     <!-- end of science_page -->

@@ -30,11 +30,12 @@ class Recentpost {
         ob_start();
 
         if ($loop->have_posts()) :
+            $prod_delay = 200;
             while ($loop->have_posts()) : $loop->the_post();
                 $product = wc_get_product();
                 $average_rating = $product->get_average_rating();
                 ?>
-                <div class="col">
+                <div class="col" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr($prod_delay); ?>">
                     <a href="<?php esc_url(the_permalink()) ?>" class="text-decoration-none position-relative">
                         <div class="products_tag position-absolute">
                             <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><?php echo esc_html_e('New') ?></span>
@@ -49,6 +50,7 @@ class Recentpost {
                     </a>
                 </div>
                 <?php
+                $prod_delay += 200;
             endwhile;
         else :
             ?>

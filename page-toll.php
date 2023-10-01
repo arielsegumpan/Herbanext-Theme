@@ -46,7 +46,7 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
                     <div class="row">
                         <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
                             <h1 class="display-3 museo fw-bold"><?php echo esc_html_e($cont_sec_1['content_title']) ?></h1>
-                            <p class="lh-lg text-secondary mt-5">
+                            <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                             <?php echo nl2br(esc_textarea( $cont_sec_1['content'] ))?>
                             </p>
                         </div>
@@ -70,11 +70,11 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start">
-                        <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($cont_sec_2['content_title']) ?></h1>
-                        <img src="<?php echo esc_url($cont_sec_2['content_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_2['content_image']['alt']) ?>" class="img-fluid rounded-5">
+                        <h1 class="display-5 museo text-white fw-bold mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html_e($cont_sec_2['content_title']) ?></h1>
+                        <img src="<?php echo esc_url($cont_sec_2['content_image']['url']) ?>" alt="<?php echo esc_url($cont_sec_2['content_image']['alt']) ?>" class="img-fluid rounded-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                     </div>
                     <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5">
-                        <p class="text-secondary text-gray lh-lg">
+                        <p class="text-secondary text-gray lh-lg" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>">
                             <?php echo nl2br(esc_textarea( $cont_sec_2['content'] )) ?>
                         </p>
                     </div>
@@ -107,12 +107,12 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
                 <div class="row">
                     <div class="col-12 col-md-6">
                    <?php if($cont_sec_4['content_4_image']):?>
-                    <img src="<?php echo esc_url($cont_sec_4['content_4_image']['url']) ?>" alt="<?php echo esc_attr($cont_sec_4['content_4_image']['alt']) ?>" class="img-fluid rounded-5">
+                    <img src="<?php echo esc_url($cont_sec_4['content_4_image']['url']) ?>" alt="<?php echo esc_attr($cont_sec_4['content_4_image']['alt']) ?>" class="img-fluid rounded-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                     <?php endif?>
                     </div>
                     <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
-                        <h1 class="museo dispaly-5 text-success fw-bold pe-md-5 mt-5 mt-md-0"><?php echo esc_html_e($cont_sec_4['content_title']) ?></h1>
-                        <p class="lh-lg text-secondary mt-5">
+                        <h1 class="museo dispaly-5 text-success fw-bold pe-md-5 mt-5 mt-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_html_e($cont_sec_4['content_title']) ?></h1>
+                        <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>">
                             <?php if($cont_sec_4['content']):?>
                                 <?php echo nl2br(esc_textarea( $cont_sec_4['content'] )) ?>
                             <?php endif?>

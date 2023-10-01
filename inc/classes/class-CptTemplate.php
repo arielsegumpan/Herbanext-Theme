@@ -26,7 +26,6 @@ class CustomPostTypeArchiveTemplate {
                 }
             }
         }
-
         return $template;
     }
 }

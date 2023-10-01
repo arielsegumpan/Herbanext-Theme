@@ -115,6 +115,39 @@ section#product_lists{
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { 
+    section#product_lists{
+        .lists{
+            .product{
+                section.related.products{
+                    margin: 5rem 0 0 0!important;
+                    h2{
+                        font-family: $museo!important;
+                        color: $green!important;
+                    }
+                }
+            }
+        }
+    }
+    .woocommerce div.product .woocommerce-tabs ul.tabs{
+        margin: 0 0 3rem!important;
+    }
+    div#review_form_wrapper{
+        margin: 2rem 0 0 0!important;
+    }
+    span#reply-title{
+        font-size: 1.5rem!important;
+        font-family: $museo!important;
+        color: $green!important;
+    }
+    form#commentform .comment-form-rating label, p.comment-form-comment, p.comment-form-author, p.comment-form-email {
+        font-size: 1rem!important;
+        font-family: $museo!important;
+        color: $green!important;
+    }
+    form#commentform label span.required, form#commentform p.comment-notes span.required-field-message span.required{
+        color: red!important;
+    }
+
     main section#jumbotron_product h6 nav.woocommerce-breadcrumb a{
         color:#1a1a1a!important;
 

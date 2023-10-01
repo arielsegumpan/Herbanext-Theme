@@ -5,15 +5,15 @@
  */
 get_header();
 
-$get_ts_bg = get_field('training_and_seminars_post_header_image','option');
-$get_ts_title = get_field('training_and_seminars_post_heading_title', 'option');
+$get_ts_bg = get_acf_option_field('training_and_seminars_post_header_image');
+$get_ts_title = get_acf_option_field('training_and_seminars_post_heading_title');
 ?>
 
 
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_about" class="w-100 position-relative">
- <img src="<?php echo esc_url($get_ts_bg) ?>" alt="<?php echo esc_html_e($get_ts_title)?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+ <img src="<?php echo esc_url($get_ts_bg['url']) ?>" alt="<?php echo esc_attr($get_ts_bg['alt'])?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
      <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <h1 class="display-2 museo fw-bold text-success">

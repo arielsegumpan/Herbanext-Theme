@@ -20,6 +20,8 @@ class Woofeat {
         add_filter('loop_shop_columns',[$this,'custom_woocommerce_loop_columns']);
         add_filter('loop_shop_per_page', [$this,'custom_woocommerce_products_per_page']);
         add_shortcode('herbanext_product_categories', [$this,'herbanext_categories_shortcode']);
+        add_filter('woocommerce_output_related_products_args', [$this,'custom_related_products_args']);
+        add_action('woocommerce_after_shop_loop', [$this,'custom_woocommerce_pagination']);
     }
 
     function custom_get_featured_products_shortcode() {
@@ -56,7 +58,7 @@ class Woofeat {
         endif;
         return $output;
     }
-    // custom button woocomemrce
+    // custom Product button woocomemrce
     function custom_add_buttons_to_product_loop() {
         $product_permalink = esc_url(get_permalink());
         $contact_url = esc_url(site_url('/contact'));
@@ -75,7 +77,7 @@ class Woofeat {
   
     // Customize the number of products per page
     function custom_woocommerce_products_per_page() {
-        return 9; // Change this number to adjust the number of products per page
+        return 8; // Change this number to adjust the number of products per page
     }
 
     // get all product categories
@@ -96,6 +98,30 @@ class Woofeat {
 
         return $output;
     }
+    // display 3 related product
+    function custom_related_products_args($args) {
+        $args['posts_per_page'] = 3; // Number of related products to display
+        $args['columns'] = 3; // Number of columns for related products (optional)
+        return $args;
+    }
+    function custom_woocommerce_pagination() {
+        global $wp_query;
     
+        $prev_link = get_previous_posts_link('<i class="bi bi-arrow-left me-2"></i>' . esc_html__('Previous', 'herbanext'));
+        $next_link = get_next_posts_link(esc_html__('Next', 'herbanext') . '<i class="bi bi-arrow-right ms-2"></i>', $wp_query->max_num_pages);
+    
+        if ($prev_link || $next_link) {
+            echo '<div class="woocommerce-pagination">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            ';
+            if ($prev_link) {
+                echo '<div class="pagination-button">' . wp_kses_post(str_replace('href', 'class="btn btn-success px-4 py-3 me-md-3" href', $prev_link)) . '</div>';
+            }
+            if ($next_link) {
+                echo '<div class="pagination-button">' . wp_kses_post(str_replace('href', 'class="btn btn-success px-4 py-3" href', $next_link)) . '</div>';
+            }
+            echo '</div></div>';
+        }
+    }
     
 }

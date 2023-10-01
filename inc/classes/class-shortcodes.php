@@ -67,21 +67,7 @@ namespace HERBANEXT_THEME\Inc;
 
     function get_recent_front_page_posts(){
         ob_start();
-        $args = array(
-            'post_type' => 'post',
-            'post_status' => 'publish',
-            'posts_per_page' => 3,
-        );
-        $loop = new \WP_Query($args);
-
-        if ($loop->have_posts()) :
-            while ($loop->have_posts()) : $loop->the_post();
-                get_template_part('template-parts/components/blog/recent','post');
-            endwhile;
-        else :
-            esc_html_e('No recent post<br>display', 'herbanext'); // Use proper translation function
-        endif;
-        wp_reset_postdata();
+        get_template_part('template-parts/components/blog/recent','post');
         return ob_get_clean();
     }
  }

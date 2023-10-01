@@ -62,8 +62,8 @@ foreach ($acf_services_fields as $key => $field_name) {
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 text-center text-lg-start my-auto pe-lg-5 mt-5 mt-lg-0 pt-md-4">
-                            <h1 class="display-5 museo text-white fw-bold mb-5"><?php echo esc_html_e($acf_services_values['serv_cont_1']['title']) ?></h1>
-                            <p class="text-secondary text-gray lh-lg">
+                            <h1 class="display-5 museo text-white fw-bold mb-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_html_e($acf_services_values['serv_cont_1']['title']) ?></h1>
+                            <p class="text-secondary text-gray lh-lg" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('400'); ?>">
                                <?php echo nl2br(esc_textarea( $acf_services_values['serv_cont_1']['content'] )) ?>
                             </p>
                         </div>
@@ -81,12 +81,12 @@ foreach ($acf_services_fields as $key => $field_name) {
                         <div class="col-12 col-lg-7 me-auto my-auto px-5 px-md-auto">
                             <h2 class="museo dispaly-5 text-success fw-bold text-center text-lg-start pe-lg-5 mb-5"><?php echo esc_html_e($acf_services_values['serv_cont_2']['title']) ?></h2>
                             <div class="row row-cols-2 g-4">
-                            <?php if (!empty($acf_services_values['serv_cont_2']['images'])) : 
+                            <?php if (!empty($acf_services_values['serv_cont_2']['images'])) : $ser_opt_delay = 200;
                                 foreach ($acf_services_values['serv_cont_2']['images'] as $key =>  $get_image) : ?>
-                                    <div class="org_img">
+                                    <div class="org_img" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($serv_opt_delay); ?>">
                                         <img src="<?php echo esc_url($get_image['image']['url']); ?>" alt="<?php echo esc_attr($get_image['image']['alt']); ?>" class="img-fluid rounded-5 object-fit-cover">
                                     </div>
-                                <?php endforeach; ?>
+                                <?php $ser_opt_delay += 200; endforeach ?>
                             <?php endif; ?>
                             </div>
                         </div>
@@ -94,13 +94,13 @@ foreach ($acf_services_fields as $key => $field_name) {
                 </div>
             </div>
             <?php endif?>
-            <?php if (!empty($acf_services_values['serv_cont_3']['services_lists'])) :?>
+            <?php if (!empty($acf_services_values['serv_cont_3']['services_lists'])) : $serv_card_delay = 200;?>
             <!-- CONTENT 3 -->
             <div class="certified_toll">
                 <div class="container">
                     <div class="row row-cols-2 g-4">
                         <?php foreach($acf_services_values['serv_cont_3']['services_lists'] as $key => $service_list):?>
-                        <div class="cert_img">
+                        <div class="cert_img" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($serv_card_delay); ?>">
                             <a href="<?php echo esc_url($service_list['page_link_to']) ?>" class="text-decoration-none">
                                 <div class="card mb-3 border-0" >
                                     <div class="row g-0">
@@ -119,7 +119,7 @@ foreach ($acf_services_fields as $key => $field_name) {
                                 </div>
                             </a>
                         </div>
-                        <?php endforeach?>
+                        <?php $serv_card_delay += 200; endforeach?>
                     </div>
                 </div>
             </div>
@@ -131,17 +131,17 @@ foreach ($acf_services_fields as $key => $field_name) {
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <h1 class="museo dispaly-5 fw-bold text-center text-md-start"><?php echo esc_html_e($acf_services_values['serv_cont_4']['title']) ?></h1>
-                            <p class="lh-lg mt-5"><?php echo nl2br(esc_textarea( $acf_services_values['serv_cont_4']['content'] )) ?></p>
+                            <h1 class="museo dispaly-5 fw-bold text-center text-md-start" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_html_e($acf_services_values['serv_cont_4']['title']) ?></h1>
+                            <p class="lh-lg mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('400'); ?>"><?php echo nl2br(esc_textarea( $acf_services_values['serv_cont_4']['content'] )) ?></p>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="row">
-                            <?php if (!empty($acf_services_values['serv_cont_4']['images'])) : 
+                            <?php if (!empty($acf_services_values['serv_cont_4']['images'])) : $serv_cont4_delay = 200;
                             foreach ($acf_services_values['serv_cont_4']['images'] as $key =>  $getimage) : ?>
-                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>">
+                                <div class="col<?php echo $key === 0 ? '-12 mb-4' : '' ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($serv_cont4_delay); ?>">
                                     <img src="<?php echo esc_url($getimage['image']['url']); ?>" alt="<?php echo esc_attr($getimage['image']['alt']); ?>" class="img-fluid w-100 rounded-5 object-fit-cover">
                                 </div>
-                            <?php endforeach; ?>
+                            <?php $serv_cont4_delay += 200; endforeach; ?>
                             <?php endif; ?>
                             </div>
                         </div>

@@ -68,6 +68,7 @@ $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
                     <div id="blog_search" class="mb-5">
                         <h4 class="fw-bold museo mb-4"><i class="bi bi-search me-2"></i><?php echo esc_html__('Search'); ?></h4>
                         <?php get_search_form() ?>
+                        hello form single medicinal herbs
                     </div>
                     <?php if (get_post_type() === 'post') : ?>
                         <div id="blog_recent" class="mb-5">

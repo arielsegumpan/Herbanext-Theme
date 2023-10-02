@@ -20,7 +20,6 @@ foreach ($acf_fields as $key => $field_name) {
     $acf_lab_values[$key] = get_acf_field($field_name);
 }
 ?>
-
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
@@ -147,10 +146,4 @@ foreach ($acf_fields as $key => $field_name) {
         <?php endif?>
        </section>
     </main>
-
-
-
-
-
-
 <?php get_footer() ?>

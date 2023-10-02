@@ -20,7 +20,6 @@ $partner_acf_values = array();
 foreach ($partner_acf_fields as $key => $partner_field_name) {
     $partner_acf_values[$key] = get_field($partner_field_name);
 }
-
 ?>
 
 <main>

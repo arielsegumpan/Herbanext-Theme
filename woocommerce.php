@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 
  * @package herbanext
@@ -7,7 +6,6 @@
 get_header('shop');
 $shop_page_id = wc_get_page_id('shop');
 $shop = get_field('herbanext_shop', $shop_page_id);
-
 ?>
     <main>
         <!-- jumbotron -->
@@ -25,9 +23,7 @@ $shop = get_field('herbanext_shop', $shop_page_id);
                 </div>
             </div>
         </section>  
-
         <section id="product_lists">
-
             <?php if (is_shop() && !is_product()) : ?>
             <div class="featured_products mb-5 pb-5">
                 <div class="container">
@@ -42,7 +38,6 @@ $shop = get_field('herbanext_shop', $shop_page_id);
                 </div>
             </div>
             <?php endif; ?>
-
             <div class="lists">
             <div class="container">
                 <div class="row">
@@ -54,16 +49,10 @@ $shop = get_field('herbanext_shop', $shop_page_id);
                         </div>
                         <?php woocommerce_content(); ?>
                     </div>
-
-                    <!-- aside -->
                     <?php if ((is_product() || is_singular()) && !is_shop()) : ?>
+                        <!-- aside -->
                         <div class="col-12 col-lg-3">
-                            <?php
-                            if (is_active_sidebar('herbanext-product-sidebar')) :
-                                dynamic_sidebar('herbanext-product-sidebar');
-                            endif;
-                            ?>
-
+                            <?php is_active_sidebar('herbanext-product-sidebar') ? dynamic_sidebar('herbanext-product-sidebar') : ''?>
                             <hr class="my-5">
                             <div id="product_categories" class="mb-5">
                                 <h4 class="fw-bold museo"><?php echo esc_html_e('Product Categories') ?></h4>
@@ -74,9 +63,6 @@ $shop = get_field('herbanext_shop', $shop_page_id);
                 </div>
             </div>
         </div>
-
         </section>
     </main>
-
-
 <?php get_footer()?>

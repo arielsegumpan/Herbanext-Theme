@@ -1,4 +1,4 @@
-<select name="archive-dropdown" class="form-control custom-select" id="exampleFormControlSelect1" onChange='document.location.href=this.options[this.selectedIndex].value;'>
+<select name="archive-dropdown" class="form-control px-3 py-2" id="exampleFormControlSelect1" onChange='document.location.href=this.options[this.selectedIndex].value;'>
     <option disabled selected value=""><?php echo esc_attr(__('Select')); ?></option>
     <?php
     $custom_post_types = array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs');

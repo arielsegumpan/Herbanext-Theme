@@ -1,9 +1,4 @@
 <?php
-/**
- * Header Template
- * @package herbanext
- */
-$get_prload_img = get_acf_option_field('preloader');
 $login_url = esc_url(site_url('/wp-login.php'));
 $shop_url = esc_url(site_url('/products'));
 ?>
@@ -13,17 +8,11 @@ $shop_url = esc_url(site_url('/products'));
     <meta charset="<?php bloginfo( 'charset' )?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo esc_html_e('Herbanext') ?></title>
-    <?php wp_head()?>
+    <?php wp_head();?>
 </head>
   <body <?php body_class() ?>>
      <!-- preloader -->
-     <div id="preloader">
-        <div class="loading-container">
-            <img src="<?php echo esc_url($get_prload_img['preloader_icon']['url']) ?>" alt="<?php echo esc_attr($get_prload_img['preloader_icon']['alt']) ?>" class="d-block mx-auto" width="<?php echo esc_attr($get_prload_img['icon_width']) ?>" height="<?php echo esc_attr($get_prload_img['icon_height']) ?>">
-            <div class="loading-text fs-5">
-            </div>
-          </div>
-    </div>
+  
      <!-- scroll btn -->
     <div id="scroll_btn">
         <i class='bi bi-chevron-double-up fs-4 rounded-3 bg-success'></i>

@@ -46,5 +46,5 @@ if ($recent_careers->have_posts()) :
     <?php endwhile;
     wp_reset_postdata();
 else : ?>
-    <p><?php esc_html_e('No recent careers found.'); ?></p>
+    <p><?php esc_html_e('No recent post about careers found.') ?></p>
 <?php endif; ?>

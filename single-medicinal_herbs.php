@@ -68,16 +68,25 @@ $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
                     <div id="blog_search" class="mb-5">
                         <h4 class="fw-bold museo mb-4"><i class="bi bi-search me-2"></i><?php echo esc_html__('Search'); ?></h4>
                         <?php get_search_form() ?>
-                        hello form single medicinal herbs
                     </div>
-                    <?php if (get_post_type() === 'post') : ?>
+
+                    <?php
+                        $post_types_with_recent = array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs');
+                        if (is_single() && in_array(get_post_type(), $post_types_with_recent)):
+                        ?>
+                        <!-- GET RECENT POST -->
                         <div id="blog_recent" class="mb-5">
                             <h4 class="fw-bold museo "><i class="bi bi-file-earmark-post me-2"></i><?php echo esc_html__('Recent Post'); ?></h4>
                             <ul class="list-group list-group-flush mt-4">
-                                <?php get_template_part('template-parts/sidebars/recent-post'); ?>
+                                <?php
+                                $template_part = get_post_type();
+                                get_template_part('template-parts/sidebars/recent-' . $template_part);
+                                ?>
                             </ul>
                         </div>
                     <?php endif; ?>
+
+
                     <?php if(shortcode_exists( 'all_categories' )): ?>
                         <div id="blog_categories" class="mb-5">
                             <h4 class="fw-bold museo "><i class="bi bi-bookmarks me-2"></i><?php echo esc_html__('Categories'); ?></h4>

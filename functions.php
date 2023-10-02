@@ -17,7 +17,6 @@ function herbanext_get_theme_instance(){
     HERBANEXT_THEME::get_instance();
 }
 herbanext_get_theme_instance();
-
 apply_filters( 'acf/prepare_field', 'herbanext_acf_prepare_field' );
 function herbanext_acf_prepare_field($field) {
     return get_all_acf($field['name'], $field['name'] . '_option');
@@ -183,9 +182,36 @@ function custom_breadcrumbs() {
 
 
   
-add_action('pre_get_posts', 'custom_post_type_search');
-function custom_post_type_search($query) {
-    if ($query->is_search && !is_admin()) {
-        $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
+// add_action('pre_get_posts', 'custom_post_type_search');
+// function custom_post_type_search($query) {
+//     if ($query->is_search && !is_admin()) {
+//         $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
+//     }
+// }
+
+// function SearchFilter($query)
+// {
+//     if ($query->is_search()) {
+//         $query->set('post_type', array('post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'));
+//         $query->set('order', 'ASC');
+//     }
+//     return $query;
+// }
+
+// add_action('pre_get_posts', 'SearchFilter');
+
+
+
+add_action( 'pre_get_posts', function ( $q )
+{  
+    if (    !is_admin()         // Only target front end queries
+         && $q->is_main_query() // Only target the main query
+         && $q->is_search()     // Only target search pages
+    ) {
+        $q->set( 'post_type',  ['post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'] );
+        $q->set( 'posts_per_page',         8       );
+        $q->set( 'no_found_rows',          true     ); // See note above
+        $q->set( 'update_post_term_cache', false    ); // See note above
+        $q->set( 'update_post_meta_cache', false    ); // See note above
     }
-}
+});

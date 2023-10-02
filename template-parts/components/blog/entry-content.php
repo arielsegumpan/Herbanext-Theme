@@ -22,6 +22,7 @@ $career_position = get_acf_field('career_field');
                 <h6 class="fw-bold text-secondary"><i class="bi bi-person me-2"></i><?php echo esc_html(get_the_author()) ?></h6>
                 <h6 class="fw-bold"><?php echo get_the_date('j/ n/ Y') ?></h6>
             </div>
+            <hr class="border border-1 opacity-50 w-50">
             <h1 class="fs-3 museo fw-bold">
                 <?php echo esc_html(get_the_title()) ?>
             </h1>

@@ -20,9 +20,9 @@ $career_position = get_acf_field('career_field');
         <div class="card-body">
             <div class="post_small_details d-flex flex-wrap flex-row text-secondary gap-4 mt-4">
                 <h6 class="fw-bold text-secondary"><i class="bi bi-person me-2"></i><?php echo esc_html(get_the_author()) ?></h6>
-                <h6 class="fw-bold"><?php echo get_the_date('j/ n/ Y') ?></h6>
+                <h6 class="fw-bold"><?php echo esc_html( date_i18n( 'j/ n/ Y', strtotime( get_the_date() ) ) ); ?></h6>
             </div>
-            <hr class="border border-1 opacity-50 w-50">
+            
             <h1 class="fs-3 museo fw-bold">
                 <?php echo esc_html(get_the_title()) ?>
             </h1>
@@ -36,7 +36,7 @@ $career_position = get_acf_field('career_field');
                     <div class="text-secondary">
                         <i class="bi bi-briefcase me-2"></i><?php echo esc_html($career_position['postion']) ?>
                     </div>
-                    <?php if(!empty($career_position['file_upload'])) :?>
+                    <?php if(isset($career_position['file_upload']) && !empty($career_position['file_upload']['url'])) :?>
                     <div>
                         <a href="<?php echo esc_url($career_position['file_upload']['url']) ?>" class="btn btn-success btn-sm rounded-3 px-3 "><i class="bi bi-download me-2"></i><?php echo esc_html__('Download') ?></a>
                     </div>

@@ -5,6 +5,7 @@
 get_header();
 $search_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 $get_search_page_img = get_acf_option_field('search_background');
+
 // ?>
 <main>
  <!-- jumbotron -->
@@ -59,5 +60,4 @@ $get_search_page_img = get_acf_option_field('search_background');
      </div>
  </section>
 </main>
-
 <?php get_footer()?>

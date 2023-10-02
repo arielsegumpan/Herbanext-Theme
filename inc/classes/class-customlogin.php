@@ -32,14 +32,12 @@ class Customlogin {
         $logo_style .= '</style>';
         echo $logo_style;
     }
-
     /**
      * Customize the login page URL
      */
     public function custom_login_url() {
         return esc_url(site_url('/'));
     }
-
     /**
      * Enqueue custom login page stylesheet
      */

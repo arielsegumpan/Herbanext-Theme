@@ -13,7 +13,6 @@
      protected function __construct() {
          $this->setup_hooks();
      }
- 
      protected function setup_hooks() {
          $shortcodes = array(
              'herbanext_career_posts'        => 'careers',
@@ -27,7 +26,6 @@
              });
          }
      }
- 
      // Create shortcode getting recent products displaying on the front page
      private function get_recent_posts($post_type) {
          $args = array(
@@ -35,7 +33,7 @@
              'post_status'    => 'publish',
              'posts_per_page' => 10,
          );
- 
+
          $post_query = new \WP_Query($args);
          ob_start();
  

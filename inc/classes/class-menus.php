@@ -28,9 +28,8 @@ namespace HERBANEXT_THEME\Inc;
     }
 
     public function get_menu_id($id_location){
-        // get tana nga locations of nav
+        // get tanan nga locations of nav
         $locates = get_nav_menu_locations();
-
         $menu_id = $locates[$id_location];
         return !empty($menu_id) ? $menu_id : '';
     }

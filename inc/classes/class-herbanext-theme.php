@@ -25,7 +25,6 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
             Getpost::class,
             Customlogin::class,
         ];
-    
         // Initialize each class
         foreach ($classes as $class) {
             $class::get_instance();
@@ -48,6 +47,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         add_action('woocommerce_shop_loop_item_title', [$this,'abChangeProductsTitle'], 10 );
         add_shortcode('custom_page_headers', [$this,'custom_page_headers_shortcode']);
         add_filter('admin_footer_text', [$this,'custom_footer_admin_text']);
+        add_action( 'pre_get_posts', [$this,'customize_search_query'] );
     }
 
     public function remove_price_related_actions() {
@@ -174,5 +174,15 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
         echo esc_html__("The Official Website of Herbanext", "herbanext");
         echo ' | <a href="https://dev-asegumpan.pantheonsite.io/">Made by: AS</a>';
     }
-    
+
+    // get Search Query
+    function customize_search_query( $query ) {
+        if ( !is_admin() && $query->is_main_query() && $query->is_search() ) {
+            $query->set( 'post_type', ['post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'] );
+            $query->set( 'posts_per_page', 8 );
+            $query->set( 'no_found_rows', true );
+            $query->set( 'update_post_term_cache', false );
+            $query->set( 'update_post_meta_cache', false );
+        }
+    }
  }

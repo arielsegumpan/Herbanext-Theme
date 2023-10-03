@@ -4,7 +4,6 @@
  * @package herbanext
  */
 get_header();
-
 // Define an array of ACF field names
 $contact_acf_fields = array(
     'contact_jumbotron_image' => 'contact_jumbotron_image',
@@ -14,16 +13,12 @@ $contact_acf_fields = array(
     'office_hours'  => 'office_hours',
     'contact_section_page'    => 'contact_section_page'
 );
-
 // Initialize an empty array to store the field values
 $contact_acf_values = array();
-
 // Loop through the field names and fetch their values
 foreach ($contact_acf_fields as $key => $contact_field_name) {
     $contact_acf_values[$key] = get_acf_field($contact_field_name);
-}
-?>
-
+}?>
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_product" class="w-100 position-relative">
@@ -59,7 +54,7 @@ foreach ($contact_acf_fields as $key => $contact_field_name) {
         </div>
     </section>
     <?php endif; ?>
-
+    <?php if(!empty( $contact_acf_values['location']['location_title']) || !empty($contact_acf_values['office_hours']['office_title']) || !empty($contact_acf_values['contact_section_page']['contact_section_page_title'])) :?>
     <section id="officehours" class="bg-gray">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3">
@@ -81,11 +76,11 @@ foreach ($contact_acf_fields as $key => $contact_field_name) {
                         'contents' => $contact_acf_values['contact_section_page']['contact_section_page_contents'],
                     ],
                 ];
-
+                $delay = 200;
                 foreach ($sections as $section_key => $section_data) {
                     if (!empty($section_data['title'])) :
                 ?>
-                        <div class="col text-center text-secondary<?php echo ($section_key === 'contact_section_page') ? '' : ' mb-5 mb-md-0'; ?>">
+                        <div class="col text-center text-secondary<?php echo ($section_key === 'contact_section_page') ? '' : ' mb-5 mb-md-0'; ?>" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($delay)?>">
                             <h1 class="fs-3 fw-bold museo mb-4"><?php echo wp_kses_decode_entities($section_data['icon']) ?><?php echo esc_html($section_data['title']) ?></h1>
                             <?php if (!empty($section_data['contents'])) : ?>
                                 <?php foreach ($section_data['contents'] as $content) : ?>
@@ -95,13 +90,12 @@ foreach ($contact_acf_fields as $key => $contact_field_name) {
                         </div>
                 <?php
                     endif;
+                $delay += 200;
                 }
                 ?>
             </div>
         </div>
     </section>
-
-
+    <?php endif?>
 </main>
-
 <?php get_footer(); ?>

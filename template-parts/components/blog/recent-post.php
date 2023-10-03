@@ -19,10 +19,7 @@ if ( $recent_posts ) :
         >
             <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="text-decoration-none">
                 <div class="d-flex flex-column flex-md-row justify-content-md-start align-items-center gap-4">
-                    <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID() ) ); ?>"
-                         alt="<?php echo esc_attr( get_the_title() ); ?>"
-                         class="rounded-4 object-fit-cover"
-                    >
+                    <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID() ) ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="rounded-4 object-fit-cover">
                     <div>
                         <h6 class="lead museo text-white fw-bold text-center text-md-start">
                             <?php echo esc_html( get_the_title() ); ?>

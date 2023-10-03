@@ -2,7 +2,9 @@ $(document).ready(function () {
     $(window).on("load", function() {
         $("#preloader").fadeOut("slow");
     });
+    
     AOS.init();
+
     $('div#respond small a#cancel-comment-reply-link').addClass('btn btn-outline-success ms-3');
     $('h3#reply-title a.comment-reply-link').addClass('text-decoration-none');
     $('h3#reply-title').addClass('museo');
@@ -24,6 +26,7 @@ $(document).ready(function () {
     $('.woocommerce-pagination .prev a').addClass('page-link');
     $('.woocommerce-pagination .next a').addClass('page-link');
     $('#review_form textarea#comment').addClass('form-control');
+
     $('.woocommerce div.product .woocommerce-product-rating a.woocommerce-review-link').addClass('text-decoration-none ps-4 d-flex flex-row pt-1');
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond p.comment-form-comment textarea#comment').addClass('form-control p-3');
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform p.comment-form-author input#author').addClass('form-control p-3');
@@ -38,6 +41,7 @@ $(document).ready(function () {
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating p.stars a').addClass('text-success');
     $('div#tab-reviews div#review_form_wrapper div#review_form div#respond form#commentform .comment-form-rating label').addClass('mb-3');
     $('div#tab-description p').addClass('text-secondary lh-lg');
+
     //humberger
     const icons = document.querySelectorAll('.icon_ni');
 

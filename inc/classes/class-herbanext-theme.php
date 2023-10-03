@@ -132,7 +132,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     
     // Custom shop title
     function abChangeProductsTitle() {
-        echo '<h5 class="woocommerce-loop-product_title museo text-center fw-bold"><a class="text-decoration-none text-success" href="' . esc_url(get_the_permalink()) . '">' . esc_html(get_the_title()) . '</a></h5>';
+        echo '<h5 class="woocommerce-loop-product_title museo text-center fw-bold mt-4"><a class="text-decoration-none text-success" href="' . esc_url(get_the_permalink()) . '">' . esc_html(get_the_title()) . '</a></h5>';
     }
 
     // display jumbotron pages

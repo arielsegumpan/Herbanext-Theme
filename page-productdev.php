@@ -107,7 +107,7 @@ foreach ($acf_prod_dev_fields as $key => $field_name) {
                     <?php endif?>
                     <?php echo wp_kses_decode_entities( $acf_prod_dev_values['prod_dev_cont_2']['content_form'] ) ?>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 mt-5 mt-md-0">
                         <div class="row">
                             <?php if($acf_prod_dev_values['prod_dev_cont_2']['content_3_images']) : $prod_form_delay = 200;?>
                                 <?php foreach($acf_prod_dev_values['prod_dev_cont_2']['content_3_images'] as $key => $labcontImages) :?>

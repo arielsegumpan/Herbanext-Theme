@@ -98,7 +98,7 @@ foreach ($acf_services_fields as $key => $field_name) {
             <!-- CONTENT 3 -->
             <div class="certified_toll">
                 <div class="container">
-                    <div class="row row-cols-2 g-4">
+                    <div class="row row-cols-1 row-cols-lg-2 g-4">
                         <?php foreach($acf_services_values['serv_cont_3']['services_lists'] as $key => $service_list):?>
                         <div class="cert_img" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr($serv_card_delay); ?>">
                             <a href="<?php echo esc_url($service_list['page_link_to']) ?>" class="text-decoration-none">

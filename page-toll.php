@@ -105,12 +105,12 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
         <div class="innovative">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-lg-6">
                    <?php if($cont_sec_4['content_4_image']):?>
                     <img src="<?php echo esc_url($cont_sec_4['content_4_image']['url']) ?>" alt="<?php echo esc_attr($cont_sec_4['content_4_image']['alt']) ?>" class="img-fluid rounded-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>">
                     <?php endif?>
                     </div>
-                    <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
+                    <div class="col-12 col-lg-6 my-auto px-md-5 text-center text-md-start mt-5 mt-lg-0">
                         <h1 class="museo dispaly-5 text-success fw-bold pe-md-5 mt-5 mt-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo esc_html_e($cont_sec_4['content_title']) ?></h1>
                         <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>">
                             <?php if($cont_sec_4['content']):?>

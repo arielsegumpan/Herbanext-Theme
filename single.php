@@ -3,20 +3,18 @@
  * @package herbanext
  */
 get_header();
-
 $post_id = get_the_ID();
 $image_id = get_post_thumbnail_id($post_id);
 $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
 ?>
-
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_about" class="w-100 position-relative">
         <img src="<?php echo esc_url(get_the_post_thumbnail_url($post_id)); ?>" alt="<?php echo esc_attr($alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
-        <div class="container position-absolute">
+        <div class="container position-absolute mt-4 mt-lg-0">
             <div class="col-12 col-md-8 col-lg-10 me-auto text-center text-md-start my-auto">
                 <?php if (is_single() && !is_front_page()) : ?>
-                    <h1 class="display-5 museo fw-bold text-success"><?php single_post_title(); ?></h1>
+                    <h1 class="display-6 museo fw-bold text-success"><?php single_post_title(); ?></h1>
                 <?php endif; ?>
                 <h6 class="mt-4 mt-lg-3">
                     <nav aria-label="breadcrumb">

@@ -26,11 +26,11 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             <div class="novel_portfolio bg-success">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-6 text-center text-md-start my-auto pe-md-5 text-white lh-lg" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>">
+                        <div class="col-12 col-lg-6 text-center text-md-start my-auto pe-md-5 text-white lh-lg" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>">
                         <?php $content = $science_page['science_section_content_1']['content'];
                         echo !empty($content) ? wp_kses_post($content) : '';?>
                         </div>
-                        <div class="col-12 col-md-6 px-md-5 mb-5 mb-md-0 text-center text-md-start" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
+                        <div class="col-12 col-lg-6 px-md-5 mb-5 mb-md-0 mt-5 mt-lg-0 text-center text-md-start" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
                             <img src="<?php echo esc_url($science_page['science_section_content_1']['hero_image']['url']); ?>"
                                 alt="<?php echo esc_attr($science_page['science_section_content_1']['hero_image']['alt']); ?>"
                                 class="img-fluid rounded-5">
@@ -55,7 +55,7 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
                             </div>
                         <?php endif ?>
                     </div>
-                    <div class="col-12 col-lg-6 mb-5 mb-md-0 text-center text-md-start">
+                    <div class="col-12 col-lg-6 mb-5 mb-md-0 mt-5 mt-lg-0 text-center text-md-start">
                         <h1 class="display-4 museo fw-bold" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('200'); ?>"><?php echo $science_page['science_section_content_2']['title'] ?></h1>
                         <div class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="<?php echo esc_attr('400'); ?>">
                             <?php $content = $science_page['science_section_content_2']['content'];

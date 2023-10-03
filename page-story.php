@@ -43,7 +43,7 @@ $quality_standard = get_acf_field('quality_standard');
                                 <?php echo esc_textarea($story_who_we_Are['content']) ?>
                             </p>
                         </div>
-                        <div class="col-12 col-lg-6">
+                        <div class="col-12 col-lg-6 mt-5 mt-lg-0">
                             <div class="row mb-4">
                                 <?php if (!empty($story_who_we_Are['content_image'])) : $story_delay = 200  ?>
                                     <?php foreach ($story_who_we_Are['content_image'] as $key => $who_img) : ?>
@@ -119,11 +119,11 @@ $quality_standard = get_acf_field('quality_standard');
             <div class="innovative">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-lg-6">
                             <img src="<?php echo esc_url($innovative['innovative_image']['url']) ?>" alt="<?php echo esc_attr($innovative['innovative_image']['alt']) ?>" class="img-fluid rounded-5">
                         </div>
-                        <div class="col-12 col-md-6 my-auto px-md-5 text-center text-md-start">
-                            <h1 class="museo dispaly-5 text-black fw-bold pe-md-5 mt-5 mt-md-0" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($innovative['innovative_title']) ?></h1>
+                        <div class="col-12 col-lg-6 my-auto px-md-5 mt-5 md-lg-0 text-center text-md-start">
+                            <h1 class="museo dispaly-5 text-black fw-bold pe-md-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($innovative['innovative_title']) ?></h1>
                             <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo nl2br(esc_textarea($innovative['innovative_content'])) ?>
                             </p>
@@ -155,13 +155,13 @@ $quality_standard = get_acf_field('quality_standard');
             <div class="committed bg-success">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-6 my-auto text-center text-md-start mb-5 mb-md-0">
+                        <div class="col-12 col-lg-6 my-auto text-center text-md-start mb-5 mb-md-0">
                             <h1 class="museo display-5 text-white fw-bold" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('100'); ?>"><?php echo esc_html($committed['committed_title']) ?></h1>
                             <p class="lh-lg text-white mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                                 <?php echo nl2br(esc_textarea($committed['committed_content'])) ?>
                             </p>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-lg-6 mt-5 mt-lg-0">
                             <img src="<?php echo esc_url($committed['committed_image']['url']) ?>" alt="<?php echo esc_attr($committed['committed_image']['alt']) ?>" class="img-fluid rounded-4 rounded-md-5">
                         </div>
                     </div>

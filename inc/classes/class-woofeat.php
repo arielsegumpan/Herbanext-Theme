@@ -112,7 +112,7 @@ class Woofeat {
     
         if ($prev_link || $next_link) {
             echo '<div class="woocommerce-pagination">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <div class="d-grid gap-2 d-md-flex justify-content-center text-center">
             ';
             if ($prev_link) {
                 echo '<div class="pagination-button">' . wp_kses_post(str_replace('href', 'class="btn btn-success px-4 py-3 me-md-3" href', $prev_link)) . '</div>';

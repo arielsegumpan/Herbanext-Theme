@@ -10,6 +10,9 @@ $contact_acf_fields = array(
     'contact_jumbotron_image' => 'contact_jumbotron_image',
     'body_map' => 'body_map',
     'contact_form' => 'contact_form',
+    'location'  => 'location',
+    'office_hours'  => 'office_hours',
+    'contact_section_page'    => 'contact_section_page'
 );
 
 // Initialize an empty array to store the field values
@@ -19,7 +22,6 @@ $contact_acf_values = array();
 foreach ($contact_acf_fields as $key => $contact_field_name) {
     $contact_acf_values[$key] = get_acf_field($contact_field_name);
 }
-
 ?>
 
 <main>
@@ -57,6 +59,49 @@ foreach ($contact_acf_fields as $key => $contact_field_name) {
         </div>
     </section>
     <?php endif; ?>
+
+    <section id="officehours" class="bg-gray">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3">
+                <?php
+                $sections = [
+                    'location' => [
+                        'title' => $contact_acf_values['location']['location_title'],
+                        'icon' => $contact_acf_values['location']['location_icon'],
+                        'contents' => $contact_acf_values['location']['contents'],
+                    ],
+                    'office_hours' => [
+                        'title' => $contact_acf_values['office_hours']['office_title'],
+                        'icon' => $contact_acf_values['office_hours']['office_icon'],
+                        'contents' => $contact_acf_values['office_hours']['contents'],
+                    ],
+                    'contact_section_page' => [
+                        'title' => $contact_acf_values['contact_section_page']['contact_section_page_title'],
+                        'icon' => $contact_acf_values['contact_section_page']['contact_section_page_icon'],
+                        'contents' => $contact_acf_values['contact_section_page']['contact_section_page_contents'],
+                    ],
+                ];
+
+                foreach ($sections as $section_key => $section_data) {
+                    if (!empty($section_data['title'])) :
+                ?>
+                        <div class="col text-center text-secondary<?php echo ($section_key === 'contact_section_page') ? '' : ' mb-5 mb-md-0'; ?>">
+                            <h1 class="fs-3 fw-bold museo mb-4"><?php echo wp_kses_decode_entities($section_data['icon']) ?><?php echo esc_html($section_data['title']) ?></h1>
+                            <?php if (!empty($section_data['contents'])) : ?>
+                                <?php foreach ($section_data['contents'] as $content) : ?>
+                                    <p><?php echo nl2br(esc_textarea($content['content'])) ?></p>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </div>
+                <?php
+                    endif;
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+
+
 </main>
 
 <?php get_footer(); ?>

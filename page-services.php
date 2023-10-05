@@ -23,7 +23,7 @@ foreach ($acf_services_fields as $key => $field_name) {
     <main>
         <?php if (!empty($acf_services_values['jumb_serv_dev'])) : ?>
         <section id="jumbotron_about" class="w-100 position-relative">
-            <?php if (!empty($acf_services_values['jumb_serv_dev']['image'])) : ?>
+            <?php if (!empty($acf_services_values['jumb_serv_dev']['image']['url'])) : ?>
                 <img src="<?php echo esc_url($acf_services_values['jumb_serv_dev']['image']['url']) ?>" alt="<?php echo esc_attr($acf_services_values['jumb_serv_dev']['image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
             <?php else : ?>
                 <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($prod_dev_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">

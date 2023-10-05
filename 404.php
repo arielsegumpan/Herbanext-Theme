@@ -4,7 +4,6 @@
  * @package herbanext
  */
 get_header();
-
 $err_page = get_acf_option_field('error_page');
 $error_image_id = get_post_thumbnail_id();
 $error_alt_text = get_post_meta($error_image_id, '_wp_attachment_image_alt', true);
@@ -12,7 +11,7 @@ $error_alt_text = get_post_meta($error_image_id, '_wp_attachment_image_alt', tru
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
-            <?php if(!empty($err_page['error_jumbotron'])):?>
+            <?php if(!empty($err_page['error_jumbotron']['url'])):?>
                 <img src="<?php echo esc_url($err_page['error_jumbotron']['url']) ?>" alt="<?php echo esc_attr($err_page['error_jumbotron']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
             <?php else:?>
                 <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($error_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">

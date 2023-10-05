@@ -12,7 +12,9 @@ $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_about" class="w-100 position-relative">
-    <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+        <?php if(has_post_thumbnail()):?>
+        <img src="<?php echo esc_url(the_post_thumbnail_url()) ?>" alt="<?php echo esc_attr($alt_text) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+        <?php endif;?>
         <div class="container position-absolute mt-4 mt-lg-0">
             <div class="col-12 col-md-8 col-lg-10 me-auto text-center text-md-start my-auto">
                 <?php if (is_single() && !is_front_page()) : ?>

@@ -23,7 +23,7 @@ foreach ($acf_fields as $key => $field_name) {
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
-            <?php if (!empty($acf_lab_values['jumb_lab']['image'])) : ?>
+            <?php if (!empty($acf_lab_values['jumb_lab']['image']['url'])): ?>
                 <img src="<?php echo esc_url($acf_lab_values['jumb_lab']['image']['url']) ?>" alt="<?php echo esc_attr($acf_lab_values['jumb_lab']['image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
             <?php else : ?>
                 <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($lab_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">

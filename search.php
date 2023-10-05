@@ -10,8 +10,10 @@ $get_search_page_img = get_acf_option_field('search_background');
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_about" class="w-100 position-relative">
+    <?php if(!empty($get_search_page_img['url'])): ?>
     <img src="<?php echo esc_url($get_search_page_img['url']) ?>" alt="<?php echo esc_attr($get_search_page_img['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
-     <div class="container position-absolute">
+     <?php endif;?>
+    <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <h1 class="display-2 museo fw-bold text-success">
                     <?php echo esc_html_e('Search Result') ?>

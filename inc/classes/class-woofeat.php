@@ -12,7 +12,6 @@ class Woofeat {
     protected function __construct() {
         $this->setup_hooks();
     }
-
     protected function setup_hooks() {
         // Add shortcode registration
         add_shortcode('custom_featured_products', [$this,'custom_get_featured_products_shortcode']);
@@ -32,10 +31,8 @@ class Woofeat {
             'visibility' => 'catalog',
             'featured' => true,
         ));
-    
         // Initialize output
         $output = '';
-    
         if (!empty($featured_products)):
             foreach ($featured_products as $product) :
                 $product_link = esc_url(get_permalink($product->get_id()));
@@ -87,7 +84,6 @@ class Woofeat {
             'taxonomy' => 'product_cat',
             'hide_empty' => true,
         ));
-
         // Generate output
         $output = '<div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">';
         foreach ($woocommerce_categories as $category) {

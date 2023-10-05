@@ -4,7 +4,7 @@
  * @package herbanext
  */
 get_header();
-
+$alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 // Retrieve ACF values once and store them in variables
 $story_jumb = get_acf_field('story_jumbotron');
 $story_who_we_Are = get_acf_field('who_we_are');
@@ -24,6 +24,8 @@ $quality_standard = get_acf_field('quality_standard');
     <section id="jumbotron_about" class="w-100 position-relative">
         <?php if (!empty($story_jumb['jumbotron_story_image']['url'])) : ?>
             <img src="<?php echo esc_url($story_jumb['jumbotron_story_image']['url']) ?>" alt="<?php echo esc_attr($story_jumb['jumbotron_story_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+        <?php else : ?>
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <?php endif ?>
         <div class="container position-absolute">
             <?php echo do_shortcode('[custom_page_headers]') ?>

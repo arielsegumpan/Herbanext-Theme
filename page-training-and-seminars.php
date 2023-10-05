@@ -11,14 +11,11 @@ $args = array(
     'post_status'    => 'publish',
     'posts_per_page' => 10,
 );
-
 $getTR = new WP_Query($args);
-
 if ($getTR->have_posts()) {
     $has_posts = true;
 }
 ?>
-
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_product" class="w-100 position-relative">

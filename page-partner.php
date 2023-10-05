@@ -5,7 +5,7 @@
  */
 
 get_header();
-
+$partner_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 // Define an array of ACF field names
 $partner_acf_fields = array(
     'partner_section_1' => 'partner_section_1',
@@ -29,7 +29,9 @@ foreach ($partner_acf_fields as $key => $partner_field_name) {
             <?php $jumbotron_image = $partner_acf_values['partner_section_1']['partner_jumbotron_image'] ?>
             <?php if (!empty($jumbotron_image['url'])) : ?>
                 <img src="<?php echo esc_url($jumbotron_image['url']); ?>" alt="<?php echo esc_attr($jumbotron_image['alt']); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
-            <?php endif; ?>
+            <?php else : ?>
+                <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($partner_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <?php endif ?>
             <div class="container position-absolute">
                 <?php echo do_shortcode('[custom_page_headers]'); ?>
             </div>

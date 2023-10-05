@@ -1,20 +1,21 @@
 <?php
 /**
- * Template Name: Terms and Condition
+ * Template Name: Privacy Policy
  * @package herbanext
  */
 get_header();
 $image_id = get_post_thumbnail_id();
-$tc_alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
-$get_img = get_acf_field('terms_and_condition_image');
+$pp_alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+$get_img = get_acf_field('privacy_policy_image');
 ?>
+
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_about" class="w-100 position-relative">
-        <?php if( !empty($get_img['terms_and_condition_jumbotron_image']['url'])):?>
-             <img src="<?php echo esc_url($get_img['terms_and_condition_jumbotron_image']['url']) ?>" alt="<?php echo esc_url($get_img['terms_and_condition_jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+        <?php if( !empty($get_img['privacy_policy_jumbotron_image']['url'])):?>
+             <img src="<?php echo esc_url($get_img['privacy_policy_jumbotron_image']['url']) ?>" alt="<?php echo esc_url($get_img['privacy_policy_jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <?php else:?>
-            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($tc_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($pp_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <?php endif?>
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">

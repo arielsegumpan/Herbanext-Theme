@@ -31,7 +31,7 @@ foreach ($acf_fields as $key => $field_name) {
     <?php
     // Jumbotron Section
     $jumbotron = $acf_values['jumbotron'];
-    if (!empty($jumbotron['title']) && !empty($jumbotron['subtitle']) && !empty($jumbotron['jumbotron_image'])) :
+    if (!empty($jumbotron['title']) && !empty($jumbotron['subtitle']) && !empty($jumbotron['jumbotron_image']['url'])) :
     ?>
         <!-- jumbotron -->
         <section id="jumbotron" class="w-100 position-relative">

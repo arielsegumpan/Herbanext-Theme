@@ -4,6 +4,7 @@
  * @package herbanext
  */
 get_header();
+$contact_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 // Define an array of ACF field names
 $contact_acf_fields = array(
     'contact_jumbotron_image' => 'contact_jumbotron_image',
@@ -22,8 +23,10 @@ foreach ($contact_acf_fields as $key => $contact_field_name) {
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_product" class="w-100 position-relative">
-        <?php if (!empty($contact_acf_values['contact_jumbotron_image'])): ?>
+        <?php if (!empty($contact_acf_values['contact_jumbotron_image']['url'])): ?>
              <img src="<?php echo esc_url($contact_acf_values['contact_jumbotron_image']['url']) ?>" alt="<?php echo esc_attr($contact_acf_values['contact_jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
+        <?php else:?>
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($contact_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <?php endif; ?>
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">

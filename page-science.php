@@ -12,7 +12,7 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
 <main>
     <!-- jumbotron -->
     <section id="jumbotron_about" class="w-100 position-relative">
-        <?php if(!empty($science_page['jumbotron'])):?>
+        <?php if(!empty($science_page['jumbotron']['url'])):?>
             <img src="<?php echo esc_url($science_page['jumbotron']['url']); ?>" alt="<?php echo esc_attr($science_page['jumbotron']['alt']); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <?php else:?>
             <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($sci_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">

@@ -4,7 +4,7 @@
  * @package herbanext
  */
 get_header();
-
+$toll_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 $jumb = get_acf_field('jumbotron');
 $cont_sec_1 = get_acf_field('content_section_1');
 $cont_imgs = $cont_sec_1 ? $cont_sec_1['content_image'] : [];
@@ -17,9 +17,11 @@ $cont_imgs_5 = $cont_sec_5 ? $cont_sec_5['content_5_image'] : [];
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_about" class="w-100 position-relative">
-           <?php if($jumb): ?>
+           <?php if(!empty($jumb['jumbotron_background_image']['url'])): ?>
             <img src="<?php echo esc_url($jumb['jumbotron_background_image']['url']) ?>" alt="<?php echo esc_url($jumb['jumbotron_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute bottom-0 left-0">
-           <?php endif?>
+            <?php else:?>
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($toll_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+            <?php endif?>
             <div class="container position-absolute">
                 <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">
                 <?php

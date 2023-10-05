@@ -3,22 +3,18 @@
  * @package herbanext
  */
 ?>
-
 <?php
 $args = array(
     'post_type' => 'careers',
     'post_status' => 'publish',
     'posts_per_page' => 5,
 );
-
 $recent_careers = new WP_Query($args);
-
 if ($recent_careers->have_posts()) :
     $count = 0;
     while ($recent_careers->have_posts()) :
         $recent_careers->the_post();
         $count++;
-
         $career_link = esc_url(get_permalink());
         $career_thumbnail = esc_url(get_the_post_thumbnail_url());
         $career_alt = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
@@ -42,7 +38,6 @@ if ($recent_careers->have_posts()) :
                 </div>
             </a>
         </li>
-
     <?php endwhile;
     wp_reset_postdata();
 else : ?>

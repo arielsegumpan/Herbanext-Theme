@@ -4,7 +4,7 @@
  * @package herbanext
  */
 get_header();
-
+$team_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 // Retrieve ACF values once and store them in variables
 $team_jumb = get_acf_field('team_jumbotron');
 $team_cards = get_acf_field('team_cards');
@@ -16,6 +16,8 @@ $team_card_contents = !empty($team_cards['card']) ? $team_cards['card'] : [];
     <section id="jumbotron_about" class="w-100 position-relative">
         <?php if ($team_jumb && !empty($team_jumb['jumbotron_image']['url'])) : ?>
             <img src="<?php echo esc_url($team_jumb['jumbotron_image']['url']) ?>" alt="<?php echo esc_attr($team_jumb['jumbotron_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
+        <?php else : ?>
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($team_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
         <?php endif ?>
         <div class="container position-absolute">
             <div class="col-12 col-md-8 col-lg-6 mx-auto text-center my-auto">

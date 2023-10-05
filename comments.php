@@ -4,12 +4,10 @@
  * @package herbanext
  */
 
-
 if (post_password_required()) {
     return;
 }
 ?>
-
 <div id="comments" class="comments-area mt-5 pt-3 pt-md-5">
     <?php
     if (have_comments()) :

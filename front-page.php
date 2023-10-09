@@ -187,7 +187,7 @@ foreach ($acf_fields as $key => $field_name) {
     <?php
     // Products Section
     $products = $acf_values['products'];
-    if (!empty($products['product_page_background']) && !empty($products['product_title'])) :
+    if (!empty($products['product_page_background']['url']) && !empty($products['product_title'])) :
     ?>
         <section id="products" class="position-relative">
             <div class="products_img position-relative">

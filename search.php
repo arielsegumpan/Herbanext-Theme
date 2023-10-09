@@ -5,8 +5,7 @@
 get_header();
 $search_alt_text = esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true));
 $get_search_page_img = get_acf_option_field('search_background');
-
-// ?>
+?>
 <main>
  <!-- jumbotron -->
  <section id="jumbotron_about" class="w-100 position-relative">
@@ -35,11 +34,11 @@ $get_search_page_img = get_acf_option_field('search_background');
                     <?php get_template_part('template-parts/content/content-empty')?>
             <?php endif;wp_reset_postdata();?>
          </div> 
-        <?php if(get_next_posts_link() || get_previous_posts_link() ) :?>
+         <?php if ( $wp_query->max_num_pages > 1 ) : ?>
          <div class="row">
             <div class="container text-center">
                 <nav aria-label="Page navigation" class="mt-5 pt-4">
-                    <ul class="pagination justify-content-center">
+                    <ul class="pagination d-flex flex-column flex-md-row gap-4 justify-content-center list-unstyled">
                         <?php if (get_previous_posts_link()) : ?>
                             <li class="page-item">
                                 <span class="btn btn-success px-5 py-3">

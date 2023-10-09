@@ -179,10 +179,10 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     function customize_search_query( $query ) {
         if ( !is_admin() && $query->is_main_query() && $query->is_search() ) {
             $query->set( 'post_type', ['post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'] );
-            $query->set( 'posts_per_page', 8 );
-            $query->set( 'no_found_rows', true );
-            $query->set( 'update_post_term_cache', false );
-            $query->set( 'update_post_meta_cache', false );
+            // $query->set( 'posts_per_page', 8 );
+            // $query->set( 'no_found_rows', true );
+            // $query->set( 'update_post_term_cache', false );
+            // $query->set( 'update_post_meta_cache', false );
         }
     }
  }

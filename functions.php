@@ -4,10 +4,12 @@
  * @package herbanext
  */
 use HERBANEXT_THEME\Inc\HERBANEXT_THEME;
-// Define ABSPATH
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+
+function custom_script(){
+    wp_enqueue_script('custom_js', get_theme_file_uri() . '/assets/js/js.js', NULL, '1.0', true);
 }
+add_action('wp_enqueue_scripts', 'custom_script');
+
 // Define HERBANEXT_DIR_PATH and HERBANEXT_DIR_URI if not defined
 !defined('HERBANEXT_DIR_PATH') ? define('HERBANEXT_DIR_PATH',untrailingslashit( get_template_directory() )) : '';
 !defined('HERBANEXT_DIR_URI') ? define('HERBANEXT_DIR_URI',untrailingslashit( get_template_directory_uri() )) : '';
@@ -17,6 +19,7 @@ function herbanext_get_theme_instance(){
     HERBANEXT_THEME::get_instance();
 }
 herbanext_get_theme_instance();
+
 apply_filters( 'acf/prepare_field', 'herbanext_acf_prepare_field' );
 function herbanext_acf_prepare_field($field) {
     return get_all_acf($field['name'], $field['name'] . '_option');

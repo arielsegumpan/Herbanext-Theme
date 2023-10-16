@@ -33,11 +33,11 @@ $shop = get_field('herbanext_shop', $shop_page_id);
             <div class="featured_products mb-5 pb-5">
                 <div class="container">
                     <div class="col mb-5">
-                        <h3 class="fw-bold">
+                        <h3 class="fw-bold"> 
                             <i class="bi bi-bookmark-star me-3 bg-success text-white px-3 py-2 rounded-4"></i><?php echo esc_html_e('Featured Products') ?>
                         </h3>
                     </div>
-                    <div class="row row-cols-2 row-cols-lg-4 row-gap-4">
+                    <div class="row row-cols-2 row-cols-lg-4 row-gap-4 texct-center">
                         <?php echo do_shortcode('[custom_featured_products]'); ?>
                     </div>
                 </div>

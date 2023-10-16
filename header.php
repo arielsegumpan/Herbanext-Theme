@@ -10,16 +10,16 @@ $shop_url = esc_url(site_url('/products'));
 <!doctype html>
 <html <?php wp_kses_decode_entities(language_attributes()) ?>>
   <head>
-    <meta charset="<?php bloginfo( 'charset' )?>">
+    <meta charset="<?php bloginfo('charset');?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo esc_html_e('Herbanext') ?></title>
+    <title><?php echo esc_html_e('Herbanext');?></title>
     <?php wp_head()?>
 </head>
-  <body <?php body_class() ?>>
+  <body <?php body_class();?>>
      <!-- preloader -->
      <div id="preloader">
         <div class="loading-container">
-            <img src="<?php echo esc_url($get_prload_img['preloader_icon']['url']) ?>" alt="<?php echo esc_attr($get_prload_img['preloader_icon']['alt']) ?>" class="d-block mx-auto" width="<?php echo esc_attr($get_prload_img['icon_width']) ?>" height="<?php echo esc_attr($get_prload_img['icon_height']) ?>">
+            <img src="<?php echo esc_url($get_prload_img['preloader_icon']['url']); ?>" alt="<?php echo esc_attr($get_prload_img['preloader_icon']['alt']) ;?>" class="d-block mx-auto" width="<?php echo esc_attr($get_prload_img['icon_width']) ?>" height="<?php echo esc_attr($get_prload_img['icon_height']) ?>">
             <div class="loading-text fs-5">
             </div>
           </div>

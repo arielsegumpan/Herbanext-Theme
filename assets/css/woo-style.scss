@@ -105,7 +105,18 @@ section#product_lists{
         }
     }
    
+    div#review_form_wrapper div#respond form#commentform p.form-submit input#submit{
+        padding: 1.3rem 3rem!important;
+        border-radius: 10px!important;
+        color: $white!important;
+        background-color: $green!important;
+        margin-top: 3rem!important;
+        transition: $trans!important;
+    }
+    div#review_form_wrapper div#respond form#commentform p.form-submit input#submit:hover{
 
+        background-color: rgba($green, .9)!important;
+    }
 }
 
 .woocommerce .star-rating span::before{
@@ -171,6 +182,7 @@ section#product_lists{
         background-color: $green!important;
         margin-top: 3rem!important;
     }
+    
     .woocommerce #reviews #comment{
         height: 140px!important;
     }
@@ -179,6 +191,7 @@ section#product_lists{
             display: none;
         }
     }
+
 }
 
 // Medium devices (tablets, 768px and up)

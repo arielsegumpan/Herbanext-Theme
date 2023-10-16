@@ -13,7 +13,7 @@ $acf_fields = array(
     'story' => 'story',
     'services' => 'services',
     'products' => 'products',
-    'galleries' => 'gallery',
+    'galleries' => 'home_gallery',
     'newsupdates' => 'news_and_updates',
     'partnerus' => 'partner_with_us',
 );
@@ -212,14 +212,14 @@ foreach ($acf_fields as $key => $field_name) {
     <?php
     // Gallery Section
     $galleries = $acf_values['galleries'];
-    if (!empty($galleries['gallery_image'])) :
+    if (!empty($galleries)) :
     ?>
         <section id="gallery">
             <div class="container-fluid">
                 <div class="row gap-0">
-                    <?php foreach ($galleries['gallery_image'] as $gallery) : ?>
+                    <?php foreach ($galleries as $gallery) : ?>
                         <div class="col p-0">
-                            <img src="<?php echo esc_url($gallery['url']); ?>" alt="<?php echo esc_attr($gallery['alt']); ?>">
+                            <img src="<?php echo esc_url($gallery['gallery_image']['url']); ?>" alt="<?php echo esc_attr($gallery['gallery_image']['alt']); ?>">
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -275,5 +275,4 @@ foreach ($acf_fields as $key => $field_name) {
         </section>
     <?php endif; ?>
 </main>
-
 <?php get_footer(); ?>

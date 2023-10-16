@@ -3,10 +3,8 @@
  * @package herbanext
  */
 get_header();
-
 $image_id = get_post_thumbnail_id(get_the_ID());
 $alt_text = get_post_meta($image_id , '_wp_attachment_image_alt', true);
-
 ?>
 
 <main>

@@ -55,7 +55,14 @@ foreach ($acf_fields as $key => $field_name) {
                         <p class="lh-lg text-secondary mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('200'); ?>">
                           <?php echo esc_textarea( $acf_lab_values['lab_cont_1']['content'] ) ?>
                         </p>
-                        <a href="#scrollContent" class="btn btn-success px-5 py-4 btn-lg mt-5" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300'); ?>"><?php echo wp_kses_decode_entities( $acf_lab_values['lab_cont_1']['button_label_with_icon'] ) ?></a>
+                        <div class="d-flex flex-column flex-lg-row gap-lg-3"  data-aos="fade-up" data-aos-duration="1500" data-aos-delay="<?php echo esc_attr('300')?>">
+                            <a href="#scrollContent" class="btn btn-success px-5 py-4 btn-lg mt-5">
+                            <?php echo wp_kses_decode_entities( $acf_lab_values['lab_cont_1']['button_label_with_icon'] ) ?>
+                            </a>
+                            <?php if(!empty($acf_lab_values['lab_cont_1']['laboratory_button_link'])): ?>
+                            <a href="<?php echo esc_url( $acf_lab_values['lab_cont_1']['laboratory_button_link']) ?>" class="btn btn-success px-5 py-4 btn-lg mt-4 mt-lg-5";?><?php echo wp_kses_decode_entities( $acf_lab_values['lab_cont_1']['laboratory_button_label_with_icon'] ) ?></a>
+                            <?php endif;?>
+                        </div>
                     </div>
                     <div class="col-12 col-lg-6 mt-4 mt-lg-0">
                         <div id="who_we_are">

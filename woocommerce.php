@@ -11,7 +11,7 @@ $shop = get_field('herbanext_shop', $shop_page_id);
     <main>
         <!-- jumbotron -->
         <section id="jumbotron_product" class="w-100 position-relative">
-            <?php if($shop['shop_background_image']['url']):?>
+            <?php if(!empty($shop['shop_background_image']['url'])):?>
             <img src="<?php echo esc_url($shop['shop_background_image']['url']) ?>" alt="<?php echo esc_attr($shop['shop_background_image']['alt']) ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">
             <?php else : ?>
             <img src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr($woo_alt_text); ?>" class="object-fit-cover w-100 position-absolute top-0 left-0">

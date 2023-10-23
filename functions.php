@@ -4,12 +4,6 @@
  * @package herbanext
  */
 use HERBANEXT_THEME\Inc\HERBANEXT_THEME;
-
-function custom_script(){
-    wp_enqueue_script('custom_js', get_theme_file_uri() . '/assets/js/js.js', NULL, '1.0', true);
-}
-add_action('wp_enqueue_scripts', 'custom_script');
-
 // Define HERBANEXT_DIR_PATH and HERBANEXT_DIR_URI if not defined
 !defined('HERBANEXT_DIR_PATH') ? define('HERBANEXT_DIR_PATH',untrailingslashit( get_template_directory() )) : '';
 !defined('HERBANEXT_DIR_URI') ? define('HERBANEXT_DIR_URI',untrailingslashit( get_template_directory_uri() )) : '';
@@ -19,6 +13,11 @@ function herbanext_get_theme_instance(){
     HERBANEXT_THEME::get_instance();
 }
 herbanext_get_theme_instance();
+
+function custom_script(){
+    wp_enqueue_script('custom_js', get_theme_file_uri() . '/assets/js/js.js', NULL, '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'custom_script');
 
 apply_filters( 'acf/prepare_field', 'herbanext_acf_prepare_field' );
 function herbanext_acf_prepare_field($field) {
@@ -173,11 +172,10 @@ function custom_breadcrumbs() {
       remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
   }
 
-
   remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
   add_filter( 'woocommerce_page_title', 'new_woocommerce_page_title' );
   function new_woocommerce_page_title( $page_title ) {
       if ( $page_title == 'Shop' ) {
-          return '<span class="fw-bold fs-2">Prodcut Catalog</span>';
+          return '<span class="fw-bold fs-2">Product Catalog</span>';
       }
   }

@@ -1,5 +1,5 @@
 <?php
-/**
+/** Search page
  * @package herbanext
  */
 get_header();

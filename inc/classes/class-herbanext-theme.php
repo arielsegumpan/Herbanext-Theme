@@ -14,6 +14,7 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     protected function __construct() {
         // Define an array of classes to initialize
         $classes = [
+            Restriction::class,
             Namespacecpt::class,
             Menus::class,
             Assets::class,

@@ -6,7 +6,7 @@
  */
 get_header();
 
-// Define an array of fields
+// Define array of fields
 $acf_fields = array(
     'jumbotron' => 'jumbotron',
     'features' => 'features',

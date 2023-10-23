@@ -23,7 +23,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
                 <?php
                 if(is_home() && !is_front_page()):?>
-                    <h1 class="display-2 museo fw-bold text-success">
+                    <h1 class="display-5 museo fw-bold text-success">
                         <?php single_post_title() ?>
                     </h1>
                 <?php endif?>
@@ -48,7 +48,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
          <div class="row">
             <div class="container text-center">
                 <nav aria-label="Page navigation" class="mt-5 pt-4">
-                    <ul class="pagination justify-content-center">
+                    <ul class="pagination justify-content-center list-unstyled">
                         <?php if (get_previous_posts_link()) : ?>
                             <li class="page-item">
                                 <span class="btn btn-success px-5 py-3">

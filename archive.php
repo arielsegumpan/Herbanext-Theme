@@ -19,7 +19,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
     <?php endif ?>
     <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-                <h1 class="display-3 museo fw-bold text-success">
+                <h1 class="display-5 museo fw-bold text-success">
                     <?php echo esc_html_e(wp_title()) ?>
                 </h1>
                 <h6 class="mt-4">
@@ -41,10 +41,10 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
          <div class="row">
             <div class="container text-center">
                 <nav aria-label="Page navigation" class="mt-5 pt-4">
-                    <ul class="pagination justify-content-center">
+                    <ul class="pagination justify-content-center list-unstyled d-flex flex-row gap-3">
                         <?php if (get_previous_posts_link()) : ?>
                             <li class="page-item">
-                                <span class="btn btn-success px-5 py-3">
+                                <span class="btn btn-success px-4 py-3">
                                     <?php previous_posts_link('<i class="bi bi-arrow-left me-3"></i>Previous'); ?>
                                 </span>
                             </li>
@@ -52,7 +52,7 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
                         
                         <?php if (get_next_posts_link()) : ?>
                             <li class="page-item">
-                                <span class="btn btn-success px-5 py-3">
+                                <span class="btn btn-success px-4 py-3">
                                     <?php next_posts_link('Next<i class="bi bi-arrow-right ms-3"></i>'); ?>
                                 </span>
                             </li>

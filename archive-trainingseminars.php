@@ -16,7 +16,7 @@ $get_ts_title = get_acf_option_field('training_and_seminars_post_heading_title')
      <?php endif;?>
         <div class="container position-absolute">
          <div class="col-12 col-md-8 col-lg-6 me-auto text-center text-md-start my-auto">
-                <h1 class="display-2 museo fw-bold text-success">
+                <h1 class="display-5 museo fw-bold text-success">
                     <?php echo esc_html_e($get_ts_title)?>
                 </h1>
                 <h6 class="mt-4">
@@ -36,7 +36,7 @@ $get_ts_title = get_acf_option_field('training_and_seminars_post_heading_title')
             <div class="row">
                 <div class="container text-center">
                     <nav aria-label="Page navigation" class="mt-5 pt-4">
-                        <ul class="pagination justify-content-center">
+                        <ul class="pagination justify-content-center list-unstyled">
                             <?php if (get_previous_posts_link()) : ?>
                                 <li class="page-item">
                                     <span class="btn btn-success px-5 py-3">

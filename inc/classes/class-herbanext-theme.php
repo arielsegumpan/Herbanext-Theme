@@ -173,17 +173,13 @@ use HERBANEXT_THEME\Inc\Traits\Singleton;
     // Custom admin Footer text
     function custom_footer_admin_text() {
         echo esc_html__("The Official Website of Herbanext", "herbanext");
-        echo ' | <a href="https://dev-asegumpan.pantheonsite.io/">Made by: AS</a>';
+        echo ' | <a target="_blank" href="'. esc_url('https://dev-asegumpan.pantheonsite.io/herbanext-healthier-solutions-from-nature/' ) .'">Made by: <b>AS</b></a>';
     }
 
     // get Search Query
     function customize_search_query( $query ) {
         if ( !is_admin() && $query->is_main_query() && $query->is_search() ) {
             $query->set( 'post_type', ['post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'] );
-            // $query->set( 'posts_per_page', 8 );
-            // $query->set( 'no_found_rows', true );
-            // $query->set( 'update_post_term_cache', false );
-            // $query->set( 'update_post_meta_cache', false );
         }
     }
  }

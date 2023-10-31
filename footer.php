@@ -65,7 +65,7 @@ endif?>
                     <img src="<?php echo esc_url( $global_setup['footer_logo']['url'] ) ?>" alt="<?php echo esc_attr( $global_setup['footer_logo']['alt'] ) ?>" style="width:100%;height:50px!important;">
                 </a>
                 <?php endif?>
-                <?php if(!empty($global_setup['global_terms_and_conditions']['url']) || !empty($global_setup['global_privacy_policy']['url'])) :?>
+                <?php if(!empty($global_setup['global_terms_and_conditions']) || !empty($global_setup['global_privacy_policy'])) :?>
                 <div class="d-flex flex-column flex-md-row gap-3 text-center text-lg-start">
                     <a href="<?php echo esc_url($global_setup['global_terms_and_conditions']) ?>" class=" fw-bold text-black"><?php echo esc_html_e('Terms and Conditions') ?></a>
                     <a href="<?php echo esc_url($global_setup['global_privacy_policy']) ?>" class=" fw-bold text-black"><?php echo esc_html_e('Privacy Policy') ?></a>

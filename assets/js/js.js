@@ -11,6 +11,8 @@
             });
         });
 
+        $("select.wpcf7-form-control option:first").attr('disabled', 'disabled').attr('selected', true);
+        $("nav.woocommerce-breadcrumb").prepend('<i class="bi bi-house me-2 text-success"></i>');
         //humberger
         const icons = document.querySelectorAll('.icon_ni');
         icons.forEach (icon => {  
@@ -126,7 +128,7 @@
             }
         })
 
-
+        // add overfall when screen with less than 768px
         var qualContent = $("#qual_content");
         var tabContent = $("div#tab-description");
         function handleResize() {

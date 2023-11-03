@@ -23,9 +23,11 @@ $career_position = get_acf_field('career_field');
                 <h6 class="fw-bold"><?php echo esc_html( date_i18n( 'j/ n/ Y', strtotime( get_the_date() ) ) ); ?></h6>
             </div>
             
-            <h1 class="fs-3 museo fw-bold">
-                <?php echo esc_html(get_the_title()) ?>
-            </h1>
+            <a href="<?php echo esc_url(get_permalink()) ?>" class="text-decoration-none">
+                <h1 class="fs-3 museo fw-bold">
+                    <?php echo esc_html(get_the_title()) ?>
+                </h1>
+            </a>
             <?php if (shortcode_exists('post_categories')) : ?>
                 <div class="d-flex flex-wrap flex-row text-center g-5 text-md-start mt-4 align-items-start">
                     <?php echo do_shortcode('[post_categories]'); ?>

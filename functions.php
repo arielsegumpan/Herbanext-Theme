@@ -107,8 +107,8 @@ function post_categories_by_post_type_shortcode($atts) {
         if (!empty($categories)) {
             foreach ($categories as $category) {
                 $output .= '<a href="' . esc_url(get_category_link($category->term_id)) . '" class="text-decoration-none mb-2">
-                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2">
-                    ' . $category->name . '</span></a>';
+                    <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><small>
+                    ' . $category->name . '</small></span></a>';
             }
         } else {
             $output = '';
@@ -136,7 +136,7 @@ function display_all_categories() {
 
         echo <<<HTML
             <a href="$category_link" class="text-decoration-none mb-2">
-                <span class="badge text-bg-green rounded-2 text-small px-3 me-2">$category_name</span>
+                <span class="badge text-bg-green rounded-2 text-small px-3 me-2"><small>$category_name</small></span>
             </a>
     HTML;
     }
@@ -145,7 +145,7 @@ add_shortcode('all_categories', 'display_all_categories');
 
 // Breadcrumbs
 function custom_breadcrumbs() {
-    echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'your-herbanext').'</a>';
+    echo '<a class="text-success text-decoration-none" href="'.esc_url(home_url()).'" rel="nofollow"><i class="bi bi-house me-2"></i>'.__('Home', 'herbanext').'</a>';
     $delimiter = "&nbsp;&nbsp;&#187;&nbsp;&nbsp;"; // Delimiter between breadcrumbs
     if (is_archive() || is_home()) {
         echo $delimiter . '<span>' . esc_html(wp_title('', false)) . '</span>';

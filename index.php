@@ -48,17 +48,17 @@ $get_blog_title = get_acf_option_field('blog_post_heading_title');
          <div class="row">
             <div class="container text-center">
                 <nav aria-label="Page navigation" class="mt-5 pt-4">
-                    <ul class="pagination justify-content-center list-unstyled">
+                    <ul class="pagination d-flex flex-row gap-3 justify-content-center list-unstyled">
                         <?php if (get_previous_posts_link()) : ?>
                             <li class="page-item">
-                                <span class="btn btn-success px-5 py-3">
+                                <span class="btn btn-success px-4 py-3">
                                     <?php previous_posts_link('<i class="bi bi-arrow-left me-3"></i>Previous'); ?>
                                 </span>
                             </li>
                         <?php endif; ?>
                         <?php if (get_next_posts_link()) : ?>
                             <li class="page-item">
-                                <span class="btn btn-success px-5 py-3">
+                                <span class="btn btn-success px-4 py-3">
                                     <?php next_posts_link('Next<i class="bi bi-arrow-right ms-3"></i>'); ?>
                                 </span>
                             </li>

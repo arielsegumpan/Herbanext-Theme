@@ -1,5 +1,6 @@
 $white:#ffffff;
 $green: #0A7742;
+$green_light: #55FF70;
 $gray: #DBDBDB;
 $dark-gray: #6C6C6C;
 $trans: .3s ease;
@@ -7,6 +8,7 @@ $black: #1a1a1a;
 $border-color:#47a76e;
 $warning: #ffc107;
 $museo: 'Museo', sans-serif;
+$avenir: "Avenir", sans-serif;
 ul.pagination.justify-content-center li.page-item span a {
     text-decoration: none!important;
     color: white!important;
@@ -68,10 +70,48 @@ ul.pagination.justify-content-center li.page-item span a {
         }
     }
 }
-
+// form
+main{
+    section#about{
+        .innovative{
+            .wpcf7-response-output{
+                color: $black!important;
+            }
+        }
+        .novel_portfolio{
+            .wpcf7-response-output{
+                color: $white!important;
+            }
+        }
+        
+    }
+}
 // woo styles
 section#product_lists{
+    .widget{
+        ul{
+            li{
+                .wc-block-grid__product-rating{
+                    .star-rating{
+                        float: unset!important;
+                        font-size: 1rem!important;
+                    }
+                }
+                a{
+                    .wc-block-grid__product-title{
+                        margin-bottom: 5px!important;
+                    }
+                }
+            }
+        }
+    }
     .lists{
+        p.woocommerce-result-count{
+            color: $green!important;
+            margin-bottom: 2rem!important;
+            font-weight: bold!important;
+            font-size: 18px!important   ;
+        }
         ul.products{
             li.product{
                 padding-bottom: 1.5rem;
@@ -91,11 +131,43 @@ section#product_lists{
                     font-family: $museo!important;
                     color: $green;
                 }
+                .product_meta{
+                    span.posted_in{
+                        font-family: $museo;
+                        color: $green;
+                        a{
+                            font-family: $avenir!important;
+                            text-decoration: none!important;
+                            background: $green_light;
+                            color: $black;
+                            padding: 2px 9px;
+                            border-radius: 6px;
+                        }
+                    }
+                    span.sku_wrapper{
+                        display: block;
+                        color: $green;
+                        font-weight: bold!important;
+                        margin-bottom: .5rem!important;
+                        span.sku{
+                            color: $black!important;
+                        }
+                    }
+                }
+
+                .woocommerce-product-rating{
+                    a.woocommerce-review-link{
+                        color: $green!important;
+                        span.count{
+                            margin-right: .25rem!important;
+                        }
+                    }
+                }
             }
             .woocommerce-tabs.wc-tabs-wrapper{
                 padding-top: 2.4rem!important;
                 .woocommerce-Tabs-panel{
-                    h2{
+                    h2,h3,h4,h5,h6{
                         font-family: $museo!important;
                         color: $green;
                         margin: 2rem 0;

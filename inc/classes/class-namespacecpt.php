@@ -24,10 +24,11 @@ class Namespacecpt{
     function get_queries($query) {
         if ((is_tag() || is_category()) && $query->is_main_query() && empty($query->query_vars['suppress_filters'])) {
             // Get all public post types
-            $public_post_types = get_post_types(array('public' => true), 'names');
+            // $public_post_types = get_post_types(array('public' => true), 'names');
+            
             // Set the 'post_type' parameter in the query to include public post types
-            $query->set('post_type', $public_post_types);
+            $query->set('post_type',  ['post', 'careers', 'publications', 'trainingseminars', 'medicinal_herbs'] );
         }
         return $query;
     }
-}
+} 

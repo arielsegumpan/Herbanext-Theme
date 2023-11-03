@@ -40,7 +40,7 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             </div>
         <?php endif?>
 
-        <?php if(!empty($science_page['science_section_content_2']['title'] || !empty($science_page['science_section_content_2']['content']))) :?>
+        <?php if(!empty($science_page['science_section_content_2']['title']) || !empty($science_page['science_section_content_2']['content'])) :?>
         <div class="who_are_are">
             <div class="container">
                 <div class="row">
@@ -102,7 +102,7 @@ $sci_alt_text = get_post_meta($sci_image_id, '_wp_attachment_image_alt', true);
             </div>
         </div>
         <?php endif?>
-        <?php if($science_page['science_section_content_1']['title'] && !empty($science_page['gallery'])) :?>
+        <?php if(!empty($science_page['science_section_content_1']['title']) && !empty($science_page['gallery'])) :?>
         <div class="innovative">
             <div class="container">
                 <div class="row">

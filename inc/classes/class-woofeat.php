@@ -21,6 +21,8 @@ class Woofeat {
         add_shortcode('herbanext_product_categories', [$this,'herbanext_categories_shortcode']);
         add_filter('woocommerce_output_related_products_args', [$this,'custom_related_products_args']);
         add_action('woocommerce_after_shop_loop', [$this,'custom_woocommerce_pagination']);
+        // remove product meta single product page
+        remove_action( 'woocommerce_single_product_summary', [$this, 'woocommerce_template_single_meta'], 40 );
     }
 
     function custom_get_featured_products_shortcode() {
